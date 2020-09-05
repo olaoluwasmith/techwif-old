@@ -66,8 +66,6 @@ INSTALLED_APPS = [
     'materializecssform',
 ]
 
-PAYSTACK_PUBLIC_KEY = 'pk_live_02c89718098e7d151f27b9b1cb8e0bafc13ccfb9'
-PAYSTACK_SECRET_KEY = 'sk_live_2de0f32557bb6bf49e04774528bf3886539faaec'
 
 SITE_ID = 1
 
@@ -121,14 +119,8 @@ WSGI_APPLICATION = 'techsite.wsgi.application'
 
 DATABASES = {
     'default': {
-#        'ENGINE': 'django.db.backends.postgresql',
         'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': 'tech_1',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#        'USER': 'olaoluwasmith',
-#        'PASSWORD': 'smithpython12',
-#        'HOST': 'database-1.ccshgogewdou.us-west-2.rds.amazonaws.com',
-#        'PORT': '5432'
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),'
     }
 }
 import dj_database_url
@@ -199,5 +191,5 @@ AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 STATICFILES_LOCATION = 'static'
 STATICFILES_STORAGE = 'custom_storages.StaticStorage'
-MEDIAFILES_LOCATION = 'media'
-DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+#MEDIAFILES_LOCATION = 'media'
+#DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
