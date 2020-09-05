@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load social_share %}
+{% load crispy_forms_tags %}
+{% block title %} {{ forum.title }} | Techwit {% endblock %}
+{% block content %}
+
+    <div class="container mt-4 mb-4">
+        <div class="detail-wrapper article-text">
+            <div class="title-block">
+                <h5>{{ forum.title|capfirst }}</h5>
+                by <a href="{% url 'profile_view' forum.author.username %}">{{ forum.author }}</a>,
+                updated on {{ forum.created_date }}
+                <hr>
+                <div class="social-share mt-2">
+                    <div>
+                        Share:
+                    </div>
+                    <div>
+                        <ul class="social-share-grid">
+                            <li>{% post_to_facebook object_or_url "<i class='fab fa-facebook fa-lg'></i>" %}</li>
+                            <li>{% post_to_twitter "Post to Twitter" object_or_url "<i class='fab fa-twitter fa-lg'></i>" %}</li>
+                            <li>{% post_to_gplus object_or_url "<i class='fab fa-google fa-lg'></i>" %}</li>
+                            <li>{% post_to_linkedin "Post to LinkedIn" object_or_url "<i class='fab fa-linkedin fa-lg'></i>" %}</li>
+                            <li>{% post_to_reddit "Post to Reddit" object_or_url "<i class='fab fa-reddit fa-lg'></i>" %}</li>
+                            <li>{% post_to_telegram "Post to Telegram" object_or_url "<i class='fab fa-telegram fa-lg'></i>" %}</li>
+                            <li>{% post_to_whatsapp object_or_url "<i class='fab fa-whatsapp fa-lg'></i>" %}</li>
+                        </ul>
+                    </div>  
+                </div> 
+                <hr>
+                <div class="center">
+                    {% for f in forum.forumimages_set.all %}
+                        <img class="mt-4" width="alto", height="alto" src="{{ f.image.url }}" alt="">
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="">
+                <div class="article-text mt-4">
+                    {{ forum.content|safe|linebreaks|urlizetrunc:40 }}
+                </div>  
+
+                <div class="m-2 center">
+                    {% if forum.author == user or user.is_superuser %}
+                    <hr>
+                    <a class="btn btn-secondary tf m-2" href="{% url 'forum_update' forum.slug forum.id %}"><i class="fas fa-edit"></i></a>
+                    <a class="btn btn-secondary tf m-2" href="{% url 'forum_update_image' forum.slug forum.id %}"><i class="fas fa-camera"></i></a>
+                    <a class="btn btn-danger tf m-2" href="{% url 'forum_delete' forum.slug forum.id %}"><i class="fas fa-trash-alt"></i></a>
+                    <hr>
+                    {% endif %}
+                </div>  
+            </div>
+            <div>
+                <div class="form-inline">
+                    <div id="like-section">
+                        {% include 'techsite/forum/like_section.html' %}
+                    </div>
+                    
+                    {% if request.user == user %}
+                    <div id="favourite-section">
+                        {% if is_favourite %}
+                        <a href="{% url 'favourite_posts' forum.slug forum.id %}">Remove from favourites</a>
+                        {% else %}
+                        <a href="{% url 'favourite_posts' forum.slug forum.id %}">Add to favourites</a>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                </div>
+                
+                <div class="main-comment-section">
+                    {% include 'techsite/forum/comments.html' %}
+                </div>
+            </div>
+        </div>             
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+<script>
+    $(document).ready(function(event){
+        $(document).on('click', '#like', function(event){
+            event.preventDefault();
+            var pk = $(this).attr('value');
+            $.ajax({
+                type: 'POST',
+                url: '{% url "like_forum" %}',
+                data: {'id':pk, 'csrfmiddlewaretoken': '{{ crsf_token }}' },
+                dataType: 'json',
+                success: function(response){
+                    $('#like-section').html(response['form'])
+                    console.log($('#like-section').html(response['form']));
+                },
+                error: function(rs, e){
+                    console.log(rs.responseText);
+                },
+            });
+        });
+    });
+
+    var infinite = new Waypoint.Infinite({
+        element: $('.infinite-container')[0],
+        handler: function(direction) {   
+        },
+        offset: 'bottom-in-view',
+
+        onBeforePageLoad: function() {
+            $('.loading').show();
+        },
+        onAfterPageLoad: function() {
+            $('.loading').hide();
+        }
+    });
+
+    $(document).ready(function(e){
+        $(function(){
+            setTimeout(function(){
+                $('.alert').slideUp(2000);
+            }, 5000);
+        });
+    });
+
+</script>
+{% endblock %}

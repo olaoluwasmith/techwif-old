@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %} {{ object.title }} | Techwit {% endblock %}
+{% block content %}
+
+    <div class="container mt-4 mb-4">
+        <div class="forum-wrapper">
+            <div class="title-block">
+                <h5>{{ object.title }}</h5>
+                <hr>
+                <div class="center">
+                    <img class="center mt-2" width="alto" height="alto" src="{{ object.imageURL }}" alt="{{ object.title }}">
+                </div>  
+                <hr>   
+            </div>
+            <div class="content-block">
+                {{ object.content|safe|linebreaks|urlizetrunc:40 }}
+                <div class="m-2 center">
+                    <div class="contact-btn">
+                        <a href="{% url 'contact_us' %}" class="btn btn-dark btn-block mt-4" role="button" style="text-transform: none;">Contact Us</a>
+                    </div>
+                    {% if object.author == user %}
+                    <hr>
+                    <a class="btn btn-secondary tf m-2" href="{% url 'service_update' object.slug object.id %}"><i class="fas fa-edit"></i></a>
+                    <a class="btn btn-danger tf m-2" href="{% url 'service_delete' object.slug object.id %}"><i class="fas fa-trash-alt"></i></a>
+                    <hr>
+                    {% endif %}
+                </div> 
+            </div>
+        </div>             
+    </div>
+{% endblock %}
+
+{% block javascript %}
+<script>
+
+    $(document).ready(function(e){
+        $(function(){
+            setTimeout(function(){
+                $('.alert').slideUp(2000);
+            }, 5000);
+        });
+    });
+
+</script>
+{% endblock %}

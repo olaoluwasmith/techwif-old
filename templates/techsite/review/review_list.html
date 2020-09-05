@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %} Review | Techwit {% endblock %}
+{% block content %}
+
+<div class="article">
+    <h2 class="sub-heading mt-4" id="main-articles">Latest Reviews</h2>
+
+    <div class="container">
+        <div class="row mt-2">
+            {% for review in object_list %}
+            <div class="col-6 col-lg-4">
+                <a href="{{ review.get_absolute_url }}"><img class="thumbnail" src="{{ review.imageURL }}" alt=""></a>
+                <div class="box-element product">
+                    <h6><strong><a href="{{ review.get_absolute_url }}">{{ review.title }}</a></strong></h6>
+                    <hr>
+                    <div class="card-content-text">
+                        <ul class="categoryTime">
+                            <li>{{ review.created_date|date:"F d, Y" }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="card center m-4 p-4">
+                <h5 class="center">No result found.</h5>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="container" style="text-align: center;">
+    {% if is_paginated %}
+        {% if page_obj.has_previous %}
+            <a class="btn btn-outline-dark mb-4 mr-2 tf" href="?page={{ page_obj.previous_page_number }}">Previous Page</a>
+        {% endif %}
+
+        {% if page_obj.has_next %}
+            <a class="btn btn-outline-dark mb-4 ml-2 tf" href="?page={{ page_obj.next_page_number }}">Next Page</a>
+        {% endif %}       
+    {% endif %}
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+<script>
+
+    $(document).ready(function(e){
+        $(function(){
+            setTimeout(function(){
+                $('.alert').slideUp(2000);
+            }, 5000);
+        });
+    });
+
+</script>
+{% endblock %}

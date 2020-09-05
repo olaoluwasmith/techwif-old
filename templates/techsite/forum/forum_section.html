@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block title %} {{ section.section }} | Techwit {% endblock %}
+{% block content %}
+
+<div class="container">
+    <div class="mt-4">
+        <form class="form-inline" action="{% url 'forum_list' %}" method="GET">
+            <input class="" type="text" placeholder="Search posts" aria-label="Search" name="q" value="{{ request.GET.q }}">
+            <button class="btn btn-secondary tf" type="submit">Search</button>
+        </form>
+    </div>
+    <hr>
+
+    <div class="forum-wrapper">
+        <div>
+            <h4 class="" id="main-articles">Forum Sections</h4>
+
+            <div>
+                {% for item in sec_menu_list %}
+                    <a class="btn btn-outline-secondary btn-sm mt-2 tf" role="button" href="{% url 'section' item|slugify %}">{{ item }}</a>
+                {% endfor %}
+            </div>
+            <hr>
+            {% if user.is_authenticated %}
+            <div class="center">
+                <a class="btn btn-secondary tf btn-block" href="{% url 'forum_form' %}">Create Post</a>
+            </div>
+            <hr>
+            {% else %}
+            <div class="center">
+                <a href="{% url 'login' %}" class="btn btn-primary btn-block tf">Login to create post.</a>
+            </div>
+            <hr>
+            {% endif %}
+        </div>
+        <div>
+            <h4 class="sub-heading" id="main-articles">{{ section.section }}</h4>
+            {% for forums in forum %}
+            <div class="media content-section article-text m-2">
+                <div>
+                    <img class="rounded-circle  article-img" src="{{ forums.author.profile.profile_pic.url }}" width="70" height="70" alt="">
+                </div>
+                <div class="media-body article-text">
+                    <div class="article-metadata">
+                        <a class="mr-2" href="{% url 'profile_view' forums.author.username %}">{{ forums.author }}</a>
+                        <small class="text-muted">{{ forums.created_date }}</small>
+                    </div>
+                    <div>
+                        <h5><a class="" href="{{ forums.get_absolute_url }}" class="btn btn-outline-secondary btn-sm btn-block" role="button">{{ forums.title }}</a></h5>
+                    </div>               
+                </div>       
+            </div>
+            {% empty %}
+            <div class="card center m-4 p-4">
+                <h5 class="center">No result found.</h5>
+            </div>
+            {% endfor %}
+            
+            <div class="container" style="text-align: center;">
+                {% if forum.has_other_pages %}
+                    {% if forum.has_previous %}
+                        <a class="btn btn-outline-dark mb-4 mt-2 tf" href="?page=1">First</a>
+                        <a class="btn btn-outline-dark mb-4 mt-2 tf" href="?page={{ forum.previous_page_number }}">Previous</a> 
+                    {% endif %}
+
+                    {% for num in forum.paginator.page_range %}
+                        {% if forum.number == num %}
+                            <a class="btn btn-outline-dark mb-4 mt-2  active" href="?page={{ num }}">{{ num }}</a>
+                        {% elif num > forum.number|add:'-3' and num < forum.number|add:'3' %}
+                            <a class="btn btn-outline-dark mb-4 mt-2" href="?page={{ num }}">{{ num }}</a>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if forum.has_next %}
+                        <a class="btn btn-outline-dark mb-4 mt-2 tf" href="?page={{ forum.next_page_number }}">Next</a>
+                        <a class="btn btn-outline-dark mb-4 mt-2 tf" href="?page={{ forum.paginator.num_pages }}">Last</a>
+                    {% endif %}       
+                {% endif %}
+            </div>
+        </div> 
+    </div>             
+</div>
+
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load social_share %}
+{% block title %} {{ blog.title }} | Techwit {% endblock %}
+{% block content %}
+
+    <div class="container mt-4 mb-4">
+        <div class="forum-wrapper">
+            <div class="title-block">
+                <h5>{{ blog.title }}</h5>
+                <p>Updated on {{blog.modified_date }}</p>
+                <hr>
+                <div class="center">
+                    <img class="center" width="alto" height="alto" src="{{ blog.imageURL }}" alt="{{ blog.title }}">
+                </div>
+                <hr>
+                <div class="social-share mt-2">
+                    <div>
+                        Share:
+                    </div>
+                    <div>
+                        <ul class="social-share-grid">
+                            <li>{% post_to_facebook object_or_url "<i class='fab fa-facebook fa-lg'></i>" %}</li>
+                            <li>{% post_to_twitter "Post to Twitter" object_or_url "<i class='fab fa-twitter fa-lg'></i>" %}</li>
+                            <li>{% post_to_gplus object_or_url "<i class='fab fa-google fa-lg'></i>" %}</li>
+                            <li>{% post_to_linkedin "Post to LinkedIn" object_or_url "<i class='fab fa-linkedin fa-lg'></i>" %}</li>
+                            <li>{% post_to_reddit "Post to Reddit" object_or_url "<i class='fab fa-reddit fa-lg'></i>" %}</li>
+                            <li>{% post_to_telegram "Post to Telegram" object_or_url "<i class='fab fa-telegram fa-lg'></i>" %}</li>
+                            <li>{% post_to_whatsapp object_or_url "<i class='fab fa-whatsapp fa-lg'></i>" %}</li>
+                        </ul> 
+                    </div>  
+                </div> 
+                <hr>            
+            </div>
+            <div class="content-block">
+                {{ blog.content|safe|linebreaks|urlizetrunc:40 }}
+                <div class="m-2 center">
+                    {% if blog.author == user %}
+                    <hr>
+                    <a class="btn btn-secondary tf m-2" href="{% url 'article_update' blog.slug blog.id %}"><i class="fas fa-edit"></i></a>
+                    <a class="btn btn-danger tf m-2" href="{% url 'article_delete' blog.slug blog.id %}"><i class="fas fa-trash-alt"></i></a>
+                    <hr>
+                    {% endif %}
+                </div> 
+            </div>
+        </div> 
+        
+        <div class="card mt-4 mb-2 p-2">
+            <h4>Related Posts</h4>
+        </div>
+
+        <div class="row mt-2">
+            {% for blog in blog_related %}
+            <div class="col-6 col-lg-4">
+                <a href="{{ blog.get_absolute_url }}"><img class="thumbnail" src="{{ blog.imageURL }}" alt=""></a>
+                <div class="box-element product">
+                    <h6><strong><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></strong></h6>
+                </div>
+            </div>
+            {% empty %}
+            <div class="card center m-4 p-4">
+                <h5 class="center">No result found.</h5>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+<script>
+
+    $(document).ready(function(e){
+        $(function(){
+            setTimeout(function(){
+                $('.alert').slideUp(2000);
+            }, 5000);
+        });
+    });
+
+</script>
+{% endblock %}

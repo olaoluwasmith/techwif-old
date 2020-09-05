@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %} Product Form | Techwit {% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container h-100">
+    <div class="d-flex justify-content-center h-100">
+        <div class="user_card mt-4 mb-4">
+            <div class="d-flex justify-content-center form_container">
+                <form method="POST" action="" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        {{ form|crispy }}
+                        {{ formset|crispy }}
+                    </fieldset>
+                    <div class="form-group">
+                        <button class="btn btn-secondary btn-block tf" type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+
+            {% if form.errors %}
+            <div class="mt-4">
+                <div class="d-flex justify-content-center links">
+                    <p id="messages">Error encountered!</p>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

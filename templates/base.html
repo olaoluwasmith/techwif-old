@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+{% load static %}
+{% load materializecss %}
+{% load bootstrap4 %}
+
+<html class="" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#" lang="en-US">
+<head>
+	<meta charset="UTF-8" />
+	<title>
+		{% block title %}Techwit | Unravelling the world of technology{% endblock %}
+	</title>
+	<meta name="viewport" content="width=device-width" initial-scale="1" />
+	<meta name="description" content="Techwit | Unravelling the world of technology" />
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+		integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.1/css/materialize.min.css"	/>
+	<link rel="stylesheet" href="{% static 'css\materialize.min.css' %}" />
+	<link rel="stylesheet" href="{% static 'css\materialize-social.css' %}" />
+	<link rel="stylesheet" href="{% static 'css\bootstrap.min.css' %}" />
+	<link rel="stylesheet" href="{% static 'css\bootstrap.css' %}" />
+	<link rel="stylesheet" href="{% static 'css\ecommerce.css' %}" />
+	<link rel="stylesheet" href="{% static 'css\base.css' %}" />
+	
+	<script type="text/javascript">
+		var user = '{{ request.user }}'
+
+		function getToken(name) {
+			var cookieValue = null;
+			if (document.cookie && document.cookie !== '') {
+				var cookies = document.cookie.split(';');
+				for (var i = 0; i < cookies.length; i++) {
+					var cookie = cookies[i].trim();
+					// Does this cookie string begin with the name we want?
+					if (cookie.substring(0, name.length + 1) === (name + '=')) {
+						cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+						break;
+					}
+				}
+			}
+			return cookieValue;
+		}
+		var csrftoken = getToken('csrftoken')
+		
+
+		function getCookie(name) {
+			// Split cookie string and get all individual name=value pairs in an array
+			var cookieArr = document.cookie.split(";");
+			// Loop through the array elements
+			for (var i = 0; i < cookieArr.length; i++) {
+				var cookiePair = cookieArr[i].split("=");
+				/* Remove whitespace at the beginning of the cookie name and compare it
+				with the given string */
+				if(name == cookiePair[0].trim()) {
+					// Decode the cookie value and return
+					return decodeURIComponent(cookiePair[1]);
+				}
+			}
+			// Return null if not found
+			return null;
+		}
+
+		var cart = JSON.parse(getCookie('cart'))
+		if(cart == undefined){
+			cart = {}
+			console.log('Cart was created!');
+			document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+		}
+		console.log('Cart:', cart);
+		
+	</script>
+</head>
+<body>
+	<nav class="light-blue darken-4">
+		<div class="header-nav-bar" id="top-nav">
+			<a href="/" class="brand-logo left grey darken-2 pl-4 pr-4 m-0" style="font-family: 'Courier New', Courier, monospace; color: rgb(229, 203, 194);">TechWIT</a>
+			<ul id="nav-mobile" class="right">
+				{% if user.is_authenticated %}
+					<li><a href="{% url 'profile_view' request.user %}">@{{ request.user }}</a></li>
+					<li><a href="{% url 'logout' %}">Logout</a></li>
+				{% else %}
+					<li><a href="{% url 'login' %}?next={{ request.get_full_path|urlencode }}">Login</a></li>
+					<li><a href="{% url 'register' %}">Register</a></li>
+				{% endif %}
+			</ul>
+		</div>
+	</nav>
+
+	<nav class="light-blue darken-3">
+		<div class="header-nav-bar" id="bottom-nav">
+			<ul class="bottom-nav-list">
+				<li><a href="{% url 'service_list' %}">Services</a></li>
+				<li><a href="{% url 'review_list' %}">Review</a></li>
+				<li><a href="{% url 'store' %}">Store</a></li>
+				<li><a href="{% url 'forum_list' %}">Forum</a></li>
+			</ul>
+		</div>
+	</nav>
+	{% include 'techsite/alerts.html' %}
+	{% block content %}
+
+	<h2 class="sub-heading mt-2" id="main-articles">Tech Updates &eqslantgtr;</h2>
+
+	<div class="article">
+		<div class="container">
+			<div class="row mt-2">
+				{% for blog in object_list %}
+				<div class="col-6 col-lg-4">
+					<a href="{{ blog.get_absolute_url }}"><img class="thumbnail" src="{{ blog.imageURL }}" alt=""></a>
+					<div class="box-element product">
+						<h6><strong><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></strong></h6>
+						<hr>
+						<div class="card-content-text">
+							<ul class="categoryTime">
+								<li><a href="{{ blog.category.get_absolute_url }}">{{ blog.category }}</a></li>
+								<li></li>
+								<li>{{ blog.created_date|date:"F d, Y" }}</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				{% empty %}
+				<div class="card center m-4 p-4">
+					<h5 class="center">No result found!</h5>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+	
+	<div class="container" style="text-align: center;">
+		{% if is_paginated %}
+			{% if page_obj.has_previous %}
+				<a class="btn btn-outline-dark mb-4 mr-2 tf" href="?page={{ page_obj.previous_page_number }}">Previous Page</a>
+			{% endif %}
+			{% if page_obj.has_next %}
+				<a class="btn btn-outline-dark mb-4 ml-2 tf" href="?page={{ page_obj.next_page_number }}">Next Page</a>
+			{% endif %}
+		{% endif %}
+	</div>
+
+	{% endblock content %}
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous">
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.1/js/materialize.min.js"
+		integrity="" crossorigin="anonymous">
+	</script>
+	<script src="{% static 'js\jquery.min.js' %}"></script>
+	<script src="{% static 'js\jquery.waypoints.min.js' %}"></script>
+	<script src="{% static 'js\infinite.min.js' %}"></script>
+	<script src="{% static 'js\materialize.min.js' %}"></script>
+	<script src="{% static 'js\bootstrap.bundle.min.js' %}"></script>
+	<script src="{% static 'js\bootstrap.bundle.js' %}"></script>
+	<script src="{% static 'js\bootstrap.min.js' %}"></script>
+	<script src="{% static 'js\base.js' %}"></script>
+
+	{% block javascript %}{% endblock %}
+	<br>	
+</body>
+<footer class="">
+	<div class="footer mt-2">
+		<div class="footer-PAC mt-4">
+			<ul class="footer-PAC-list">
+				<li><a href="/privacy_policy">Privary Policy</a></li>
+				<li><p>|</p></li>
+				<li><a href="/terms_and_conditions">Terms & Conditions</a></li>
+				<li><p>|</p></li>
+				<li><a href="/advertise">Advertise</a></li>
+				<li><p>|</p></li>
+				<li><a href="/contact_us">Contact Us</a></li>
+			</ul>
+		</div>
+		
+		<div class="container" style="color: rgb(243, 239, 239);">	
+			<div class="center mb-4 mt-2">
+				<ul class="social-media">
+					<h5 class="">Follow Us:</h5>
+					<li><a href="#"><i class="fab fa-facebook-f fa-lg"></i></a></li>
+					<li><a href="#"><i class="fab fa-twitter fa-lg"></i></a></li>
+					<li><a href="#"><i class="fab fa-instagram fa-lg"></i></a></li>
+					<li><a href="#"><i class="fab fa-youtube fa-lg"></i></a></li>
+				</ul>		
+			</div>
+		</div>
+
+		<div class="back-to-top">
+			<button type="button" class="btn btn-outline-dark btn-sm btn-block mb-" 
+				onclick="topFunction()" id="myBtn"
+				title="Go to top">
+				Back to Top
+			</button>
+		</div>
+	</div>
+</footer>
+</html>

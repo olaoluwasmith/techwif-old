@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block title %} Forum | Techwit {% endblock %}
+{% block content %}
+
+<div class="container">
+    <div class="mt-4">
+        <form class="form-inline" action="{% url 'forum_list' %}" method="GET">
+            <input class="" type="text" placeholder="Search posts" aria-label="Search" name="q" value="{{ request.GET.q }}">
+            <button class="btn btn-secondary tf" type="submit">Search</button>
+        </form>
+    </div>
+    <hr>
+    
+    <div class="forum-wrapper mt-0">
+        <div>
+            
+        </div>
+        <div>
+            <div class=" infinite-container mb-4">
+                {% for forum in favourite_posts %}
+                <div class="media content-section article-text m-2 infinite-item">
+                    <div>
+                        <img class="rounded-circle  article-img" src="{{ forum.author.profile.profile_pic.url }}" width="70" height="70" alt="">
+                    </div>
+                    <div class="media-body article-text">
+                        <div class="article-metadata">
+                            <a class="mr-2" href="{% url 'profile_view' forum.author.username %}">{{ forum.author }}</a>
+                            <small class="text-muted">{{ forum.created_date }}</small>
+                            <small class="text-muted"> | </small>
+                            <a href="{{ forum.section.get_absolute_url }}">{{ forum.section }}</a>
+                        </div>
+                        <div>
+                            <h5><a class="" href="{{ forum.get_absolute_url }}" class="btn btn-outline-secondary btn-sm btn-block" role="button">{{ forum.title|capfirst }}</a></h5>
+                        </div>               
+                    </div>       
+                </div>
+                {% empty %}
+                <div class="card center m-4 p-4">
+                    <h5>No favourite posts yet.</h5>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="container" style="text-align: center;">
+                {% if favourite_posts.has_next %}
+                    <a class="infinite-more-link" href="?page={{ favourite_posts.next_page_number }}"></a>
+                {% endif %} 
+                
+                <div class="loading mb-4" style="display: none;">
+                    Loading...
+                </div>
+            </div>
+        </div> 
+    </div>             
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+<script>
+    var infinite = new Waypoint.Infinite({
+        element: $('.infinite-container')[0],
+        handler: function(direction) {   
+        },
+        offset: 'bottom-in-view',
+
+        onBeforePageLoad: function() {
+            $('.loading').show();
+        },
+        onAfterPageLoad: function() {
+            $('.loading').hide();
+        }
+    });
+
+    $(document).ready(function(e){
+        $(function(){
+            setTimeout(function(){
+                $('.alert').slideUp(2000);
+            }, 5000);
+        });
+    });
+
+</script>
+{% endblock %}

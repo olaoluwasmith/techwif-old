@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %} Services | Techwit {% endblock %}
+{% block content %}
+
+<div class="container">
+    <h2 class="sub-heading mt-4" id="main-articles">Our Services</h2>
+
+    {% for service in object_list %}
+    <div class="col-md-6">
+        <div class="box-element">
+            <a href="{{ service.get_absolute_url }}" class="btn btn-outline-secondary mt-2 mb-2 tf btn-block" role="button">{{ service.title }}</a>
+        </div>
+    </div>
+    
+    {% empty %}
+        <div class="card center m-4 p-4">
+            <h5 class="center">No result found.</h5>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+<script>
+
+    $(document).ready(function(e){
+        $(function(){
+            setTimeout(function(){
+                $('.alert').slideUp(2000);
+            }, 5000);
+        });
+    });
+
+</script>
+{% endblock %}

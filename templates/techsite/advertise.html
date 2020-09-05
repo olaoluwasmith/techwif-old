@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Place Advert | Techwit {% endblock %}
+{% block content %}
+<div class="container">
+    <div class="d-flex justify-content-center">
+        <div class="card mt-4 mb-4">
+            <img src="{% static 'images/Advertise-With-Us-1.jpg' %}" alt="" class="center" width="100%" height="250">
+            <div class="plain-text m-0">
+                <hr>
+                <h5 style="text-align: center;">We've got the right experience and strategy to make your brand or company ahead of others.</h5>
+                <h5 style="text-align: center;">Getting across to the right audience is guaranteed when you advertise with us.</h5>
+                <hr>
+                <h5 style="text-align: center;">Let's promote your products and services on this Website and beyond.</h5>
+                <hr>
+            </div>
+            <img src="{% static 'images/advertise_with_us.jpg' %}" alt="" class="center" width="100%" height="200">
+            <div class="contact-btn">
+                <a href="{% url 'contact_us' %}" class="btn btn-dark btn-block mt-4" role="button" style="text-transform: none;">Contact Us</a>
+            </div> 
+        </div>   
+    </div>       
+</div>
+
+{% endblock %}

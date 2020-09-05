@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %} {{ category.category }} | Techwit {% endblock %}
+{% block content %}
+<h4 class="sub-heading mt-4" id="main-articles">{{ category.category }}</h4>
+<div class="article">
+    <div class="container">
+        <div class="row mt-2">
+            {% for blogs in blog %}
+            <div class="col-6 col-lg-4">
+                <a href="{{ blogs.get_absolute_url }}"><img class="thumbnail" src="{{ blogs.imageURL }}" alt=""></a>
+                <div class="box-element product">
+                    <h6><strong><a href="{{ blogs.get_absolute_url }}">{{ blogs.title }}</a></strong></h6>
+                    <hr>
+                    <div class="card-content-text">
+                        <ul class="categoryTime">
+                            <li><a href="{{ blogs.category.get_absolute_url }}">{{ blogs.category }}</a></li>
+                            <li></li>
+                            <li>{{ blogs.created_date|date:"F d, Y" }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="card center m-4 p-4">
+                <h5 class="center">No result found.</h5>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="container" style="text-align: center;">
+    {% if blog.has_other_pages %}
+        {% if blog.has_previous %}
+            <a class="btn btn-outline-dark mb-4 mr-2 tf" href="?page={{ blog.previous_page_number }}">Previous Page</a>
+        {% endif %}
+
+        {% if blog.has_next %}
+            <a class="btn btn-outline-dark mb-4 ml-2 tf" href="?page={{ blog.next_page_number }}">Next Page</a>
+        {% endif %}       
+    {% endif %}
+</div>
+
+{% endblock %}
