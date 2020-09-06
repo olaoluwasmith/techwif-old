@@ -169,7 +169,7 @@ STATIC_URL = '/static/'
 #STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/static/media/'
+MEDIA_URL = '/media/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -187,10 +187,10 @@ DJANGO_NOTIFICATIONS_CONFIG = { 'SOFT_DELETE': True }
 
 AWS_ACCESS_KEY_ID = 'AKIAUHFMEN4AWKU4QYFC'
 AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'olaoluwasmith-bucket'
+AWS_STORAGE_BUCKET_NAME = 'techwit-bucket'
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 STATICFILES_LOCATION = 'static'
 STATICFILES_STORAGE = 'custom_storages.StaticStorage'
-#MEDIAFILES_LOCATION = 'media'
-#DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+MEDIAFILES_LOCATION = 'media'
+DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
