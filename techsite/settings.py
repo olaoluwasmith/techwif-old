@@ -169,7 +169,7 @@ STATIC_URL = '/static/'
 #STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+MEDIA_URL = '/static/media/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -191,6 +191,6 @@ AWS_STORAGE_BUCKET_NAME = 'techwit-bucket'
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 STATICFILES_LOCATION = 'static'
-STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 #MEDIAFILES_LOCATION = 'media'
 #DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
