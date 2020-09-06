@@ -35,8 +35,8 @@ def RegisterPage(request):
         if form.is_valid():
             user = form.save()
             username = form.cleaned_data.get('username')
-#            group = Group.objects.get(name='member')
-#            user.groups.add(group)
+            group = Group.objects.get(name='member')
+            user.groups.add(group)
 
             messages.success(request, 'Account successfully created for ' + username)
             return redirect('login')
