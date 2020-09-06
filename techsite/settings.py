@@ -165,14 +165,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = 'static/media/'
+MEDIA_URL = '/static/media/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-#LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'login'
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
@@ -183,7 +184,7 @@ DJANGO_NOTIFICATIONS_CONFIG = { 'SOFT_DELETE': True }
 
 
 #S3 BUCKETS CONFIG
-
+"""
 AWS_ACCESS_KEY_ID = 'AKIAUHFMEN4AWKU4QYFC'
 AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'olaoluwasmith-bucket'
@@ -191,5 +192,6 @@ AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 STATICFILES_LOCATION = 'static'
 STATICFILES_STORAGE = 'custom_storages.StaticStorage'
-#MEDIAFILES_LOCATION = 'media'
-#DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+MEDIAFILES_LOCATION = 'media'
+DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+"""
