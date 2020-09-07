@@ -29,6 +29,14 @@ class Profile(models.Model):
             output_size = (300, 300)
             img.thumbnail(output_size)
             img.save(self.profile_pic.path)
+
+    @property
+    def imageURL(self):
+        try:
+            url = self.profile_pic.url
+        except:
+            url = ''
+        return url
             
 
 class Category(models.Model):
