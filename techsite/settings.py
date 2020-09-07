@@ -167,7 +167,7 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-STATIC_URL = '/static/'
+STATIC_URL = '/staticfiles/'
 MEDIA_URL = '/media/'
 
 STATICFILES_DIRS = [
@@ -175,6 +175,8 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -190,13 +192,29 @@ DJANGO_NOTIFICATIONS_CONFIG = { 'SOFT_DELETE': True }
 
 
 #S3 BUCKETS CONFIG
-"""
-AWS_ACCESS_KEY_ID = 'AKIAUHFMEN4AWKU4QYFC'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'olaoluwasmith-bucket'
-AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = None
-STATICFILES_LOCATION = 'static'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage' """
-#MEDIAFILES_LOCATION = 'media'
-#DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+USE_S3 = os.getenv('USE_S3') == 'TRUE'
+
+if USE_S3:
+    AWS_ACCESS_KEY_ID = os.getenv('AKIAUHFMEN4AWKU4QYFC')
+    AWS_SECRET_ACCESS_KEY = os.getenv('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')
+    AWS_STORAGE_BUCKET_NAME = os.getenv('olaoluwasmith-bucket')
+    AWS_DEFAULT_ACL = None
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+    AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
+
+    STATIC_LOCATION = 'static'
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATIC_LOCATION}'
+    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+
+    PUBLIC_MEDIA_LOCATION = 'media'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}'
+    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+else:
+    STATIC_URL = '/staticfiles/'
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
+
