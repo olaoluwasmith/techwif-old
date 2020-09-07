@@ -12,7 +12,7 @@ import string
 # Create your models here.
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_pic = models.ImageField(default='default.jpg', upload_to='profile_pics')
+    profile_pic = models.ImageField(default='default.jpg', upload_to='profile_pics/')
     first_name = models.CharField(max_length=50, blank=True, default='')
     last_name = models.CharField(max_length=50, blank=True, default='')
     bio = models.TextField(max_length=200, blank=True, default='')
@@ -51,7 +51,7 @@ class Blog(models.Model):
     slug = models.SlugField(max_length=200, null=False)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to="images", blank=True)
+    image = models.ImageField(upload_to="images/", blank=True)
     content = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
@@ -94,7 +94,7 @@ class Review(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, null=False)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to="images", blank=True)
+    image = models.ImageField(upload_to="images/", blank=True)
     content = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
@@ -137,7 +137,7 @@ class Service(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, null=False)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to="images", blank=True)
+    image = models.ImageField(upload_to="images/", blank=True)
     content = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
@@ -239,7 +239,7 @@ class ForumComment(models.Model):
 
 class ForumImages(models.Model):
     forum = models.ForeignKey(Forum, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to="forum_images", blank=True, null=True)
+    image = models.ImageField(upload_to="forum_images/", blank=True, null=True)
 
     def __str__(self):
         return self.forum.title + " Image"
