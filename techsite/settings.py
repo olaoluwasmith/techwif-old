@@ -72,6 +72,7 @@ SITE_ID = 1
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -164,33 +165,38 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
-STATIC_URL = '/static/'
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/static/media/'
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-LOGIN_REDIRECT_URL = '/'
+
 LOGIN_URL = 'login'
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
+
 
 DJANGO_NOTIFICATIONS_CONFIG = { 'USE_JSONFIELD': True }
 DJANGO_NOTIFICATIONS_CONFIG = { 'SOFT_DELETE': True }
 
 
 #S3 BUCKETS CONFIG
-
+"""
 AWS_ACCESS_KEY_ID = 'AKIAUHFMEN4AWKU4QYFC'
 AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'techwit-bucket'
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 STATICFILES_LOCATION = 'static'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'"""
 #MEDIAFILES_LOCATION = 'media'
 #DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'

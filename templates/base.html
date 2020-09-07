@@ -75,7 +75,7 @@
 <body>
 	<nav class="light-blue darken-4">
 		<div class="header-nav-bar" id="top-nav">
-			<a href="/" class="brand-logo left grey darken-2 pl-4 pr-4 m-0" style="font-family: 'Courier New', Courier, monospace; color: rgb(229, 203, 194);">TechWIT</a>
+			<a href="{% url 'homepage' %}" class="brand-logo left grey darken-2 pl-4 pr-4 m-0" style="font-family: 'Courier New', Courier, monospace; color: rgb(229, 203, 194);">TechWIT</a>
 			<ul id="nav-mobile" class="right">
 				{% if user.is_authenticated %}
 					<li><a href="{% url 'profile_view' request.user %}">@{{ request.user }}</a></li>
@@ -89,8 +89,8 @@
 	</nav>
 
 	<nav class="light-blue darken-3">
-		<div class="header-nav-bar" id="bottom-nav">
-			<ul class="bottom-nav-list">
+		<div class="header-nav-bar">
+			<ul class="bottom-nav-list" style="display: flex; list-style-type: none; flex-wrap: wrap; flex-direction: row; justify-content: space-evenly;">
 				<li><a href="{% url 'service_list' %}">Services</a></li>
 				<li><a href="{% url 'review_list' %}">Review</a></li>
 				<li><a href="{% url 'store' %}">Store</a></li>

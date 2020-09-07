@@ -4,43 +4,47 @@
 {% block content %}
 
     <div class="container mt-4 mb-4">
-        <div class="forum-wrapper">
-            <div class="title-block">
-                <h5>{{ review.title }}</h5>
-                <p>Updated on {{ review.modified_date }}</p>
-                <hr>
-                <div class="center">
-                    <img class="center" width="alto" height="alto" src="{{ review.imageURL }}" alt="{{ review.title }}">
-                </div>
-                <hr> 
-                <div class="social-share mt-2">
-                    <div>
-                        Share:
+        <div class="row">
+            <div class="col-md-6">
+                <div class="title-block">
+                    <h5>{{ review.title }}</h5>
+                    <p>Updated on {{ review.modified_date }}</p>
+                    <hr>
+                    <div class="center">
+                        <img class="center" width="alto" height="alto" src="{{ review.imageURL }}" alt="{{ review.title }}">
                     </div>
-                    <div>
-                        <ul class="social-share-grid">
-                            <li>{% post_to_facebook object_or_url "<i class='fab fa-facebook fa-lg'></i>" %}</li>
-                            <li>{% post_to_twitter "Post to Twitter" object_or_url "<i class='fab fa-twitter fa-lg'></i>" %}</li>
-                            <li>{% post_to_gplus object_or_url "<i class='fab fa-google fa-lg'></i>" %}</li>
-                            <li>{% post_to_linkedin "Post to LinkedIn" object_or_url "<i class='fab fa-linkedin fa-lg'></i>" %}</li>
-                            <li>{% post_to_reddit "Post to Reddit" object_or_url "<i class='fab fa-reddit fa-lg'></i>" %}</li>
-                            <li>{% post_to_telegram "Post to Telegram" object_or_url "<i class='fab fa-telegram fa-lg'></i>" %}</li>
-                            <li>{% post_to_whatsapp object_or_url "<i class='fab fa-whatsapp fa-lg'></i>" %}</li>
-                        </ul> 
-                    </div>  
-                </div> 
-                <hr>   
+                    <hr> 
+                    <div class="social-share mt-2">
+                        <div>
+                            Share:
+                        </div>
+                        <div>
+                            <ul class="social-share-grid">
+                                <li>{% post_to_facebook object_or_url "<i class='fab fa-facebook fa-lg'></i>" %}</li>
+                                <li>{% post_to_twitter "Post to Twitter" object_or_url "<i class='fab fa-twitter fa-lg'></i>" %}</li>
+                                <li>{% post_to_gplus object_or_url "<i class='fab fa-google fa-lg'></i>" %}</li>
+                                <li>{% post_to_linkedin "Post to LinkedIn" object_or_url "<i class='fab fa-linkedin fa-lg'></i>" %}</li>
+                                <li>{% post_to_reddit "Post to Reddit" object_or_url "<i class='fab fa-reddit fa-lg'></i>" %}</li>
+                                <li>{% post_to_telegram "Post to Telegram" object_or_url "<i class='fab fa-telegram fa-lg'></i>" %}</li>
+                                <li>{% post_to_whatsapp object_or_url "<i class='fab fa-whatsapp fa-lg'></i>" %}</li>
+                            </ul> 
+                        </div>  
+                    </div> 
+                    <hr>   
+                </div>
             </div>
-            <div class="content-block">
-                {{ review.content|safe|linebreaks|urlizetrunc:40 }}
-                <div class="m-2 center">
-                    {% if review.author == user %}
-                    <hr>
-                    <a class="btn btn-secondary tf m-2" href="{% url 'review_update' review.slug review.id %}"><i class="fas fa-edit"></i></a>
-                    <a class="btn btn-danger tf m-2" href="{% url 'review_delete' review.slug review.id %}"><i class="fas fa-trash-alt"></i></a>
-                    <hr>
-                    {% endif %}
-                </div> 
+            <div class="col-md-6">
+                <div class="content-block">
+                    {{ review.content|safe|linebreaks|urlizetrunc:40 }}
+                    <div class="m-2 center">
+                        {% if review.author == user %}
+                        <hr>
+                        <a class="btn btn-secondary tf m-2" href="{% url 'review_update' review.slug review.id %}"><i class="fas fa-edit"></i></a>
+                        <a class="btn btn-danger tf m-2" href="{% url 'review_delete' review.slug review.id %}"><i class="fas fa-trash-alt"></i></a>
+                        <hr>
+                        {% endif %}
+                    </div> 
+                </div>
             </div>
         </div>  
         
