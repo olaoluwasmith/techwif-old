@@ -221,17 +221,25 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),) """
 
 AWS_ACCESS_KEY_ID = 'AKIAUHFMEN4AWKU4QYFC'
 AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'olaoluwasmith-bucket'
+AWS_STORAGE_BUCKET_NAME = 'techwit'
 AWS_DEFAULT_ACL = None
 AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
 AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
 
 STATIC_LOCATION = 'staticfiles'
 STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
-STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
 
 PUBLIC_MEDIA_LOCATION = 'media'
 MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
-DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+DEFAULT_FILE_STORAGE = 'techsite.custom_storages.MediaStorage'
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder'
+)
 
 
