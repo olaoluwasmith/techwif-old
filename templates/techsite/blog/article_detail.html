@@ -5,7 +5,7 @@
 
     <div class="container mt-4 mb-4">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 p-0">
                 <div class="title-block">
                     <h5>{{ blog.title }}</h5>
                     <p>Updated on {{blog.modified_date }}</p>
@@ -49,7 +49,7 @@
 
         <div class="row mt-2">
             {% for blog in blog_related %}
-            <div class="col-6 col-lg-4">
+            <div class="col-6 col-lg-4 p-0">
                 <!--<a href="{{ blog.get_absolute_url }}"><img class="thumbnail" src="{{ blog.imageURL }}" alt=""></a>-->
                 <div class="box-element product">
                     <h6><strong><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></strong></h6>
