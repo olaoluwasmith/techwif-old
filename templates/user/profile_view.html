@@ -6,7 +6,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6 p-0">
             <div class="mt-4">
                 <div class="d-flex justify-content-center h-100">
                     <div class="box-element mt-2 mb-2">
@@ -43,7 +43,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6 mt-2">
+        <div class="col-md-6 p-0 mt-2">
             <div class="mb-2 mt-4">
                 <div class="infinite-container">
                     {% for forum in object_list %}
@@ -59,7 +59,7 @@
                                 <a href="{{ forum.section.get_absolute_url }}">{{ forum.section }}</a>
                             </div>
                             <div>
-                                <h5><a class="" href="{{ forum.get_absolute_url }}" class="btn btn-outline-secondary btn-sm btn-block" role="button">{{ forum.title }}</a></h5>
+                                <strong><a class="" href="{{ forum.get_absolute_url }}" class="btn btn-outline-secondary btn-sm btn-block" role="button">{{ forum.title }}</a></strong>
                             </div>               
                         </div>       
                     </div>
