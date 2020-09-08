@@ -11,7 +11,7 @@
                     <p>Updated on {{ review.modified_date }}</p>
                     <hr>
                     <div class="center">
-                        <img class="center" width="alto" height="alto" src="{{ review.imageURL }}" alt="{{ review.title }}">
+                        <img class="center" width="alto" height="300" src="{{ review.imageURL }}" alt="{{ review.title }}">
                     </div>
                     <hr> 
                     <div class="mt-2">
@@ -49,7 +49,7 @@
 
         <div class="row mt-2">
             {% for review in review_related %}
-            <div class="col-6 col-lg-4 p-0">
+            <div class="col-6 col-lg-4">
                 <!--<a href="{{ review.get_absolute_url }}"><img class="thumbnail" src="{{ review.imageURL }}" alt=""></a>-->
                 <div class="box-element product">
                     <h6><strong><a href="{{ review.get_absolute_url }}">{{ review.title }}</a></strong></h6>
