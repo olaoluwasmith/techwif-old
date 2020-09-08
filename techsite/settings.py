@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-
+import django_heroku
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -48,9 +48,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'django.contrib.humanize',
     'django.contrib.sites',
+    'django.contrib.staticfiles',
 
     'tech.apps.TechConfig',
     'ecommerce.apps.EcommerceConfig',
@@ -176,7 +176,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
+MEDIA_ROOT = os.path.join(BASE_DIR, '/static/media/')
 
 LOGIN_URL = 'login'
 
@@ -193,7 +193,7 @@ DJANGO_NOTIFICATIONS_CONFIG = { 'SOFT_DELETE': True }
 
 
 #S3 BUCKETS CONFIG
-"""
+
 USE_S3 = os.getenv('USE_S3') == 'TRUE'
 
 if USE_S3:
@@ -206,20 +206,21 @@ if USE_S3:
 
     STATIC_LOCATION = 'static'
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATIC_LOCATION}'
-    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+    STATICFILES_STORAGE = 'techsite.custom_storages.StaticStorage'
 
     PUBLIC_MEDIA_LOCATION = 'media'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}'
-    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+    DEFAULT_FILE_STORAGE = 'techsite.custom_storages.MediaStorage'
 
 else:
-    STATIC_URL = '/staticfiles/'
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATIC_URL = '/static/'
     MEDIA_URL = '/media/'
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+    MEDIA_ROOT = os.path.join(BASE_DIR, '/static/media/')
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
+"""
 AWS_ACCESS_KEY_ID = 'AKIAUHFMEN4AQCSIQRXS'
 AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'techwit'
@@ -245,3 +246,4 @@ STATICFILES_FINDERS = (
 )
 """
 
+django_heroku.settings(locals())

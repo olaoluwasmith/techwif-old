@@ -5,7 +5,7 @@
     <form action="{% url 'like_forum' %}" method="post">
         {% csrf_token %}
         {% if is_liked %}
-            <i class="fas fa-heart ml-2" style="color: red;" aria-hidden="true" type="submit" id="like" name="forum_id" value="{{ forum.id }}"></i>
+            <i class="fa fa-heart ml-2" style="color: red;" aria-hidden="true" type="submit" id="like" name="forum_id" value="{{ forum.id }}"></i>
         {% else %}
             <i class="fa fa-heart ml-2" style="color: rgb(173, 158, 158);" aria-hidden="true" type="submit" id="like" name="forum_id" value="{{ forum.id }}"></i>
         {% endif %}

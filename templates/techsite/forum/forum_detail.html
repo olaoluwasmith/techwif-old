@@ -13,22 +13,17 @@
                     by <a href="{% url 'profile_view' forum.author.username %}">{{ forum.author }}</a>,
                     updated on {{ forum.created_date }}
                     <hr>
-                    <div class="social-share mt-2">
-                        <div>
-                            Share:
-                        </div>
-                        <div>
-                            <ul class="social-share-grid">
-                                <li>{% post_to_facebook object_or_url "<i class='fab fa-facebook fa-lg'></i>" %}</li>
-                                <li>{% post_to_twitter "Post to Twitter" object_or_url "<i class='fab fa-twitter fa-lg'></i>" %}</li>
-                                <li>{% post_to_gplus object_or_url "<i class='fab fa-google fa-lg'></i>" %}</li>
-                                <li>{% post_to_linkedin "Post to LinkedIn" object_or_url "<i class='fab fa-linkedin fa-lg'></i>" %}</li>
-                                <li>{% post_to_reddit "Post to Reddit" object_or_url "<i class='fab fa-reddit fa-lg'></i>" %}</li>
-                                <li>{% post_to_telegram "Post to Telegram" object_or_url "<i class='fab fa-telegram fa-lg'></i>" %}</li>
-                                <li>{% post_to_whatsapp object_or_url "<i class='fab fa-whatsapp fa-lg'></i>" %}</li>
-                            </ul>
-                        </div>  
-                    </div> 
+                    <div class="mt-2">
+                        <ul class="social-share-grid">
+                            <li>{% post_to_facebook object_or_url "<i class='fab fa-facebook fa-lg'></i>" %}</li>
+                            <li>{% post_to_twitter "Post to Twitter" object_or_url "<i class='fab fa-twitter fa-lg'></i>" %}</li>
+                            <li>{% post_to_gplus object_or_url "<i class='fab fa-google fa-lg'></i>" %}</li>
+                            <li>{% post_to_linkedin "Post to LinkedIn" object_or_url "<i class='fab fa-linkedin fa-lg'></i>" %}</li>
+                            <li>{% post_to_reddit "Post to Reddit" object_or_url "<i class='fab fa-reddit fa-lg'></i>" %}</li>
+                            <li>{% post_to_telegram "Post to Telegram" object_or_url "<i class='fab fa-telegram fa-lg'></i>" %}</li>
+                            <li>{% post_to_whatsapp object_or_url "<i class='fab fa-whatsapp fa-lg'></i>" %}</li>
+                        </ul>   
+                    </div>
                     <hr>
                     <div class="center">
                         {% for f in forum.forumimages_set.all %}
