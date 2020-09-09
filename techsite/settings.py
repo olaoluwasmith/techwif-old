@@ -35,7 +35,7 @@ EMAIL_HOST_USER = 'olaoluwasamsmith@gmail.com'
 EMAIL_HOST_PASSWORD = 'Facebook1#'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
-ALLOWED_HOSTS = ['.techwif.com', 'techwif.com', 'smith-techwit.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['.techwif.com', 'smith-techwit.herokuapp.com', '127.0.0.1']
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = False
