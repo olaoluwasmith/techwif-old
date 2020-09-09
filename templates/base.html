@@ -7,10 +7,10 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>
-		{% block title %}Techwit | Unravelling the world of technology{% endblock %}
+		{% block title %} Techwif | Unravelling the world of technology {% endblock %}
 	</title>
 	<meta name="viewport" content="width=device-width" initial-scale="1" />
-	<meta name="description" content="Techwit | Unravelling the world of technology" />
+	<meta name="description" content="Techwif | Unravelling the world of technology" />
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
 		integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
@@ -75,7 +75,7 @@
 <body>
 	<nav class="light-blue darken-4">
 		<div class="header-nav-bar" id="top-nav">
-			<a href="{% url 'homepage' %}" class="brand-logo left grey darken-2 pl-2 pr-2 m-0" style="font-family: 'Courier New', Courier, monospace; color: rgb(229, 203, 194);">TechWIT</a>
+			<a href="{% url 'homepage' %}" class="brand-logo left grey darken-2 pl-2 pr-2 m-0" style="font-family: 'Courier New', Courier, monospace; color: rgb(229, 203, 194);">Techwif</a>
 			<ul id="nav-mobile" class="right">
 				{% if user.is_authenticated %}
 					<li><a href="{% url 'profile_view' request.user %}">@{{ request.user }}</a></li>
