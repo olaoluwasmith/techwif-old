@@ -31,7 +31,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'olaoluwasamsmith@gmail.com'
+EMAIL_HOST_USER = 'techwifofficial@gmail.com'
 EMAIL_HOST_PASSWORD = 'Facebook1#'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
@@ -200,6 +200,7 @@ if USE_S3:
     AWS_ACCESS_KEY_ID = os.getenv('AKIAUHFMEN4AQCSIQRXS')
     AWS_SECRET_ACCESS_KEY = os.getenv('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')
     AWS_STORAGE_BUCKET_NAME = os.getenv('techwit')
+    AWS_MEDIA_BUCKET_NAME = os.getenv('techwit')
     AWS_DEFAULT_ACL = None
     AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
     AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
