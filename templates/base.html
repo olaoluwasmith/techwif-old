@@ -79,10 +79,10 @@
 			<ul id="nav-mobile" class="right">
 				{% if user.is_authenticated %}
 					<li><a href="{% url 'profile_view' request.user %}">@{{ request.user }}</a></li>
-					<li><a href="{% url 'logout' %}">Sign Out</a></li>
+					<li><a type="button" class="btn btn-outline-secondary ml-2 tf" style="color: rgb(238, 238, 230);" href="{% url 'logout' %}">Sign Out</a></li>
 				{% else %}
-					<li><a href="{% url 'login' %}?next={{ request.get_full_path }}">Sign In</a></li>
-					<li><a href="{% url 'register' %}">Sign Up</a></li>
+					<li><a type="button" class="btn btn-outline-secondary m-0 tf" style="color: rgb(204, 204, 195);" href="{% url 'login' %}?next={{ request.get_full_path }}">Sign In</a></li>
+					<li><a type="button" class="btn btn-outline-secondary ml-2 tf" style="color: rgb(238, 238, 230);" href="{% url 'register' %}">Sign Up</a></li>
 				{% endif %}
 			</ul>
 		</div>
