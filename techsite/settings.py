@@ -35,7 +35,7 @@ EMAIL_HOST_USER = 'techwifofficial@gmail.com'
 EMAIL_HOST_PASSWORD = 'Facebook1#'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
-ALLOWED_HOSTS = ['.techwif.com', 'smith-techwit.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['.techwif.com', '127.0.0.1']
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = False
@@ -59,11 +59,9 @@ INSTALLED_APPS = [
     'corsheaders',
     'crispy_forms',
     'django_social_share',
-    'social_django',
     'taggit',
     'bootstrap4',
     'materializecssform',
-
     'storages',
 ]
 
@@ -79,8 +77,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'social_django.middleware.SocialAuthExceptionMiddleware',  
+    'django.middleware.clickjacking.XFrameOptionsMiddleware', 
 ]
 
 ROOT_URLCONF = 'techsite.urls'
@@ -96,13 +93,12 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'social_django.context_processors.backends',
-                'social_django.context_processors.login_redirect',
             ],
         },
     },
 ]
 
+"""
 AUTHENTICATION_BACKENDS = {
     'social_core.backends.facebook.FacebookOAuth2',
     'social_core.backends.twitter.TwitterOAuth',
@@ -112,6 +108,7 @@ AUTHENTICATION_BACKENDS = {
 
 SOCIAL_AUTH_FACEBOOK_KEY = '215610393159721' #App ID
 SOCIAL_AUTH_FACEBOOK_SECRET = '6adddd7006504d50ca83ba4f2a4d8fd4' #App Secret
+"""
 
 WSGI_APPLICATION = 'techsite.wsgi.application'
 
@@ -154,7 +151,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'NG'
 
 USE_I18N = True
 
@@ -180,20 +177,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
 
 LOGIN_URL = 'login'
 
-
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
-
 
 DJANGO_NOTIFICATIONS_CONFIG = { 'USE_JSONFIELD': True }
 DJANGO_NOTIFICATIONS_CONFIG = { 'SOFT_DELETE': True }
 
 
 #S3 BUCKETS CONFIG
-
 USE_S3 = os.getenv('USE_S3') == 'TRUE'
 
 if USE_S3:
