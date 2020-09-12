@@ -78,11 +78,11 @@
 			<a href="{% url 'homepage' %}" class="brand-logo left grey darken-2 pl-2 pr-2 m-0" style="font-family: 'Courier New', Courier, monospace; color: rgb(229, 203, 194);">Techwif</a>
 			<ul id="nav-mobile" class="right">
 				{% if user.is_authenticated %}
-					<li><a class="p-0" href="{% url 'profile_view' request.user %}">@{{ request.user }}</a></li>
-					<li><a type="button" class="btn btn-secondary tf" href="{% url 'logout' %}">Sign Out</a></li>
+					<li><a href="{% url 'profile_view' request.user %}">@{{ request.user }}</a></li>
+					<li><a href="{% url 'logout' %}">Sign Out</a></li>
 				{% else %}
-					<li><a type="button" class="btn btn-secondary m-0 tf" href="{% url 'login' %}?next={{ request.get_full_path }}">Sign In</a></li>
-					<li><a type="button" class="btn btn-secondary tf" href="{% url 'register' %}">Sign Up</a></li>
+					<li><a href="{% url 'login' %}?next={{ request.get_full_path }}">Sign In</a></li>
+					<li><a href="{% url 'register' %}">Sign Up</a></li>
 				{% endif %}
 			</ul>
 		</div>

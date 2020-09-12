@@ -25,7 +25,7 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = '!fpr1f8%47-auv*+$t053on)ozn#7i&6t4vkjo+(836^=t38kn'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -98,7 +98,7 @@ TEMPLATES = [
     },
 ]
 
-
+"""
 AUTHENTICATION_BACKENDS = {
     'social_core.backends.facebook.FacebookOAuth2',
     'social_core.backends.twitter.TwitterOAuth',
@@ -108,7 +108,7 @@ AUTHENTICATION_BACKENDS = {
 
 SOCIAL_AUTH_FACEBOOK_KEY = '215610393159721' #App ID
 SOCIAL_AUTH_FACEBOOK_SECRET = '6adddd7006504d50ca83ba4f2a4d8fd4' #App Secret
-
+"""
 
 WSGI_APPLICATION = 'techsite.wsgi.application'
 
