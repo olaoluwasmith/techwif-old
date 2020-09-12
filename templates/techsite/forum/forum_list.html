@@ -16,7 +16,7 @@
             <h4 class="" id="main-articles">Forum Sections</h4>
 
             <div>
-                {% for item in sec_menu %}
+                {% for item in sec_menu|dictsort:"section" %}
                     <a class="btn btn-outline-secondary btn-sm mt-2 tf" role="button" href="{% url 'section' item|slugify %}">{{ item }}</a>
                 {% endfor %}
             </div>

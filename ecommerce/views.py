@@ -182,7 +182,7 @@ def ProductImageUpdate(request, pk, slug):
 
     if request.method == 'POST':
 #        form = ForumUpdateForm(request.POST or None, instance=product)
-        formset = ImageFormset(request.POST or None, request.FILES or None)
+        formset = ImageFormset(request.POST, request.FILES)
 #        if form.is_valid() and formset.is_valid():
         if formset.is_valid():
 #            formset.save()

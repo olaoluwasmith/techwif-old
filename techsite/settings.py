@@ -98,7 +98,7 @@ TEMPLATES = [
     },
 ]
 
-"""
+
 AUTHENTICATION_BACKENDS = {
     'social_core.backends.facebook.FacebookOAuth2',
     'social_core.backends.twitter.TwitterOAuth',
@@ -108,7 +108,7 @@ AUTHENTICATION_BACKENDS = {
 
 SOCIAL_AUTH_FACEBOOK_KEY = '215610393159721' #App ID
 SOCIAL_AUTH_FACEBOOK_SECRET = '6adddd7006504d50ca83ba4f2a4d8fd4' #App Secret
-"""
+
 
 WSGI_APPLICATION = 'techsite.wsgi.application'
 
