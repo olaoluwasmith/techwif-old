@@ -27,18 +27,7 @@ SECRET_KEY = '!fpr1f8%47-auv*+$t053on)ozn#7i&6t4vkjo+(836^=t38kn'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'techwifofficial@gmail.com'
-EMAIL_HOST_PASSWORD = 'Facebook1#'
-ACCOUNT_EMAIL_VERIFICATION = 'none'
-
 ALLOWED_HOSTS = ['.techwif.com', '127.0.0.1']
-
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOW_CREDENTIALS = False
 
 # Application definition
 
@@ -167,13 +156,23 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATIC_URL = '/static/'
 
-MEDIA_URL = '/media/'
+MEDIA_URL = '/images/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'techwifofficial@gmail.com'
+EMAIL_HOST_PASSWORD = 'Facebook1#'
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = False
 
 LOGIN_URL = 'login'
 
@@ -187,6 +186,7 @@ DJANGO_NOTIFICATIONS_CONFIG = { 'SOFT_DELETE': True }
 
 
 #S3 BUCKETS CONFIG
+"""
 USE_S3 = os.getenv('USE_S3') == 'TRUE'
 
 if USE_S3:
@@ -214,7 +214,7 @@ else:
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
-"""
+
 AWS_ACCESS_KEY_ID = 'AKIAUHFMEN4AQCSIQRXS'
 AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'techwit'

@@ -43,7 +43,7 @@ class Product(models.Model):
     description = models.TextField(max_length=500, null=True)
     price = models.DecimalField(max_digits=7, decimal_places=2)
     digital = models.BooleanField(default=False, null=True, blank=False)
-    image = models.ImageField(null=True, blank=True, upload_to='products/', max_length=500)
+    image = models.ImageField(null=True, blank=True, max_length=500)
     created_date = models.DateTimeField(auto_now_add=True)
     tags = TaggableManager()
 
@@ -139,7 +139,7 @@ class ShippingAddress(models.Model):
 
 class ProductImages(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to="product_images/", blank=True, null=True, max_length=500)
+    image = models.ImageField(blank=True, null=True, max_length=500)
 
     def __str__(self):
         return self.product.name + " Image"
