@@ -163,7 +163,8 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
-STATICFILES_STORAGE = 'whitenoise.storage.GzipManifestStaticFilesStorage'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
