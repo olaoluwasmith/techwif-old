@@ -41,7 +41,7 @@ def RegisterPage(request):
             messages.success(request, 'Account successfully created for ' + username)
             return redirect('login')
         else:
-            messages.info(request, 'Error encountered! Check if data is valid.')
+            messages.info(request, 'Error encountered! Check if data is valid and email is not used already.')
 
     context = {'form': form}
     return render(request, 'user/register.html', context)
