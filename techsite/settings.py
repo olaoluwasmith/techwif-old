@@ -43,7 +43,7 @@ INSTALLED_APPS = [
 
     'tech.apps.TechConfig',
     'ecommerce.apps.EcommerceConfig',
-
+    'user_unique_email',
     'notifications',
     'corsheaders',
     'crispy_forms',
@@ -53,8 +53,6 @@ INSTALLED_APPS = [
     'materializecssform',
     'storages',
 ]
-
-INSTALLED_APPS.append('user_unique_email')
 
 SITE_ID = 1
 
