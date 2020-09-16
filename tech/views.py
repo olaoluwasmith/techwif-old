@@ -11,7 +11,7 @@ from django.contrib import messages
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.decorators import login_required, permission_required
-from django.contrib.auth.models import Group, User
+from django.contrib.auth.models import Group
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.urls import reverse, reverse_lazy
 from django.template.loader import render_to_string, get_template
@@ -22,10 +22,13 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic.list import MultipleObjectMixin
 from django.contrib.sites.models import Site
+from django.contrib.auth import get_user_model
 from .models import *
 from .forms import *
 from .decorators import *
 from . import helpers
+
+User = get_user_model()
 
 @unauthenticated_user
 def RegisterPage(request):

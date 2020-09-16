@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'storages',
 ]
 
+INSTALLED_APPS.append('user_unique_email')
 
 SITE_ID = 1
 
@@ -182,6 +183,8 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
+
+AUTH_USER_MODEL = 'user_unique_email.User'
 
 DJANGO_NOTIFICATIONS_CONFIG = { 'USE_JSONFIELD': True }
 DJANGO_NOTIFICATIONS_CONFIG = { 'SOFT_DELETE': True }

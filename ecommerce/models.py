@@ -1,11 +1,12 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.template.defaultfilters import slugify
 from django.urls import reverse
 from django.utils import timezone
 from taggit.managers import TaggableManager
 from PIL import Image
 
+User = get_user_model()
 # Create your models here.
 
 class Customer(models.Model):
