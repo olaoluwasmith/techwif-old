@@ -25,7 +25,7 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = '!fpr1f8%47-auv*+$t053on)ozn#7i&6t4vkjo+(836^=t38kn'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['.techwif.com', '127.0.0.1']
 
@@ -165,12 +165,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'techwifofficial@gmail.com'
 EMAIL_HOST_PASSWORD = 'Facebook1#'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = False
