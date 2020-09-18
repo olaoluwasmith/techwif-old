@@ -18,7 +18,6 @@ def create_profile(sender, instance, created, **kwargs):
 def save_profile(sender, instance, **kwargs):
     instance.profile.save()
 
-"""
 @receiver(post_save, sender=User)
 def send_welcome_email(sender, instance, **kwargs):
 
@@ -39,4 +38,3 @@ def send_welcome_email(sender, instance, **kwargs):
         msg.send()
     except BadHeaderError:
         return HttpResponse('Invalid header found.')
-"""

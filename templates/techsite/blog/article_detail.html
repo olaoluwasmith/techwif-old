@@ -5,7 +5,7 @@
 
     <div class="container mt-4 mb-4">
         <div class="row">
-            <div class="col-md-6 p-0">
+            <div class="col-lg-6 p-0">
                 <div class="title-block">
                     <h5>{{ blog.title }}</h5>
                     <p>Updated on {{blog.modified_date }}</p>
@@ -27,7 +27,7 @@
                     <hr>            
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-lg-6">
                 <div class="content-block">
                     {{ blog.content|safe|linebreaks|urlizetrunc:40 }}
                     <div class="m-2 center">
