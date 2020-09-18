@@ -25,7 +25,7 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = '!fpr1f8%47-auv*+$t053on)ozn#7i&6t4vkjo+(836^=t38kn'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['.techwif.com', '127.0.0.1']
 
@@ -190,8 +190,8 @@ DJANGO_NOTIFICATIONS_CONFIG = { 'SOFT_DELETE': True }
 """
 # S3 BUCKET SET UP
 
-AWS_ACCESS_KEY_ID = ''
-AWS_SECRET_ACCESS_KEY = ''
+AWS_ACCESS_KEY_ID = 'AKIARKB4DVJAGWK7LJ7G'
+AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'techwif'
 
 AWS_S3_FILE_OVERWRITE = False
