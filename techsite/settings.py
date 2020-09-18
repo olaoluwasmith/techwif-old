@@ -86,17 +86,6 @@ TEMPLATES = [
     },
 ]
 
-"""
-AUTHENTICATION_BACKENDS = {
-    'social_core.backends.facebook.FacebookOAuth2',
-    'social_core.backends.twitter.TwitterOAuth',
-
-    'django.contrib.auth.backends.ModelBackend',
-}
-
-SOCIAL_AUTH_FACEBOOK_KEY = '215610393159721' #App ID
-SOCIAL_AUTH_FACEBOOK_SECRET = '6adddd7006504d50ca83ba4f2a4d8fd4' #App Secret
-"""
 
 WSGI_APPLICATION = 'techsite.wsgi.application'
 
@@ -190,10 +179,13 @@ DJANGO_NOTIFICATIONS_CONFIG = { 'SOFT_DELETE': True }
 
 # S3 BUCKET SET UP
 
+DEFAULT_FILE_STORAGE = 'techsite.custom_storages.MediaStorage'
 AWS_ACCESS_KEY_ID = 'AKIARKB4DVJABZTQGBPJ'
 AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'techwif'
+AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
 
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+PUBLIC_MEDIA_LOCATION = 'media'
+MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
