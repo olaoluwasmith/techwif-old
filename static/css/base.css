@@ -194,7 +194,7 @@
     text-transform: none;
 }
 
-@media screen and (min-width: 1500px) {
+@media screen and (min-width: 900px) {
     .detail-wrapper {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;   
@@ -203,7 +203,7 @@
     }
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 900px) {
     .forum-wrapper {
         display: grid;
         grid-template-columns: 1fr 2fr;   
