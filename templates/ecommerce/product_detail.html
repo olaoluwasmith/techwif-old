@@ -12,61 +12,66 @@
             </form>
         </div>
         <hr>
-        <div class="detail-wrapper">
-            <div class="title-block">
-                <h5>{{ product.name }}</h5>
-                <hr>
-                <div class="center">
-                    <img class="center mt-2" width="" height="300" src="{{ product.imageURL }}">
-                </div>   
-            </div>
-            <div class="content-block">
-                <div class="card p-2">
-                    <h5>Price: <strong>&#8358;{{ product.price }}</strong></h5>
-                </div>
-                <div class="card p-2">
-                    <h5>Description</h5>
-                    <hr>
-                    {{ product.description|safe|linebreaks|urlizetrunc:40 }}
-                </div>
-                <button data-product={{ product.id }} data-action="add" class="btn btn-outline-secondary btn-block add-btn update-cart tf">Add to Cart</button>
-                <div class="m-2 center">
-                    {% if request.user == user %}
-                    <hr>
-                    <a class="btn btn-secondary tf m-2" href="{% url 'product_update' product.slug product.id %}"><i class="fas fa-edit"></i></a>
-                    <a class="btn btn-secondary tf m-2" href="{% url 'product_update_image' product.slug product.id %}"><i class="fas fa-camera"></i></a>
-                    <a class="btn btn-danger tf m-2" href="{% url 'product_delete' product.slug product.id %}"><i class="fas fa-trash-alt"></i></a>
-                    <hr>
-                    {% endif %}
-                </div> 
-            </div>
 
-            <div id="content-wrapper">
-                <div class="column center">
-                    <img id="featured" src="{{ product.image.url }}" alt="">
-                    <div id="slide-wrapper" class="mt-2">
-                        <i class="fa fa-chevron-left mr-2" id="slideLeft"></i>
-
-                        <div id="slider">
-                            {% for f in product.productimages_set.all %}
-                                <img class="thumbnail-product" src="{{ f.image.url }}" alt="">
-                            {% endfor %}
+        <div class="row">
+            <div class="col-lg-5 p-0">
+                <div class="title-block">
+                    <h5>{{ product.name }}</h5>
+                    <hr>
+                    <div class="center">
+                        <img class="center mt-2" width="" height="300" src="{{ product.imageURL }}">
+                    </div>   
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="content-block">
+                    <div class="card p-2">
+                        <h5>Price: <strong>&#8358;{{ product.price }}</strong></h5>
+                    </div>
+                    <div class="card p-2">
+                        <h5>Description</h5>
+                        <hr>
+                        {{ product.description|safe|linebreaks|urlizetrunc:40 }}
+                    </div>
+                    <button data-product={{ product.id }} data-action="add" class="btn btn-outline-secondary btn-block add-btn update-cart tf">Add to Cart</button>
+                    <div class="m-2 center">
+                        {% if request.user == user %}
+                        <hr>
+                        <a class="btn btn-secondary tf m-2" href="{% url 'product_update' product.slug product.id %}"><i class="fas fa-edit"></i></a>
+                        <a class="btn btn-secondary tf m-2" href="{% url 'product_update_image' product.slug product.id %}"><i class="fas fa-camera"></i></a>
+                        <a class="btn btn-danger tf m-2" href="{% url 'product_delete' product.slug product.id %}"><i class="fas fa-trash-alt"></i></a>
+                        <hr>
+                        {% endif %}
+                    </div> 
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div id="content-wrapper">
+                    <div class="column center">
+                        <img id="featured" src="{{ product.imageURL }}" alt="">
+                        <div id="slide-wrapper" class="mt-2">
+                            <i class="fa fa-chevron-left mr-2" id="slideLeft"></i>
+    
+                            <div id="slider">
+                                {% for f in product.productimages_set.all %}
+                                    <img class="thumbnail-product" src="{{ f.image.url }}" alt="">
+                                {% endfor %}
+                            </div>
+    
+                            <i class="fa fa-chevron-right ml-2" id="slideRight"></i>
                         </div>
-
-                        <i class="fa fa-chevron-right ml-2" id="slideRight"></i>
                     </div>
                 </div>
             </div>
-
-        </div>
+        </div> 
         
-        <div class="card mt-4 mb-2 p-0">
-            <h4 class="p-0">Recommended Products</h4>
+        <div class="card mt-4 mb-2">
+            <h4 class="p-2">Recommended Products</h4>
         </div>
         <div class="row mt-2">
             {% for product in product_related %}
             <div class="col-md-6 col-lg-4">
-                <a href="{{ product.get_absolute_url }}"><img class="thumbnail" src="{{ product.image.url }}" alt=""></a>
+                <a href="{{ product.get_absolute_url }}"><img class="thumbnail" src="{{ product.imageURL }}" alt=""></a>
                 <div class="box-element product">
                     <h6><strong><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></strong></h6>
                     <hr>
