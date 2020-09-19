@@ -44,7 +44,7 @@ class Product(models.Model):
     description = models.TextField(max_length=500, null=True)
     price = models.IntegerField()
     digital = models.BooleanField(default=False, null=True, blank=False)
-    image = models.ImageField(null=True, blank=True, max_length=500)
+    image = models.ImageField(blank=True, max_length=500)
     created_date = models.DateTimeField(auto_now_add=True)
     tags = TaggableManager()
 
