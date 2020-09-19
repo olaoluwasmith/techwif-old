@@ -3,28 +3,31 @@
 {% block content %}
 
     <div class="container mt-4 mb-4">
-        <div class="forum-wrapper">
-            <div class="title-block">
-                <h5>{{ object.title }}</h5>
-                <hr>
-                <div class="center">
-                    <img class="center mt-2" width="max-content" height="300" src="{{ object.imageURL }}" alt="{{ object.title }}">
-                </div>  
-                <hr>   
-            </div>
-            <div class="content-block">
-                {{ object.content|safe|linebreaks|urlizetrunc:40 }}
-                <div class="m-2 center">
-                    <div class="contact-btn">
-                        <a href="{% url 'contact_us' %}" class="btn btn-dark btn-block mt-4" role="button" style="text-transform: none;">Contact Us</a>
-                    </div>
-                    {% if object.author == user %}
+        <div class="row">
+            <div class="col-lg-6 p-0">
+                <div class="title-block">
+                    <h5>{{ object.title }}</h5>
                     <hr>
-                    <a class="btn btn-secondary tf m-2" href="{% url 'service_update' object.slug object.id %}"><i class="fas fa-edit"></i></a>
-                    <a class="btn btn-danger tf m-2" href="{% url 'service_delete' object.slug object.id %}"><i class="fas fa-trash-alt"></i></a>
-                    <hr>
-                    {% endif %}
-                </div> 
+                    <div class="center">
+                        <img class="center mt-2" width="max-content" height="300" src="{{ object.imageURL }}" alt="{{ object.title }}">
+                    </div>  
+                    <hr>   
+                </div>
+            <div class="col-lg-6">
+                <div class="content-block">
+                    {{ object.content|safe|linebreaks|urlizetrunc:40 }}
+                    <div class="m-2 center">
+                        <div class="contact-btn">
+                            <a href="{% url 'contact_us' %}" class="btn btn-dark btn-block mt-4" role="button" style="text-transform: none;">Contact Us</a>
+                        </div>
+                        {% if object.author == user %}
+                        <hr>
+                        <a class="btn btn-secondary tf m-2" href="{% url 'service_update' object.slug object.id %}"><i class="fas fa-edit"></i></a>
+                        <a class="btn btn-danger tf m-2" href="{% url 'service_delete' object.slug object.id %}"><i class="fas fa-trash-alt"></i></a>
+                        <hr>
+                        {% endif %}
+                    </div> 
+                </div>
             </div>
         </div>             
     </div>
