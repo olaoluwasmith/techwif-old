@@ -72,9 +72,9 @@
                             ref: ''+Math.floor((Math.random() * 1000000000) +1),
                 
                             callback: function(response){
+                                submitFormData();
                                 let message = 'Payment complete. Reference: ' + response.reference;
                                 alert(message);
-                                submitFormData();
                             },
                             onClose: function(){
                                 alert('Payment process terminated.');

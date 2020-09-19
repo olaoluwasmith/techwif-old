@@ -23,7 +23,7 @@
                 <h6><strong><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></strong></h6>
                 <hr>
                 <button data-product={{ product.id }} data-action="add" class="btn btn-outline-secondary btn-sm add-btn update-cart tf">Add to Cart</button>
-                <h6 class="price-tag"><strong>(&#8358;{{ product.price|floatformat:2 }})</strong></h6>
+                <h6 class="price-tag"><strong>(&#8358;{{ product.price }})</strong></h6>
             </div>
         </div>
         {% empty %}

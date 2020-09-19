@@ -42,7 +42,7 @@ class Product(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE, default=None)
     description = models.TextField(max_length=500, null=True)
-    price = models.DecimalField(max_digits=7, decimal_places=2)
+    price = models.IntegerField()
     digital = models.BooleanField(default=False, null=True, blank=False)
     image = models.ImageField(null=True, blank=True, max_length=500)
     created_date = models.DateTimeField(auto_now_add=True)

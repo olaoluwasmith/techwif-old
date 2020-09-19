@@ -591,3 +591,28 @@ class ProfileView(LoginRequiredMixin, generic.DetailView, MultipleObjectMixin):
         object_list = Forum.objects.filter(author=user).order_by('-created_date')
         context = super(ProfileView, self).get_context_data(object_list=object_list, *args, **kwargs)
         return context  
+
+
+
+"""
+@receiver(post_save, sender=User)
+def send_welcome_email(sender, instance, **kwargs):
+
+    subject = 'Welcome to Techwif'
+    from_email = 'no-reply@techwif.com'
+    to = instance.email
+    plaintext = loader.get_template('user/welcome.txt')
+    html = loader.get_template('user/welcome.html')
+
+    d = {'username': instance.username}
+
+    text_content = plaintext.render(d)
+    html_content = html.render(d)
+
+    try:
+        msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+        msg.attach_alternative(html_content, 'text/html')
+        msg.send()
+    except BadHeaderError:
+        return HttpResponse('Invalid header found.')
+"""
