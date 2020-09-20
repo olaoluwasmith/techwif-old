@@ -68,7 +68,8 @@
                         callback: function(response){
                             let message = 'Payment complete. Reference: ' + response.reference;
                             alert(message);
-                                submitFormData() 
+                            window.Function(submitFormData());
+                                 
                         },
                         onClose: function(){
                             alert('Payment process terminated.');
