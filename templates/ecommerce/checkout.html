@@ -71,12 +71,14 @@
                             amount: total * 100,
                             ref: ''+Math.floor((Math.random() * 1000000000) +1),
                 
-                            callback: function(data, actions, response){
+                            callback: function(data, actions){
                                 return actions.order.capture().then(function(details) {
                                     submitFormData()
                                 });
+                                /*
                                 let message = 'Payment complete. Reference: ' + response.reference;
                                 alert(message);
+                                */
                             },
                             onClose: function(){
                                 alert('Payment process terminated.');
@@ -210,7 +212,7 @@
         $(function(){
             setTimeout(function(){
                 $('.alert').slideUp(2000);
-            }, 5000);
+            }, 10000);
         });
     });
 
