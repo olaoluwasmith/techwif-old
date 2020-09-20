@@ -49,55 +49,42 @@
                     </div>
 
                     <hr>
-                    <input class="btn btn-secondary tf btn-block" id="form-button" type="submit" value="Submit Form">
+                    <input class="btn btn-primary tf btn-block" id="" type="submit" onclick="payWithPaystack()" value="Proceed">
                 </form>
             </div>
             <br>
 
-            <div class="box-element hidden" id="payment-info">
-                <small>Payment Option</small>
-                <hr>
-                <form action="">
-                    <script src="https://js.paystack.co/v1/inline.js"></script>
-                    <button class="btn btn-primary tf btn-block p-2 mb-2" type="button" onclick="payWithPaystack()"> Proceed to Payment </button>
-                </form>
+            <script src="https://js.paystack.co/v1/inline.js"></script>
+            <script>
+                var total = '{{ order.get_cart_total }}'
 
-                <script>
-                    var total = '{{ order.get_cart_total }}'
+                function payWithPaystack() {
+                    var handler = PaystackPop.setup({
+                        key: 'pk_test_223738da995a96ab3d07cbdd4280db35753a7062',
+                        email: document.getElementById("email").value,
+                        amount: total * 100,
+                        ref: ''+Math.floor((Math.random() * 1000000000) +1),
+            
+                        callback: function(response){
+                            let message = 'Payment complete. Reference: ' + response.reference;
+                            alert(message);
+                                submitFormData() 
+                        },
+                        onClose: function(){
+                            alert('Payment process terminated.');
+                        },
+                    });
+            
+                    handler.openIframe();
+                }
+            </script>
 
-                    function payWithPaystack() {
-                        var handler = PaystackPop.setup({
-                            key: 'pk_live_02c89718098e7d151f27b9b1cb8e0bafc13ccfb9',
-                            email: document.getElementById("email").value,
-                            amount: total * 100,
-                            ref: ''+Math.floor((Math.random() * 1000000000) +1),
-                
-                            callback: function(data, actions){
-                                return actions.order.capture().then(function(details) {
-                                    submitFormData()
-                                });
-                                /*
-                                let message = 'Payment complete. Reference: ' + response.reference;
-                                alert(message);
-                                */
-                            },
-                            onClose: function(){
-                                alert('Payment process terminated.');
-                            },
-                        });
-                
-                        handler.openIframe();
-                    }
-                </script>
-
-                <!--<div id="paypal-button-container"></div>
-                <button class="btn btn-secondary tf" id="make-payment">Make Payment</button> -->
-            </div>
         </div>
     </div>
 </div>
 
 <script type="text/javascript">
+    
     var shipping = '{{ order.shipping }}'
 /*
     if (shipping == 'False'){
@@ -123,10 +110,10 @@
         document.getElementById('form-button').classList.add("hidden");
         document.getElementById('payment-info').classList.remove("hidden");
         })
-    /*
+    
     document.getElementById('make-payment').addEventListener('click', function(e){
         submitFormData()
-    }) */
+    }) 
 
     function submitFormData(){
         console.log('Payment button clicked');
@@ -172,7 +159,7 @@
 
         .then((data) =>{
             console.log('Success:', data);
-            alert('Transaction completed');
+            alert('Form submitted.');
 
         cart = {}
         document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
