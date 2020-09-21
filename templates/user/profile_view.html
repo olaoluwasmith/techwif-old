@@ -18,12 +18,14 @@
                                 <div class="">
                                     {% if request.user == user %}
                                     <div class="center mt-2">
-                                        <a class="btn btn-outline-secondary tf btn-block" href="{% url 'profile_update' %}">Update Profile</a>
+                                        <a class="btn btn-outline-secondary tf btn-block" href="{% url 'profile_update' %}">Edit Profile</a>
                                     </div>
                                     <div class="center mt-2">
                                         <a class="btn btn-outline-dark mt-2 tf btn-block" href="{% url 'favourite_posts_view' %}">Favourites</a>
                                     </div>
                                     <hr>
+                                    {% else %}
+
                                     {% endif %}
                                 </div>  
                             </div>

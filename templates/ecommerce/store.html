@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
 {% block title %} Store | Techwit {% endblock %}
 {% block content %}
 {% include 'ecommerce/navbar_ecommerce.html' %}
@@ -17,13 +18,13 @@
     
     <div class="row mt-2 infinite-container">
         {% for product in products %}
-        <div class="col-6 col-lg-4 infinite-item">
+        <div class="col-md-6 col-lg-4 infinite-item">
             <a href="{{ product.get_absolute_url }}"><img class="thumbnail" src="{{ product.imageURL }}" alt=""></a>
             <div class="box-element product">
                 <h6><strong><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></strong></h6>
                 <hr>
                 <button data-product={{ product.id }} data-action="add" class="btn btn-outline-secondary btn-sm add-btn update-cart tf">Add to Cart</button>
-                <h6 class="price-tag"><strong>(&#8358;{{ product.price }})</strong></h6>
+                <h6 class="price-tag"><strong>(&#8358;{{ product.price|intcomma }})</strong></h6>
             </div>
         </div>
         {% empty %}

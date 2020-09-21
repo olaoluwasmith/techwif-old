@@ -11,7 +11,7 @@
                     <p>Updated on {{blog.modified_date }}</p>
                     <hr>
                     <div class="center">
-                        <img class="center" width="max-content" height="300" src="{{ blog.imageURL }}" alt="{{ blog.title }}">
+                        <img class="center" width="" height="300" src="{{ blog.imageURL }}" alt="{{ blog.title }}">
                     </div>
                     <hr>
                     <div class="mt-2">
@@ -50,7 +50,7 @@
             {% for blog in blog_related %}
             <div class="col-6 col-lg-4 p-0">
                 <!--<a href="{{ blog.get_absolute_url }}"><img class="thumbnail" src="{{ blog.imageURL }}" alt=""></a>-->
-                <div class="box-element product">
+                <div class="box-element m-2 product">
                     <h6><strong><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></strong></h6>
                 </div>
             </div>
