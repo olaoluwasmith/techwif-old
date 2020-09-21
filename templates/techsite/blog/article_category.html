@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row mt-2">
             {% for blogs in blog %}
-            <div class="col-md-6 col-lg-4 p-0">
+            <div class="col-md-6 col-lg-4">
                 <a href="{{ blogs.get_absolute_url }}"><img class="thumbnail" src="{{ blogs.imageURL }}" alt=""></a>
                 <div class="box-element product">
                     <h6><strong><a href="{{ blogs.get_absolute_url }}">{{ blogs.title }}</a></strong></h6>
