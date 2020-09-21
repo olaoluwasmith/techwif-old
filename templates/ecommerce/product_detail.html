@@ -36,7 +36,7 @@
                     </div>
                     <button data-product={{ product.id }} data-action="add" class="btn btn-outline-secondary btn-block add-btn update-cart tf">Add to Cart</button>
                     <div class="m-2 center">
-                        {% if request.user == user %}
+                        {% if product.author == user %}
                         <hr>
                         <a class="btn btn-secondary tf m-2" href="{% url 'product_update' product.slug product.id %}"><i class="fas fa-edit"></i></a>
                         <a class="btn btn-secondary tf m-2" href="{% url 'product_update_image' product.slug product.id %}"><i class="fas fa-camera"></i></a>
