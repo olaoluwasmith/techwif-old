@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load humanize %}
 {% block title %} {{ category.category }} | Techwit {% endblock %}
 {% block content %}
 {% include 'ecommerce/navbar_ecommerce.html' %}
@@ -22,7 +21,7 @@
                 <h6><strong><a href="{{ products.get_absolute_url }}">{{ products.name }}</a></strong></h6>
                 <hr>
                 <button data-product={{ products.id }} data-action="add" class="btn btn-outline-secondary btn-sm add-btn update-cart tf">Add to Cart</button>
-                <h6 class="price-tag"><strong>(&#8358;{{ products.price|intcomma }})</strong></h6>
+                <h6 class="price-tag"><strong>(&#8358;{{ products.price|floatformat:2 }})</strong></h6>
             </div>
         </div>
         {% empty %}
@@ -66,7 +65,7 @@
         $(function(){
             setTimeout(function(){
                 $('.alert').slideUp(2000);
-            }, 10000);
+            }, 5000);
         });
     });
 

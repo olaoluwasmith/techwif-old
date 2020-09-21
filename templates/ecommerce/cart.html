@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load humanize %}
 {% load materializecss %}
 {% block title %} Cart | Techwit {% endblock %}
 {% block content %}
@@ -34,14 +33,14 @@
                             <img data-product={{ item.product.id }} data-action="remove" class="chg-quantity update-cart" src="{% static 'images/arrow-down.png' %}">
                         </div>                       
                     </div>
-                    <div style="flex: 1;">&#8358;{{ item.get_total|intcomma }}</div>
+                    <div style="flex: 1;">&#8358;{{ item.get_total }}</div>
                 </div>
                 {% endfor %}
             </div>
             
             <hr>
             <div class="">
-                <h5>Total Amount: <strong>&#8358;{{ order.get_cart_total|intcomma }}</strong></h5>
+                <h5>Total Amount: <strong>&#8358;{{ order.get_cart_total|floatformat:2 }}</strong></h5>
                 <p><a class="btn btn-dark left tf mb-2 mt-2" href="{% url 'checkout' %}">Checkout</a></p>              
             </div>       
             <br><br>
@@ -73,7 +72,7 @@
         $(function(){
             setTimeout(function(){
                 $('.alert').slideUp(2000);
-            }, 10000);
+            }, 5000);
         });
     });
 
