@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'ecommerce.apps.EcommerceConfig',
     'user_unique_email',
     'notifications',
-    'corsheaders',
     'crispy_forms',
     'django_social_share',
     'taggit',
@@ -57,7 +56,6 @@ INSTALLED_APPS = [
 SITE_ID = 1
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
