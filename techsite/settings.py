@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'storages',
 ]
 
-SITE_ID = 1
+SITE_ID = None
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
