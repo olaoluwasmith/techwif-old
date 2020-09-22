@@ -43,6 +43,8 @@ INSTALLED_APPS = [
 
     'tech.apps.TechConfig',
     'ecommerce.apps.EcommerceConfig',
+    'django.contrib.sitemaps',
+
     'user_unique_email',
     'notifications',
     'crispy_forms',

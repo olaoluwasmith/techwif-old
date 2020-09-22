@@ -30,6 +30,7 @@ urlpatterns = [
     path('terms_and_conditions/', views.terms_and_conditions, name='terms_and_conditions'),
     path('advertise/', views.advertise, name='advertise'),
     path('contact_us/', views.contact_us, name='contact_us'),
+    path('about/', views.about, name='about'),
 
     path('services/', ServiceListView.as_view(), name='service_list'),
     path('services/<slug:slug>/<int:pk>/', ServiceDetailView.as_view(), name='service_detail'),

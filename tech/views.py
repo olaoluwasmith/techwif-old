@@ -593,6 +593,9 @@ class ProfileView(LoginRequiredMixin, generic.DetailView, MultipleObjectMixin):
         return context  
 
 
+def about(request):
+    return HttpResponse('about page')
+
 
 """
 @receiver(post_save, sender=User)
