@@ -13,6 +13,12 @@
                     by <a href="{% url 'profile_view' forum.author.username %}">{{ forum.author }}</a>,
                     updated on {{ forum.created_date }}
                     <hr>
+                    <div class="center">
+                        {% for f in forum.forumimages_set.all %}
+                            <img class="mt-4" width="auto" height="auto" src="{{ f.image.url }}" alt="">
+                        {% endfor %}
+                    </div>
+                    <hr>
                     <div class="mt-2">
                         <ul class="social-share-grid">
                             <li>{% post_to_facebook object_or_url "<i class='fab fa-facebook fa-lg'></i>" %}</li>
@@ -24,11 +30,6 @@
                         </ul>   
                     </div>
                     <hr>
-                    <div class="center">
-                        {% for f in forum.forumimages_set.all %}
-                            <img class="mt-4" width="auto" height="auto" src="{{ f.image.url }}" alt="">
-                        {% endfor %}
-                    </div>
                 </div>
                 <div class="">
                     <div class="article-text mt-4">
