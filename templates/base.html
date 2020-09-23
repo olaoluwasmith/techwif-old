@@ -10,7 +10,9 @@
 		{% block title %} Techwif | Unravelling the world of technology {% endblock %}
 	</title>
 	<meta name="viewport" content="width=device-width" initial-scale="1" />
-	<meta name="description" content="Techwif | Unravelling the world of technology" />
+	<meta name="description" content="We give tech updates and render tech related services such as web development, SEO and so on." />
+	<meta name="description" content="A fast-growing tech community where you learn from and share with others." />
+	<meta name="description" content="Shop online on Techwif - Ebooks, phones and tablets, computing etc." />
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
 		integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
@@ -83,7 +85,7 @@
 					<li><a href="{% url 'logout' %}">Sign Out</a></li>
 				{% else %}
 					<li><a href="{% url 'login' %}?next={{ request.get_full_path }}">Sign In</a></li>
-					<li><a href="{% url 'register' %}">Sign Up</a></li>
+					<li><a href="{% url 'register' %}" class="btn btn-outline-primary tf" style="color: white;">Sign Up</a></li>
 				{% endif %}
 			</ul>
 		</div>

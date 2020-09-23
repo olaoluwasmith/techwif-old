@@ -49,38 +49,37 @@
 
                     <hr>
                     <input class="btn btn-primary tf btn-block" type="submit" onclick="payWithPaystack()" value="Proceed">
+                    <script src="https://js.paystack.co/v1/inline.js"></script>
+                    <script>
+                        var total = '{{ order.get_cart_total }}'
+
+                        function payWithPaystack() {
+                            var handler = PaystackPop.setup({
+                            //    key: 'pk_live_02c89718098e7d151f27b9b1cb8e0bafc13ccfb9',
+                                key: 'pk_test_223738da995a96ab3d07cbdd4280db35753a7062',
+                                email: document.getElementById("email").value,
+                                amount: total * 100,
+                                ref: ''+Math.floor((Math.random() * 1000000000) +1),
+
+                                callback: function(response){
+                                    let message = 'Payment completed. Reference: ' + response.reference;
+                                    alert(message);
+                                    window.Function(submitFormData());
+                                },
+                                onClose: function(){
+                                    alert('Payment process terminated.');
+                                },
+                            });
+
+                            handler.openIframe();
+                        }
+                    </script>
                 </form>
             </div>
             <br>
         </div>
     </div>
 </div>
-
-<script src="https://js.paystack.co/v1/inline.js"></script>
-<script>
-    var total = '{{ order.get_cart_total }}'
-
-    function payWithPaystack() {
-        var handler = PaystackPop.setup({
-        //    key: 'pk_live_02c89718098e7d151f27b9b1cb8e0bafc13ccfb9',
-            key: 'pk_test_223738da995a96ab3d07cbdd4280db35753a7062',
-            email: document.getElementById("email").value,
-            amount: total * 100,
-            ref: ''+Math.floor((Math.random() * 1000000000) +1),
-
-            callback: function(response){
-                let message = 'Payment completed. Reference: ' + response.reference;
-                alert(message);
-                window.Function(submitFormData());
-            },
-            onClose: function(){
-                alert('Payment process terminated.');
-            },
-        });
-
-        handler.openIframe();
-    }
-</script>
 
 <script type="text/javascript">
     var shipping = '{{ order.shipping }}'

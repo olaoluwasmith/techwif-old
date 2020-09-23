@@ -65,7 +65,7 @@ def LoginPage(request):
             login(request, user)
             return HttpResponseRedirect(redirect_to)
         else:
-            messages.info(request, 'Username or password incorrect.')
+            messages.info(request, 'Username, email or password incorrect.')
 
     return render(request, 'user/login.html')
 

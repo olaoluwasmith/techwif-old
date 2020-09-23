@@ -220,7 +220,6 @@ def ProductImageUpdate(request, pk, slug):
     return render(request, 'ecommerce/product_update_image.html', context)
 
 
-
 class ProductUpdateView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, generic.UpdateView):
     model = Product
     template_name = 'ecommerce/product_form.html'

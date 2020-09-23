@@ -23,9 +23,9 @@ from tech.sitemaps import SITEMAPS
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('sitemap.xml', sitemap, {'sitemaps': SITEMAPS}),
     path('', include('ecommerce.urls')),
     path('', include('tech.urls')),
+    path('sitemap.xml', sitemap, {'sitemaps': SITEMAPS}),
 ]
 
 

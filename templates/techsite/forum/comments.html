@@ -5,7 +5,7 @@
 </div>
 
 <hr>
-<div class="m-2">
+<div class="mt-2">
     <form method="POST" class="comment-form" action="./#result">
         {% csrf_token %}
         {{ comment_form|crispy }}
@@ -20,7 +20,7 @@
 <hr>
 {% if user.is_authenticated %}
 {% else %}
-<div class="m-2">
+<div class="mt-2">
     <a href="{% url 'login' %}" class="btn btn-primary btn-block center tf">Login to comment or like post.</a>
 </div>
 <hr>
@@ -38,7 +38,7 @@
 <div class="infinite-container">
     {% for comment in comments %}
     <div class="infinite-item" id="result">
-        <blockquote class="m-2" style="border-color: grey">
+        <blockquote class="mt-2" style="border-color: grey">
             <p><small>{{ comment.content|safe|linebreaks|urlizetrunc:40 }}</small></p>
             <hr>
             <footer class="blockqoute-footer"><small>by <cite title="Source Title"><a href="{% url 'profile_view' comment.user %}">{{ comment.user }}</a></cite> | {{ comment.timestamp|naturaltime }}</small>
@@ -63,7 +63,7 @@
                 <hr>
             </blockquote>
             {% endfor %}
-            <div class="m-2">
+            <div class="mt-2">
                 <form method="POST" class="reply-form" action="./#result">
                     {% csrf_token %}
                     <input type="hidden" name="comment_id" value="{{ comment.id }}">
@@ -80,21 +80,6 @@
     </div>
     {% endfor %}
 </div>
-
-<!--
-<div class="container" style="text-align: center;">
-    {% if comments.has_other_pages %}
-        {% if comments.has_previous %}
-            <a class="btn btn-outline-dark mb-2 mt-2 mr-2 tf" href="?page={{ comments.previous_page_number }}">Previous Page</a>
-        {% endif %}
-
-        {% if comments.has_next %}
-            <a class="btn btn-outline-dark mb-2 mt-2 ml-2 tf" href="?page={{ comments.next_page_number }}">Next Page</a>
-        {% endif %}       
-    {% endif %}
-</div>
--->
- 
 
 <div class="container" style="text-align: center;">
     {% if comments.has_other_pages %}
