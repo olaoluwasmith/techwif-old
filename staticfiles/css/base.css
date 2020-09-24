@@ -147,7 +147,7 @@
 }
 
 #form-title{
-    color: rgb(54, 51, 51);
+    color: rgb(94, 93, 93);
 }
 
 .login_btn {
@@ -194,7 +194,7 @@
     text-transform: none;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 750px) {
     .detail-wrapper {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;   
@@ -203,7 +203,7 @@
     }
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 750px) {
     .forum-wrapper {
         display: grid;
         grid-template-columns: 1fr 2fr;   

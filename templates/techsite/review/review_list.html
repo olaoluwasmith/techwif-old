@@ -3,13 +3,15 @@
 {% block content %}
 
 <div class="article">
-    <h2 class="sub-heading mt-4" id="main-articles">Latest Reviews</h2>
+    <h2 class="sub-heading mt-4" id="main-articles">Job Updates</h2>
 
     <div class="container">
         <div class="row mt-2">
             {% for review in object_list %}
-            <div class="col-6 col-lg-4 p-0">
+            <div class="col-md-6 col-lg-4 p-0">
+                <!--
                 <a href="{{ review.get_absolute_url }}"><img class="thumbnail" src="{{ review.imageURL }}" alt=""></a>
+                -->
                 <div class="box-element product">
                     <h6><strong><a href="{{ review.get_absolute_url }}">{{ review.title }}</a></strong></h6>
                     <hr>

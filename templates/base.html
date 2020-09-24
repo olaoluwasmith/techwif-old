@@ -91,7 +91,7 @@
 					<li><a href="{% url 'logout' %}">Sign Out</a></li>
 				{% else %}
 					<li><a href="{% url 'login' %}?next={{ request.get_full_path }}">Sign In</a></li>
-					<li><a href="{% url 'register' %}" class="btn btn-outline-primary tf" style="color: white;">Sign Up</a></li>
+					<li><a href="{% url 'register' %}" class="btn btn-outline-primary tf ml-0" style="color: white;">Sign Up</a></li>
 				{% endif %}
 			</ul>
 		</div>
@@ -100,10 +100,10 @@
 	<nav class="light-blue darken-3">
 		<div class="header-nav-bar">
 			<ul class="bottom-nav-list">
-				<li><a href="{% url 'homepage' %}">Home</a></li>
-				<li><a href="{% url 'service_list' %}">Service</a></li>
-				<li><a href="{% url 'store' %}">Store</a></li>
+				<li><a href="{% url 'service_list' %}">Services</a></li>
 				<li><a href="{% url 'forum_list' %}">Forum</a></li>
+				<li><a href="{% url 'review_list' %}">Jobs</a></li>
+				<li><a href="{% url 'store' %}">Store</a></li>
 			</ul>
 		</div>
 	</nav>
