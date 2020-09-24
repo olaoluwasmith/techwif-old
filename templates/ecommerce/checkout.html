@@ -48,7 +48,6 @@
                     </div>
 
                     <hr>
-                    <input class="btn btn-primary tf btn-block" type="submit" onclick="payWithPaystack()" value="Proceed">
                     <script src="https://js.paystack.co/v1/inline.js"></script>
                     <script>
                         var total = '{{ order.get_cart_total }}'
@@ -62,9 +61,9 @@
                                 ref: ''+Math.floor((Math.random() * 1000000000) +1),
 
                                 callback: function(response){
-                                //    let message = 'Payment completed. Reference: ' + response.reference;
+                                    let message = 'Payment completed. Reference: ' + response.reference;
                                     window.Function(submitFormData());
-                                //    alert(message);
+                                    alert(message);
                                 },
                                 onClose: function(){
                                     alert('Payment process terminated.');
@@ -74,6 +73,7 @@
                             handler.openIframe();
                         }
                     </script>
+                    <input class="btn btn-primary tf btn-block" type="submit" onclick="payWithPaystack()" value="Proceed">
                 </form>
             </div>
             <br>
