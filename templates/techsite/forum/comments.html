@@ -1,6 +1,6 @@
 {% load crispy_forms_tags %}
 {% load humanize %}
-<div class="ml-2">
+<div class="">
     {{ total_comments }} Comment{{ total_comments|pluralize }}
 </div>
 
@@ -50,7 +50,7 @@
             <hr>
         </blockquote>
 
-        <div class="replied-comments container m-2" style="display:none;">
+        <div class="replied-comments container mt-2" style="display:none;">
             {% for reply in comment.replies.all %}
             <blockquote style="border-color: grey">
                 <p><small>{{ reply.content|safe|linebreaks|urlizetrunc:40 }}</small></p>

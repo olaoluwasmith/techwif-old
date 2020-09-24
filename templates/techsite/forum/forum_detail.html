@@ -48,27 +48,25 @@
                 </div>
             </div>
             <div class="col-lg-6">
-                <div>
-                    <div class="form-inline">
-                        <div id="like-section">
-                            {% include 'techsite/forum/like_section.html' %}
-                        </div>
-                        
-                        {% if request.user == user %}
-                        <div id="favourite-section">
-                            {% if is_favourite %}
-                            <a href="{% url 'favourite_posts' forum.slug forum.id %}">Remove from favourites</a>
-                            {% else %}
-                            <a href="{% url 'favourite_posts' forum.slug forum.id %}">Add to favourites</a>
-                            {% endif %}
-                        </div>
-                        {% endif %}
+                <div class="form-inline">
+                    <div id="like-section">
+                        {% include 'techsite/forum/like_section.html' %}
                     </div>
                     
-                    <div class="main-comment-section">
-                        {% include 'techsite/forum/comments.html' %}
+                    {% if request.user == user %}
+                    <div id="favourite-section">
+                        {% if is_favourite %}
+                        <a href="{% url 'favourite_posts' forum.slug forum.id %}">Remove from favourites</a>
+                        {% else %}
+                        <a href="{% url 'favourite_posts' forum.slug forum.id %}">Add to favourites</a>
+                        {% endif %}
                     </div>
+                    {% endif %}
                 </div>
+                
+                <div class="main-comment-section">
+                    {% include 'techsite/forum/comments.html' %}
+                </div>          
             </div>
         </div>             
     </div>
