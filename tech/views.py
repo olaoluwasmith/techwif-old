@@ -390,11 +390,11 @@ def ForumDetailView(request, pk, slug):
             reply_id = request.POST.get('comment_id')
             comment_qs = None
             messages.success(request, f'Submitted successfully.')
-            notify.send(sender=request.user, recipient=request.user, verb='commented on your post', target=forum)
+            notify.send(sender=request.user, recipient=forum.user, verb='commented on your post', target=forum)
         
             if reply_id:
                 comment_qs = ForumComment.objects.get(id=reply_id)
-                notify.send(sender=request.user, recipient=request.user, verb='replied to your comment', target=forum)
+                notify.send(sender=request.user, recipient=comment.user, verb='replied to your comment', target=forum)
             comment = ForumComment.objects.create(forum=forum, user=request.user, content=content, reply=comment_qs)
             comment.save()
             return HttpResponseRedirect(forum.get_absolute_url())
@@ -446,7 +446,7 @@ def like_forum(request):
     else:
         forum.likes.add(request.user)
         is_liked = True
-        notify.send(sender=request.user, recipient=request.user, verb='liked your post', target=forum)
+        notify.send(sender=request.user, recipient=forum.user, verb='liked your post', target=forum)
     
     context = {
         'forum': forum,

@@ -21,7 +21,7 @@
 		A fast-growing tech community where you learn from and share with others.
 		Shop online on TechWif - Ebooks, phones and tablets, computing etc." />
 	<meta name="keywords" content="Tech, Store, Forum, Web dev">
-	<!-- <link rel="icon" href="favicon.png" sizes="16x16 32x32" type="image/png"> -->
+	<link rel="icon" href="{% static 'techwif\favicon.png' %}" sizes="16x16 32x32" type="image/png">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
 		integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
@@ -87,7 +87,7 @@
 <body>
 	<nav class="light-blue darken-4">
 		<div class="header-nav-bar" id="top-nav">
-			<a href="{% url 'homepage' %}" class="brand-logo left grey darken-2 pl-2 pr-2 m-0" style="font-family: 'Courier New', Courier, monospace; color: rgb(229, 203, 194);">TechWif</a>
+			<a href="{% url 'homepage' %}" class="left pr-4 pl-2"><img height="32" width="32" src="{% static 'techwif\favicon-white.png' %}" alt=""></a>
 			<ul id="nav-mobile" class="right">
 				{% if user.is_authenticated %}
 					<li><a href="{% url 'profile_view' request.user %}">@{{ request.user }}</a></li>
