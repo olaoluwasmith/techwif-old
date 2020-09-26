@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% load notifications_tags %}
+{% notifications_unread as unread_count %}
+{% block title %} Notifications | TechWif {% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <div class="col-md-8 mt-4">
+            {% if unread_count %}
+            <div class="mt-4 mb-4">
+                <a href="{% url 'notification_update' %}" class="btn btn-warning tf" role="button">Mark all as read</a>
+            </div>
+            {% endif %}
+            <ul class="list-group">
+                {% for notice in notices %}
+                    <li class="list-group-item" id="notice_link">
+                        <a class="" style="color: #3f85f5;" href="{% url 'profile_view' notice.actor.username %}">{{ notice.actor }}</a>
+                        <a href="{% url 'notification_update' %}?forum_id={{ notice.target.id }}&notice_id={{ notice.id }}">
+                            {{ notice.verb }} in <span style="color: rgb(107, 105, 105);"> "{{notice.target}}" </span>
+                        </a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ notice.timestamp|naturaltime }}
+                    </li>
+                {% empty %}
+                <div class="card center m-4 p-4">
+                    <h5>You have no notifications.</h5>
+                </div>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+<style>
+    #notice_link a:link {
+        color: black;
+    }
+
+    #notice_link a:visited {
+        color: lightgrey;
+    }
+</style>
+{% endblock content %}

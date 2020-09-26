@@ -25,7 +25,7 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = '!fpr1f8%47-auv*+$t053on)ozn#7i&6t4vkjo+(836^=t38kn'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['.techwif.com', '127.0.0.1']
 
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     'tech.apps.TechConfig',
     'ecommerce.apps.EcommerceConfig',
+    'notice.apps.NoticeConfig',
     'django.contrib.sitemaps',
 
     'user_unique_email',
@@ -174,7 +175,7 @@ ACCOUNT_EMAIL_REQUIRED = True
 AUTH_USER_MODEL = 'user_unique_email.User'
 
 DJANGO_NOTIFICATIONS_CONFIG = { 'USE_JSONFIELD': True }
-DJANGO_NOTIFICATIONS_CONFIG = { 'SOFT_DELETE': True }
+#DJANGO_NOTIFICATIONS_CONFIG = { 'SOFT_DELETE': True }
 
 
 # S3 BUCKET SET UP

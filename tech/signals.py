@@ -19,3 +19,8 @@ def create_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_profile(sender, instance, **kwargs):
     instance.profile.save()
+
+def my_handler(sender, instance, created, **kwargs):
+    notify.send(instance, verb='was saved')
+
+post_save.connect(my_handler, sender=Forum)

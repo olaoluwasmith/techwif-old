@@ -12,6 +12,7 @@ urlpatterns = [
     path('signin/', views.LoginPage, name='login'),
     path('update_profile/', views.ProfileUpdate, name='profile_update'),
     path('signout/', views.LogoutUser, name='logout'),
+    path('inbox/notifications/', include(notifications.urls, namespace='notifications')),
 
     path('reset_password/', 
         auth_views.PasswordResetView.as_view(template_name='user/password_reset.html'), 

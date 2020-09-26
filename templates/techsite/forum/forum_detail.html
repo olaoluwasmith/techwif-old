@@ -2,7 +2,7 @@
 {% load static %}
 {% load social_share %}
 {% load crispy_forms_tags %}
-{% block title %} {{ forum.title }} | Techwif {% endblock %}
+{% block title %} {{ forum.title }} | TechWif {% endblock %}
 {% block content %}
 
     <div class="container mt-4 mb-4">
@@ -15,7 +15,7 @@
                     <hr>
                     <div class="center">
                         {% for f in forum.forumimages_set.all %}
-                            <img class="mt-4" width="auto" height="auto" src="{{ f.image.url }}" alt="">
+                            <img class="mt-2" width="auto" height="auto" src="{{ f.image.url }}" alt="">
                         {% endfor %}
                     </div>
                     <hr>
@@ -32,7 +32,7 @@
                     <hr>
                 </div>
                 <div class="">
-                    <div class="article-text mt-4">
+                    <div class="article-text">
                         {{ forum.content|safe|linebreaks|urlizetrunc:40 }}
                     </div>  
     

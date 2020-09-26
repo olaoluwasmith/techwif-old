@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin 
-from django.core.mail import send_mail, BadHeaderError
+from django.core.mail import send_mail, BadHeaderError, EmailMultiAlternatives
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse, Http404
 from django.conf import settings
 from django.views import generic
@@ -23,6 +23,9 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic.list import MultipleObjectMixin
 from django.contrib.sites.models import Site
 from django.contrib.auth import get_user_model
+from notifications.signals import notify
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from .models import *
 from .forms import *
 from .decorators import *
@@ -387,9 +390,11 @@ def ForumDetailView(request, pk, slug):
             reply_id = request.POST.get('comment_id')
             comment_qs = None
             messages.success(request, f'Submitted successfully.')
+            notify.send(sender=request.user, recipient=request.user, verb='commented on your post', target=forum)
         
             if reply_id:
                 comment_qs = ForumComment.objects.get(id=reply_id)
+                notify.send(sender=request.user, recipient=request.user, verb='replied to your comment', target=forum)
             comment = ForumComment.objects.create(forum=forum, user=request.user, content=content, reply=comment_qs)
             comment.save()
             return HttpResponseRedirect(forum.get_absolute_url())
@@ -441,6 +446,7 @@ def like_forum(request):
     else:
         forum.likes.add(request.user)
         is_liked = True
+        notify.send(sender=request.user, recipient=request.user, verb='liked your post', target=forum)
     
     context = {
         'forum': forum,

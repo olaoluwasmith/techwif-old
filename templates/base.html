@@ -2,22 +2,24 @@
 {% load static %}
 {% load materializecss %}
 {% load bootstrap4 %}
+{% load notifications_tags %}
+{% notifications_unread as unread_count %}
 
 <html class="" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#" lang="en-US">
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width" initial-scale="1" maximum-scale="1" user-scalable="1" viewport-fit="cover" />
 	<title>
-		{% block title %} Techwif | Unravelling the world of technology {% endblock %}
+		{% block title %} TechWif | Unravelling the world of technology {% endblock %}
 	</title>
-	<meta property="og:site_name" content="Techwif">
-	<meta property="og:title" content="Techwif | Unravelling the world of technology">
+	<meta property="og:site_name" content="TechWif">
+	<meta property="og:title" content="TechWif | Unravelling the world of technology">
 	<meta property="og:description" content="We give tech updates and render tech related services such as web development, SEO and so on.
 		A fast-growing tech community where you learn from and share with others.
-		Shop online on Techwif - Ebooks, phones and tablets, computing etc.">
+		Shop online on TechWif - Ebooks, phones and tablets, computing etc.">
 	<meta name="description" content="We give tech updates and render tech related services such as web development, SEO and so on.
 		A fast-growing tech community where you learn from and share with others.
-		Shop online on Techwif - Ebooks, phones and tablets, computing etc." />
+		Shop online on TechWif - Ebooks, phones and tablets, computing etc." />
 	<meta name="keywords" content="Tech, Store, Forum, Web dev">
 	<!-- <link rel="icon" href="favicon.png" sizes="16x16 32x32" type="image/png"> -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
@@ -85,14 +87,21 @@
 <body>
 	<nav class="light-blue darken-4">
 		<div class="header-nav-bar" id="top-nav">
-			<a href="{% url 'homepage' %}" class="brand-logo left grey darken-2 pl-2 pr-2 m-0" style="font-family: 'Courier New', Courier, monospace; color: rgb(229, 203, 194);">Techwif</a>
+			<a href="{% url 'homepage' %}" class="brand-logo left grey darken-2 pl-2 pr-2 m-0" style="font-family: 'Courier New', Courier, monospace; color: rgb(229, 203, 194);">TechWif</a>
 			<ul id="nav-mobile" class="right">
 				{% if user.is_authenticated %}
 					<li><a href="{% url 'profile_view' request.user %}">@{{ request.user }}</a></li>
+					<li>
+						{% if unread_count %}
+							<a class="badge badge-danger m-0" href="{% url 'notification_list' %}" >{{ unread_count }}</a>	
+						{% else %}
+						<a class="badge badge-danger m-0" href="{% url 'notification_list' %}" > </a>
+						{% endif %}	
+					</li>
 					<li><a href="{% url 'logout' %}">Sign Out</a></li>
 				{% else %}
 					<li><a href="{% url 'login' %}?next={{ request.get_full_path }}">Sign In</a></li>
-					<li><a href="{% url 'register' %}" class="btn btn-outline-primary tf ml-0" style="color: white;">Sign Up</a></li>
+					<li><a href="{% url 'register' %}" class="btn btn-outline-primary tf ml-0" style="color: rgb(216, 207, 207);">Sign Up</a></li>
 				{% endif %}
 			</ul>
 		</div>

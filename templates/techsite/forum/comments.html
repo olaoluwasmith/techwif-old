@@ -40,12 +40,11 @@
     <div class="infinite-item" id="result">
         <blockquote class="mt-2" style="border-color: grey">
             <p><small>{{ comment.content|safe|linebreaks|urlizetrunc:40 }}</small></p>
-            <hr>
             <footer class="blockqoute-footer"><small>by <cite title="Source Title"><a href="{% url 'profile_view' comment.user %}">{{ comment.user }}</a></cite> | {{ comment.timestamp|naturaltime }}</small>
                 {% if comment.user == request.user or user.is_superuser %}
                     <a href="{% url 'comment_delete' comment.id %}"><i class="fas fa-trash-alt" style="color: crimson;"></i></a>
                 {% endif %}
-                <button type="button" name="button" class="reply-btn btn btn-sm p-1 tf">{{ comment.replies.count }} Repl{{ comment.replies.count|pluralize:"y,ies" }}</button>
+                <button type="button" name="button" class="reply-btn btn btn-sm p-1 ml-2 tf">{{ comment.replies.count }} Repl{{ comment.replies.count|pluralize:"y,ies" }}</button>
             </footer>
             <hr>
         </blockquote>
@@ -54,7 +53,6 @@
             {% for reply in comment.replies.all %}
             <blockquote style="border-color: grey">
                 <p><small>{{ reply.content|safe|linebreaks|urlizetrunc:40 }}</small></p>
-                <hr>
                 <footer class="blockqoute-footer"><small>by <cite title="Source Title"><a href="{% url 'profile_view' reply.user %}">{{ reply.user }}</a></cite> | {{ reply.timestamp|naturaltime }}</small>
                     {% if reply.user == request.user or user.is_superuser %}
                         <a href="{% url 'comment_delete' comment.id %}"><i class="fas fa-trash-alt" style="color: crimson;"></i></a>
