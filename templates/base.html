@@ -90,18 +90,18 @@
 			<a href="{% url 'homepage' %}" class="left pr-4 pl-2"><img height="32" width="32" src="{% static 'techwif\favicon-white.png' %}" alt=""></a>
 			<ul id="nav-mobile" class="right">
 				{% if user.is_authenticated %}
-					<li><a href="{% url 'profile_view' request.user %}">@{{ request.user }}</a></li>
+					<li><a href="{% url 'profile_view' request.user %}" style="color: rgb(216, 207, 207);">@{{ request.user }}</a></li>
 					<li>
 						{% if unread_count %}
-							<a class="badge badge-danger m-0" href="{% url 'notification_list' %}" >{{ unread_count }}</a>	
+							<a class="badge badge-danger m-0 p-1" href="{% url 'notification_list' %}" >{{ unread_count }}</a>	
 						{% else %}
-						<a class="badge badge-danger m-0" href="{% url 'notification_list' %}" > </a>
+							<a class="badge badge-danger m-0 p-1" href="{% url 'notification_list' %}" > </a>
 						{% endif %}	
 					</li>
-					<li><a href="{% url 'logout' %}">Sign Out</a></li>
+					<li><a href="{% url 'logout' %}"  style="color: rgb(216, 207, 207);">Sign Out</a></li>
 				{% else %}
-					<li><a href="{% url 'login' %}?next={{ request.get_full_path }}">Sign In</a></li>
-					<li><a href="{% url 'register' %}" class="btn btn-outline-primary tf ml-0" style="color: rgb(216, 207, 207);">Sign Up</a></li>
+					<li><a href="{% url 'login' %}?next={{ request.get_full_path }}" style="color: rgb(216, 207, 207);">Sign In</a></li>
+					<li><a href="{% url 'register' %}" style="color: rgb(216, 207, 207);">Sign Up</a></li>
 				{% endif %}
 			</ul>
 		</div>
