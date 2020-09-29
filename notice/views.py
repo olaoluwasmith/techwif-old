@@ -9,6 +9,7 @@ from tech.models import Forum
 class CommentNoticeListView(LoginRequiredMixin, ListView):
     context_object_name = 'notices'
     template_name = 'user/notification.html'
+    paginate_by = 15
     login_url = '/login/'
 
     def get_queryset(self):

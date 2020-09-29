@@ -112,7 +112,6 @@ def processOrder(request):
             zipcode=data['shipping']['zipcode'],
             country=data['shipping']['country'],
         )
-    messages.success(request, f'Data submitted. You will receive a response via email once your order is ready.')
 
     return JsonResponse('Payment complete!', safe=False)
 

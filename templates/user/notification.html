@@ -13,21 +13,42 @@
                 <a href="{% url 'notification_update' %}" class="btn btn-warning tf" role="button">Mark all as read</a>
             </div>
             {% endif %}
-            <ul class="list-group">
+
+            <div class="infinite-container">
                 {% for notice in notices %}
-                    <li class="list-group-item" id="notice_link">
-                        <a class="" style="color: #3f85f5;" href="{% url 'profile_view' notice.actor.username %}">{{ notice.actor }}</a>
-                        <a href="{% url 'notification_update' %}?forum_id={{ notice.target.id }}&notice_id={{ notice.id }}">
-                            {{ notice.verb }} in <span style="color: rgb(107, 105, 105);"> "{{notice.target}}" </span>
-                        </a>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ notice.timestamp|naturaltime }}
-                    </li>
-                {% empty %}
-                <div class="card center m-4 p-4">
-                    <h5>You have no notifications.</h5>
+                <div class="infinite-item">
+                    <ul class="list-group">
+                        <li class="list-group-item" id="notice_link">
+                            <a class="" style="color: #3f85f5;" href="{% url 'profile_view' notice.actor.username %}">{{ notice.actor }}</a>
+                            <a href="{% url 'notification_update' %}?forum_id={{ notice.target.id }}&notice_id={{ notice.id }}">
+                                {{ notice.verb }} <span style="color: rgb(107, 105, 105);"> "{{notice.target}}" </span>
+                            </a>
+                            {{ notice.timestamp|naturaltime }}
+                        </li>
+                    </ul>
                 </div>
+                {% empty %}
+                    <div class="card center m-4 p-4">
+                        <h5>You have no notifications.</h5>
+                    </div>
                 {% endfor %}
-            </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="col-md-8 mt-4">
+            <div class="center mt-4" style="text-align: center;">
+                {% if is_paginated %}
+                    {% if page_obj.has_next %}
+                        <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}"></a>
+                    {% endif %}
+                {% endif %}
+
+                <div class="loading" style="display: none;">
+                    Loading...
+                </div>
+            </div>
         </div>
     </div>
 
@@ -41,3 +62,30 @@
     }
 </style>
 {% endblock content %}
+
+{% block javascript %}
+<script>
+    var infinite = new Waypoint.Infinite({
+        element: $('.infinite-container')[0],
+        handler: function(direction) {   
+        },
+        offset: 'bottom-in-view',
+
+        onBeforePageLoad: function() {
+            $('.loading').show();
+        },
+        onAfterPageLoad: function() {
+            $('.loading').hide();
+        }
+    });
+
+    // Hiding message after form submission
+    $(document).ready(function(e){
+        $(function(){
+            setTimeout(function(){
+                $('.alert').slideUp(2000);
+            }, 10000);
+        });
+    });
+</script>
+{% endblock %}

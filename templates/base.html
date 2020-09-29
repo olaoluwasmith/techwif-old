@@ -12,18 +12,10 @@
 	<title>
 		{% block title %} TechWif | Unravelling the world of technology {% endblock %}
 	</title>
-	<meta property="og:site_name" content="TechWif">
-	<meta property="og:title" content="TechWif | Unravelling the world of technology">
-	<meta property="og:description" content="We give tech updates and render tech related services such as web development, SEO and so on.
-		A fast-growing tech community where you learn from and share with others.
-		Shop online on TechWif - Ebooks, phones and tablets, computing etc.">
 	<meta name="description" content="We give tech updates and render tech related services such as web development, SEO and so on.
 		A fast-growing tech community where you learn from and share with others.
 		Shop online on TechWif - Ebooks, phones and tablets, computing etc." />
-	<meta name="keywords" content="Tech, Store, Forum, Web dev">
 	<link rel="icon" href="{% static 'techwif\favicon.png' %}" sizes="16x16 32x32" type="image/png">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
-		integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
@@ -84,18 +76,19 @@
 		
 	</script>
 </head>
+
 <body>
 	<nav class="light-blue darken-4">
 		<div class="header-nav-bar" id="top-nav">
-			<a href="{% url 'homepage' %}" class="left pr-4 pl-2"><img height="32" width="32" src="{% static 'techwif\favicon-white.png' %}" alt=""></a>
+			<a href="{% url 'homepage' %}" class="left pr-4 pl-2"><img height="40" width="40" src="{% static 'techwif\favicon-white.png' %}" alt=""></a>
 			<ul id="nav-mobile" class="right">
 				{% if user.is_authenticated %}
 					<li><a href="{% url 'profile_view' request.user %}" style="color: rgb(216, 207, 207);">@{{ request.user }}</a></li>
 					<li>
 						{% if unread_count %}
-							<a class="badge badge-danger m-0 p-1" href="{% url 'notification_list' %}" >{{ unread_count }}</a>	
+							<a class="badge badge-danger mt-2 ml-2 mr-2" href="{% url 'notification_list' %}" >{{ unread_count }}</a>	
 						{% else %}
-							<a class="badge badge-danger m-0 p-1" href="{% url 'notification_list' %}" > </a>
+							<a class="badge badge-danger mt-2 ml-2 mr-2" href="{% url 'notification_list' %}" > </a>
 						{% endif %}	
 					</li>
 					<li><a href="{% url 'logout' %}"  style="color: rgb(216, 207, 207);">Sign Out</a></li>
