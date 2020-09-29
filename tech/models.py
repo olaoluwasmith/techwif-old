@@ -262,3 +262,11 @@ class ForumImages(models.Model):
             output_size = (300, 300)
             img.thumbnail(output_size)
             img.save(self.image)
+
+    @property
+    def imageURL(self):
+        try:
+            url = self.image.url
+        except:
+            url = ''
+        return url
