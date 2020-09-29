@@ -4,9 +4,19 @@
 {% load crispy_forms_tags %}
 {% block title %} {{ forum.title }} | TechWif {% endblock %}
 {% block meta_extend %}
-    <meta name="title" content="{{ forum.title }}" />
-	<meta name="description" content="{{ forum.content }}" />
-    <meta name="image" content="{{ forum.imageURL }}"/>
+    <meta property="og:title" content="{{ forum.title }}" />
+    <meta property="og:site_name" content="TechWif" />
+    <meta property="og:url" content="https://www.techwif.com/{{ forum.get_absolute_url }}" />
+    <meta property="og:description" content="{{ forum.content|safe }}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="{{ forum.image_url }}" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="TechWif" />
+    <meta name="og:title" content="{{ forum.title }}" />
+    <meta name="twitter:description" content="{{ forum.content }}" />
+    <meta name="twitter:creator" content="/techwif" />
+    <meta name="twitter:image" content="{{ forum.imageURL }}" />
 {% endblock %}
 {% block content %}
 

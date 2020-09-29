@@ -2,9 +2,19 @@
 {% load social_share %}
 {% block title %} {{ blog.title }} | TechWif {% endblock %}
 {% block meta_extend %}
-    <meta name="title" content="{{ blog.title }}" />
-	<meta name="description" content="{{ blog.content }}" />
-    <meta name="image" content="{{ blog.imageURL }}"/>
+    <meta property="og:title" content="{{ blog.title }}" />
+    <meta property="og:site_name" content="TechWif" />
+    <meta property="og:url" content="https://www.techwif.com/{{ blog.get_absolute_url }}" />
+    <meta property="og:description" content="{{ blog.content|safe }}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="{{ blog.image_url }}" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="TechWif" />
+    <meta name="og:title" content="{{ blog.title }}" />
+    <meta name="twitter:description" content="{{ blog.content }}" />
+    <meta name="twitter:creator" content="/techwif" />
+    <meta name="twitter:image" content="{{ blog.imageURL }}" />
 {% endblock %}
 {% block content %}
     <div class="container mt-4 mb-4">
