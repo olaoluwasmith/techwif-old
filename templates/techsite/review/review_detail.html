@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% load social_share %}
 {% block title %} {{ review.title }} | TechWif {% endblock %}
+{% block meta_extend %}
+    <meta name="title" content="{{ review.title }}" />
+	<meta name="description" content="{{ review.content }}" />
+    <meta name="image" content="{{ review.imageURL }}"/>
+{% endblock %}
 {% block content %}
 
     <div class="container mt-4 mb-4">

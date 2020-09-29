@@ -3,6 +3,11 @@
 {% load social_share %}
 {% load crispy_forms_tags %}
 {% block title %} {{ forum.title }} | TechWif {% endblock %}
+{% block meta_extend %}
+    <meta name="title" content="{{ forum.title }}" />
+	<meta name="description" content="{{ forum.content }}" />
+    <meta name="image" content="{{ forum.imageURL }}"/>
+{% endblock %}
 {% block content %}
 
     <div class="container mt-4 mb-4">
