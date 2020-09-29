@@ -9,14 +9,18 @@
     <meta property="og:url" content="https://www.techwif.com/{{ forum.get_absolute_url }}" />
     <meta property="og:description" content="{{ forum.content|safe }}" />
     <meta property="og:type" content="article" />
-    <meta property="og:image" content="{{ forum.forumimages.imageURL }}" />
+    {% for f in forum.forumimages_set.all %}
+    <meta property="og:image" content="{{ f.image.url }}" />
+    {% endfor %}
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="TechWif" />
     <meta name="og:title" content="{{ forum.title }}" />
     <meta name="twitter:description" content="{{ forum.content }}" />
     <meta name="twitter:creator" content="/techwif" />
-    <meta name="twitter:image" content="{{ forum.forumimages.imageURL }}" />
+    {% for f in forum.forumimages_set.all %}
+    <meta name="twitter:image" content="{{ f.image.url }}" />
+    {% endfor %}
 {% endblock %}
 {% block content %}
 
