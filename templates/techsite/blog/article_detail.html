@@ -2,6 +2,10 @@
 {% load social_share %}
 {% block title %} {{ blog.title }} | TechWif {% endblock %}
 <head>
+    <meta property="og:title" content="{{ blog.title }}" />
+    <meta property="og:url" content="{{ blog.url }}" />
+    <meta property=”og:type” content="article" />
+    <meta property=”og:description” content="{{ blog.content }}" />
     <meta id="ogimage" property="og:image" content="{{ blog.imageURL }}"/>
 </head>
 
