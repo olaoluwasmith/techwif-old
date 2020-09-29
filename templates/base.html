@@ -16,10 +16,10 @@
 		A fast-growing tech community where you learn from and share with others.
 		Shop online on TechWif - Ebooks, phones and tablets, computing etc." />
 	<meta property="og:title" content="{{ blog.title }}" />
-	<meta property="og:url" content="{{ blog.url }}" />
-	<meta property=”og:type” content="article" />
-	<meta property=”og:description” content="{{ blog.content }}" />
-	<meta id="ogimage" property="og:image" content="{{ blog.imageURL }}"/>
+	<meta property="og:url" content="{{ blog.get_absolute_url }}" />
+	<meta property="og:type" content="article" />
+	<meta property="og:description" content="{{ blog.content }}" />
+	<meta property="og:image" content="{{ blog.imageURL }}"/>
 	<link rel="icon" href="{% static 'techwif\favicon.png' %}" sizes="16x16 32x32" type="image/png">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
