@@ -25,8 +25,8 @@
                                     </div>
                                     <hr>
                                     {% else %}
-                                    <div>
-
+                                    <div class="center mt-2">
+                                        <p>{{ user.username }}</p>
                                     </div>
                                     <hr>
                                     {% endif %}
@@ -36,7 +36,9 @@
                         
                         <div class="media-body mt-4">
                             <hr>
+                            {% if request.user == user %}
                             <h6 class="account-heading">Username: {{ user.username }}</h6>
+                            {% endif %}
                             <p class="text-secondary"><h6>Full Name: {{ user.profile.first_name }} {{ user.profile.last_name }}</h6></p>
                             <hr>
                             <p class="text-secondary"><h6>Bio:</h6></p>
