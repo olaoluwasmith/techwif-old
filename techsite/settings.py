@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import environ
+environ.ENV.read_env()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -22,10 +24,10 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '!fpr1f8%47-auv*+$t053on)ozn#7i&6t4vkjo+(836^=t38kn'
+SECRET_KEY = os.environ['secret_key']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['.techwif.com', '127.0.0.1']
 
@@ -160,7 +162,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_SSL = True
 EMAIL_PORT = 465
 EMAIL_HOST_USER = 'techwifofficial@gmail.com'
-EMAIL_HOST_PASSWORD = 'Facebook1#'
+EMAIL_HOST_PASSWORD = os.environ['email_host_password']
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = False
@@ -181,8 +183,8 @@ DJANGO_NOTIFICATIONS_CONFIG = { 'USE_JSONFIELD': True }
 # S3 BUCKET SET UP
 
 DEFAULT_FILE_STORAGE = 'techsite.custom_storages.MediaStorage'
-AWS_ACCESS_KEY_ID = 'AKIARKB4DVJABZTQGBPJ'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID = os.environ['aws_access_key_id']
+AWS_SECRET_ACCESS_KEY = os.environ['aws_secret_access_key']
 AWS_STORAGE_BUCKET_NAME = 'techwif'
 AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
 
