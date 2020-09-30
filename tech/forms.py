@@ -22,6 +22,10 @@ class UpdateUserForm(forms.ModelForm):
 
 
 class UpdateProfileForm(forms.ModelForm):
+    profile_pic = forms.ImageField(required=False, label='Profile Picture')
+    first_name = forms.CharField(required=False, label='First Name')
+    last_name = forms.CharField(required=False, label='Last Name')
+    
     class Meta:
         model = Profile
         fields = ['profile_pic', 'first_name', 'last_name', 'bio']
