@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 {% block title %} Forum | TechWif {% endblock %}
+{% block meta_extend %}
+    <meta name="description" content="Join the online community of techies. Create post, learn, share with others." />
+	<meta property="og:image" content="{% static 'techwif\techwif-favicon.png' %}" />
+{% endblock %}
 {% block content %}
 
 <div class="container">

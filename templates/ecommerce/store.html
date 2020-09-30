@@ -2,6 +2,10 @@
 {% load static %}
 {% load humanize %}
 {% block title %} Store | TechWif {% endblock %}
+{% block meta_extend %}
+    <meta name="description" content="Shop online on TechWif. Phones, tablets, computers, ebooks and so on." />
+	<meta property="og:image" content="{% static 'techwif\techwif-favicon.png' %}" />
+{% endblock %}
 {% block content %}
 {% include 'ecommerce/navbar_ecommerce.html' %}
 

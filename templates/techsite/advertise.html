@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %} Place Advert | TechWif {% endblock %}
+{% block meta_extend %}
+    <meta name="description" content="Place advert on TechWif and take your brand or business to the next level." />
+	<meta property="og:image" content="{% static 'techwif\techwif-favicon.png' %}" />
+{% endblock %}
 {% block content %}
 <div class="container">
     <div class="d-flex justify-content-center">

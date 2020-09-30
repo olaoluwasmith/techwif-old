@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 {% block title %} Jobs | TechWif {% endblock %}
+{% block meta_extend %}
+    <meta name="description" content="Latest job vacancies around the globe." />
+	<meta property="og:image" content="{% static 'techwif\techwif-favicon.png' %}" />
+{% endblock %}
 {% block content %}
 
 <div class="article">
