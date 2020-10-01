@@ -27,7 +27,7 @@
                             <a class="mr-2" href="{% url 'profile_view' forum.author.username %}">{{ forum.author }}</a>
                             <small class="text-muted">{{ forum.created_date }}</small>
                             <small class="text-muted"> | </small>
-                            <a href="{{ forum.section.get_absolute_url }}">{{ forum.section }}</a>
+                            <a href="{{ forum.section.get_absolute_url }}"><small>{{ forum.section }}</small></a>
                         </div>
                         <div>
                             <strong><a class="" href="{{ forum.get_absolute_url }}" class="btn btn-outline-secondary btn-sm btn-block" role="button">{{ forum.title|capfirst }}</a></strong>
