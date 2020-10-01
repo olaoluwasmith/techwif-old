@@ -51,7 +51,7 @@
                     <div class="column center">
                         <img id="featured" src="{{ product.imageURL }}" alt="">
                         <div id="slide-wrapper" class="mt-2">
-                            <i class="fa fa-chevron-left mr-2" id="slideLeft"></i>
+                            <i class="fa fa-chevron-left mr-2 ml-2" id="slideLeft"></i>
     
                             <div id="slider">
                                 {% for f in product.productimages_set.all %}
@@ -59,7 +59,7 @@
                                 {% endfor %}
                             </div>
     
-                            <i class="fa fa-chevron-right ml-2" id="slideRight"></i>
+                            <i class="fa fa-chevron-right mr-2 ml-2" id="slideRight"></i>
                         </div>
                     </div>
                 </div>
