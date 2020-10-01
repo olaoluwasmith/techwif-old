@@ -205,7 +205,7 @@ class Forum(models.Model):
     favourite = models.ManyToManyField(User, related_name='favourite', blank=True)
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
-    tags = TaggableManager()
+    tags = TaggableManager(blank=True)
 
     class Meta:
         ordering = ['-created_date']
