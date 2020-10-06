@@ -20,8 +20,27 @@
     <hr>
 
     <img src="{% static 'images/ecommerce.png' %}" alt="" class="center mt-4 mb-4" width="100%" height="100%">
+
+    <div class="row center">
+        <div class="col-6 col-md-4 col-lg-3 mt-2">
+            <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=qf_sp_asin_til&ad_type=product_link&tracking_id=techwif12-20&marketplace=amazon&region=US&placement=B088N774B7&asins=B088N774B7&linkId=7cdd96f8d5505034a5872c2f93f08f80&show_border=false&link_opens_in_new_window=false&price_color=333333&title_color=0066C0&bg_color=FFFFFF">
+            </iframe>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3 mt-2">
+            <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=tf_til&ad_type=product_link&tracking_id=techwif12-20&marketplace=amazon&region=US&placement=B08BRS78G7&asins=B08BRS78G7&linkId=dd5ac2733a2153cf43c1c6412a0927a3&show_border=false&link_opens_in_new_window=false&price_color=333333&title_color=0066c0&bg_color=ffffff">
+            </iframe>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3 mt-2">
+            <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=tf_til&ad_type=product_link&tracking_id=techwif12-20&marketplace=amazon&region=US&placement=B08HSJZZGR&asins=B08HSJZZGR&linkId=d922dc95fdc8d14703dd3eb0ae05bdcc&show_border=false&link_opens_in_new_window=false&price_color=333333&title_color=0066c0&bg_color=ffffff">
+            </iframe>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3 mt-2">
+            <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=tf_til&ad_type=product_link&tracking_id=techwif12-20&marketplace=amazon&region=US&placement=B076DWKD5B&asins=B076DWKD5B&linkId=ad653fc5bebdb87648d9c86f296b406d&show_border=false&link_opens_in_new_window=false&price_color=333333&title_color=0066c0&bg_color=ffffff">
+            </iframe>
+        </div>
+    </div>
     
-    <div class="row infinite-container">
+    <div class="row center infinite-container">
         {% for product in products %}
         <div class="col-6 col-md-4 col-lg-3 mt-2 infinite-item">
             <a href="{{ product.get_absolute_url }}"><img class="thumbnail" src="{{ product.imageURL }}" alt=""></a>
@@ -47,6 +66,27 @@
     
     <div class="loading" style="display: none;">
         Loading...
+    </div>
+</div>
+
+<div class="container">
+    <div class="row center">
+        <div class="col-6 col-md-4 col-lg-3 mt-2">
+            <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=tf_til&ad_type=product_link&tracking_id=techwif12-20&marketplace=amazon&region=US&placement=B07NK53QN7&asins=B07NK53QN7&linkId=40cbdadfb93b5bcd6954d71f212fe377&show_border=false&link_opens_in_new_window=false&price_color=333333&title_color=0066c0&bg_color=ffffff">
+            </iframe>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3 mt-2">
+            <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=tf_til&ad_type=product_link&tracking_id=techwif12-20&marketplace=amazon&region=US&placement=B07S4PH6S8&asins=B07S4PH6S8&linkId=70fe472c522f90afd1c34f30b419b04c&show_border=false&link_opens_in_new_window=false&price_color=333333&title_color=0066c0&bg_color=ffffff">
+            </iframe>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3 mt-2">
+            <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=tf_til&ad_type=product_link&tracking_id=techwif12-20&marketplace=amazon&region=US&placement=B07ZPYS51Z&asins=B07ZPYS51Z&linkId=a819b6f74bfead34b30ebc08d417f889&show_border=false&link_opens_in_new_window=false&price_color=333333&title_color=0066c0&bg_color=ffffff">
+            </iframe>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3 mt-2">
+            <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=tf_til&ad_type=product_link&tracking_id=techwif12-20&marketplace=amazon&region=US&placement=B0841P328G&asins=B0841P328G&linkId=09b0dac673b361ac079c81dbb31099c8&show_border=false&link_opens_in_new_window=false&price_color=333333&title_color=0066c0&bg_color=ffffff">
+            </iframe>
+        </div>
     </div>
 </div>
 
