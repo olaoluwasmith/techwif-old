@@ -266,3 +266,9 @@ class StoreCategory(generic.ListView):
         context = super(StoreCategory, self).get_context_data(*args, **kwargs)
         context['cat_menu'] = cat_menu
         return context
+
+def AmazonProducts(request):
+    cat_menu_list = ProductCategory.objects.all()
+
+    context = {'cat_menu_list': cat_menu_list}
+    return render(request, 'ecommerce/amazon_products.html', context)

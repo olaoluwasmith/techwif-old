@@ -11,8 +11,9 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 {% for item in cat_menu_list %}
-                    <a class="dropdown-item btn btn-secondary btn-block tf mb-2" role="button" href="{% url 'product_category' item|slugify %}">{{ item }}</a>
+                    <a class="dropdown-item btn btn-secondary btn-block tf" role="button" href="{% url 'product_category' item|slugify %}">{{ item }}</a>
                 {% endfor %}
+                <a class="dropdown-item btn btn-secondary btn-block tf mb-2" role="button" href="{% url 'amazon_products' %}">Amazon Products</a>
             </div>
         </div>
         <a href="{% url 'cart' %}">
