@@ -268,7 +268,9 @@ class StoreCategory(generic.ListView):
         return context
 
 def AmazonProducts(request):
+    data = cartData(request)
+    cartItems = data['cartItems']
     cat_menu_list = ProductCategory.objects.all()
 
-    context = {'cat_menu_list': cat_menu_list}
+    context = {'cartItems': cartItems, 'cat_menu_list': cat_menu_list}
     return render(request, 'ecommerce/amazon_products.html', context)
