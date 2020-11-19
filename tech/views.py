@@ -276,10 +276,16 @@ class ReviewDeleteView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMi
         return reverse('review_list')
 
 
+class LatestUpdates(generic.ListView):
+    model = Blog
+    template_name = 'techsite/blog/latest.html'
+    paginate_by = 12 
+
+
 class BlogListView(generic.ListView):
     model = Blog
     template_name = 'base.html'
-    paginate_by = 12 
+    paginate_by = 3 
 
 def BlogDetailView(request, pk, slug):
     blog = get_object_or_404(Blog, pk=pk, slug=slug)
@@ -571,6 +577,7 @@ class ForumDeleteView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMix
         messages.warning(self.request, 'Post deleted successfully.')
         return reverse('forum_list')
 
+
 class ForumCommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, generic.DeleteView):
     model = ForumComment
     template_name = 'techsite/forum/comment_delete.html'
@@ -588,7 +595,7 @@ class ForumCommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, SuccessMes
         return reverse('forum_detail', kwargs={'slug': self.object.forum.slug, 'pk': self.object.forum.id})
 
 
-class ProfileView(LoginRequiredMixin, generic.DetailView, MultipleObjectMixin):
+class ProfileView(generic.DetailView, MultipleObjectMixin):
     model = Forum
     template_name = 'user/profile_view.html'
     paginate_by = 10
@@ -604,7 +611,6 @@ class ProfileView(LoginRequiredMixin, generic.DetailView, MultipleObjectMixin):
         object_list = Forum.objects.filter(author=user).order_by('-created_date')
         context = super(ProfileView, self).get_context_data(object_list=object_list, *args, **kwargs)
         return context  
-
 
 def about(request):
     return HttpResponse('about page')
