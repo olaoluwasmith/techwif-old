@@ -595,7 +595,7 @@ class ForumCommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, SuccessMes
         return reverse('forum_detail', kwargs={'slug': self.object.forum.slug, 'pk': self.object.forum.id})
 
 
-class ProfileView(generic.DetailView, MultipleObjectMixin):
+class ProfileView(LoginRequiredMixin, generic.DetailView, MultipleObjectMixin):
     model = Forum
     template_name = 'user/profile_view.html'
     paginate_by = 10
