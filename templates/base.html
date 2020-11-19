@@ -95,7 +95,7 @@
 		<div class="header-nav-bar" id="top-nav">
 			<a href="{% url 'homepage' %}" class="left pr-4 pl-2"><img height="40" width="40" src="{% static 'techwif\favicon-white.png' %}" alt=""></a>
 			<ul id="nav-mobile" class="right">
-				{% if user.is_authenticated and user.is_unanonymous %}
+				{% if user.is_authenticated or user.is_unanonymous %}
 					<li><a href="{% url 'profile_view' request.user %}" style="color: rgb(216, 207, 207);">@{{ request.user }}</a></li>
 					<li>
 						{% if unread_count %}
