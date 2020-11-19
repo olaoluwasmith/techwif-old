@@ -105,7 +105,8 @@
 						{% endif %}	
 					</li>
 					<li><a href="{% url 'logout' %}"  style="color: rgb(216, 207, 207);">Sign Out</a></li>
-				{% else %}
+				{% endif %}
+				% if user.is_unauthenticated or user.is_anonymous %}
 					<li><a href="{% url 'login' %}?next={{ request.get_full_path }}" style="color: rgb(216, 207, 207);">Sign In</a></li>
 					<li><a href="{% url 'register' %}" style="color: rgb(216, 207, 207);">Sign Up</a></li>
 				{% endif %}
