@@ -285,7 +285,7 @@ class LatestUpdates(generic.ListView):
 class BlogListView(generic.ListView):
     model = Blog
     template_name = 'base.html'
-    paginate_by = 3 
+    paginate_by = 4 
 
 def BlogDetailView(request, pk, slug):
     blog = get_object_or_404(Blog, pk=pk, slug=slug)
@@ -595,7 +595,7 @@ class ForumCommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, SuccessMes
         return reverse('forum_detail', kwargs={'slug': self.object.forum.slug, 'pk': self.object.forum.id})
 
 
-class ProfileView(LoginRequiredMixin, generic.DetailView, MultipleObjectMixin):
+class ProfileView(generic.DetailView, MultipleObjectMixin):
     model = Forum
     template_name = 'user/profile_view.html'
     paginate_by = 10
