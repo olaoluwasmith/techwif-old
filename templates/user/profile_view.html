@@ -68,7 +68,7 @@
                                 <div class="col-6">
                                     <img class="rounded-circle account-img mt-2" src="{{ user.profile.imageURL }}" width="150" height="150" alt="">
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-6">
                                     <div class="ml-3">
                                         {% if request.user == user %}
                                         <div class="center mt-2">
@@ -93,7 +93,7 @@
                                 {% if request.user == user %}
                                 <h6 class="account-heading">Username: {{ user.username }}</h6>
                                 {% endif %}
-                                <p class="text-secondary"><h6>Name: {{ user.profile.first_name }} {{ user.profile.last_name }}</h6></p>
+                                <p class="text-secondary"><h6>Full Name: {{ user.profile.first_name }} {{ user.profile.last_name }}</h6></p>
                                 <hr>
                                 <p class="text-secondary"><h6>Bio:</h6></p>
                                 <p class="text-secondary">{{ user.profile.bio|linebreaks|urlizetrunc:40 }}</p>
@@ -103,7 +103,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 p-0 m-2">
+            <div class="col-md-6 mt-2">
                 <div class="mb-2 mt-4">
                     <div class="infinite-container">
                         {% for forum in object_list %}
