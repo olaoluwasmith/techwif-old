@@ -90,38 +90,41 @@
 </head>
 
 <body>
-	<nav class="light-blue darken-4">
-		<div class="header-nav-bar" id="top-nav">
-			<a href="{% url 'homepage' %}" class="left pr-4 pl-2"><img height="40" width="40" src="{% static 'techwif\favicon-white.png' %}" alt=""></a>
-			<ul id="nav-mobile" class="right">
-				{% if user.is_authenticated %}
-					<li><a href="{% url 'profile_view' request.user %}" style="color: rgb(216, 207, 207);">@{{ request.user }}</a></li>
-					<li>
-						{% if unread_count %}
-							<a class="badge badge-danger mt-2 ml-2 mr-2" href="{% url 'notification_list' %}" >{{ unread_count }}</a>	
-						{% else %}
-							<a class="badge badge-danger mt-2 ml-2 mr-2" href="{% url 'notification_list' %}" > </a>
-						{% endif %}	
-					</li>
-					<li><a href="{% url 'logout' %}"  style="color: rgb(216, 207, 207);">Sign Out</a></li>
-				{% else %}
-					<li><a href="{% url 'login' %}?next={{ request.get_full_path }}" style="color: rgb(216, 207, 207);">Sign In</a></li>
-					<li><a href="{% url 'register' %}" style="color: rgb(216, 207, 207);">Sign Up</a></li>
-				{% endif %}
-			</ul>
-		</div>
-	</nav>
+	<div>
+		<nav class="light-blue darken-4">
+			<div class="header-nav-bar" id="top-nav">
+				<a href="{% url 'homepage' %}" class="left pr-4 pl-2"><img height="40" width="40" src="{% static 'techwif\favicon-white.png' %}" alt=""></a>
+				<ul id="nav-mobile" class="right">
+					{% if user.is_authenticated %}
+						<li><a href="{% url 'profile_view' request.user %}" style="color: rgb(216, 207, 207);">@{{ request.user }}</a></li>
+						<li>
+							{% if unread_count %}
+								<a class="badge badge-danger mt-2 ml-2 mr-2" href="{% url 'notification_list' %}" >{{ unread_count }}</a>	
+							{% else %}
+								<a class="badge badge-danger mt-2 ml-2 mr-2" href="{% url 'notification_list' %}" > </a>
+							{% endif %}	
+						</li>
+						<li><a href="{% url 'logout' %}"  style="color: rgb(216, 207, 207);">Sign Out</a></li>
+					{% else %}
+						<li><a href="{% url 'login' %}?next={{ request.get_full_path }}" style="color: rgb(216, 207, 207);">Sign In</a></li>
+						<li><a href="{% url 'register' %}" style="color: rgb(216, 207, 207);">Sign Up</a></li>
+					{% endif %}
+				</ul>
+			</div>
+		</nav>
 
-	<nav class="light-blue darken-3">
-		<div class="header-nav-bar">
-			<ul class="bottom-nav-list">
-				<li><a href="{% url 'service_list' %}">Services</a></li>
-				<li><a href="{% url 'latest_updates' %}">Latest</a></li>
-				<li><a href="{% url 'store' %}">Store</a></li>
-				<li><a href="{% url 'forum_list' %}">Forum</a></li>
-			</ul>
-		</div>
-	</nav>
+		<nav class="light-blue darken-3">
+			<div class="header-nav-bar">
+				<ul class="bottom-nav-list">
+					<li><a href="{% url 'service_list' %}">Services</a></li>
+					<li><a href="{% url 'latest_updates' %}">Latest</a></li>
+					<li><a href="{% url 'store' %}">Store</a></li>
+					<li><a href="{% url 'forum_list' %}">Forum</a></li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+	
 	{% include 'techsite/alerts.html' %}
 	{% block content %}
 	<script data-ad-client="ca-pub-4934423132077353" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
