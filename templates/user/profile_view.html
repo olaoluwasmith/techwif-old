@@ -49,13 +49,13 @@
 	<nav class="light-blue darken-3">
 		<div class="header-nav-bar">
 			<ul class="bottom-nav-list">
-				<li><a href="{% url 'service_list' %}">Services</a></li>
-				<li><a href="{% url 'latest_updates' %}">Latest</a></li>
-				<li><a href="{% url 'store' %}">Store</a></li>
-				<li><a href="{% url 'forum_list' %}">Forum</a></li>
+				<li><a href="{% url 'service_list' %}" style="color: rgb(242, 235, 235);">SERVICES</a></li>
+				<li><a href="{% url 'latest_updates' %}" style="color: rgb(242, 235, 235);">LATEST</a></li>
+				<li><a href="{% url 'forum_list' %}" style="color: rgb(242, 235, 235);">FORUM</a></li>
 			</ul>
 		</div>
 	</nav>
+	
 	{% include 'techsite/alerts.html' %}
 	{% block content %}
 	<div class="container">

@@ -209,73 +209,6 @@ class ServiceDeleteView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageM
         return reverse('service_list')
 
 
-class ReviewListView(generic.ListView):
-    model = Review
-    template_name = 'techsite/review/review_list.html'
-    paginate_by = 12
-
-def ReviewDetailView(request, pk, slug):
-    review = get_object_or_404(Review, pk=pk, slug=slug)
-    review_related = review.tags.similar_objects()[:6]
-
-    context = {
-        'review': review,
-        'review_related': review_related,
-    }
-
-    return render(request, 'techsite/review/review_detail.html', context)
-
-
-@method_decorator(admin_only, name='dispatch')
-class ReviewCreateView(LoginRequiredMixin, SuccessMessageMixin, generic.CreateView):
-    model = Review
-    template_name = 'techsite/review/review_form.html'
-    form_class = ReviewForm
-    slug_field = 'slug'
-    query_pk_and_slug = True
-    success_message = 'Post created successfully.'
-
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
-
-
-class ReviewUpdateView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, generic.UpdateView):
-    model = Review
-    template_name = 'techsite/review/review_form.html'
-    fields = ['title', 'image', 'content', 'tags']
-    slug_field = 'slug'
-    query_pk_and_slug = True
-    success_message = 'Post updated successfully.'
-
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
-
-    def test_func(self):
-        review = self.get_object()
-        if self.request.user == review.author:
-            return True
-        return False
-
-    
-class ReviewDeleteView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, generic.DeleteView):
-    model = Review
-    template_name = 'techsite/review/review_delete.html'
-    slug_field = 'slug'
-    query_pk_and_slug = True
-
-    def test_func(self):
-        review = self.get_object()
-        if self.request.user == review.author:
-            return True
-        return False
-
-    def get_success_url(self):
-        messages.warning(self.request, 'Post deleted successfully.')
-        return reverse('review_list')
-
-
 class LatestUpdates(generic.ListView):
     model = Blog
     template_name = 'techsite/blog/latest.html'
@@ -614,27 +547,3 @@ class ProfileView(generic.DetailView, MultipleObjectMixin):
 
 def about(request):
     return HttpResponse('about page')
-
-
-"""
-@receiver(post_save, sender=User)
-def send_welcome_email(sender, instance, **kwargs):
-
-    subject = 'Welcome to Techwif'
-    from_email = 'no-reply@techwif.com'
-    to = instance.email
-    plaintext = loader.get_template('user/welcome.txt')
-    html = loader.get_template('user/welcome.html')
-
-    d = {'username': instance.username}
-
-    text_content = plaintext.render(d)
-    html_content = html.render(d)
-
-    try:
-        msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
-        msg.attach_alternative(html_content, 'text/html')
-        msg.send()
-    except BadHeaderError:
-        return HttpResponse('Invalid header found.')
-"""

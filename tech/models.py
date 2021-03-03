@@ -5,8 +5,6 @@ from django.urls import reverse
 from django.utils import timezone
 from taggit.managers import TaggableManager
 from PIL import Image
-import random
-import string
 
 User = get_user_model()
 
@@ -97,49 +95,6 @@ class Blog(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         return super(Blog, self).save(*args, **kwargs)
-
-
-class Review(models.Model):
-    title = models.CharField(max_length=200)
-    slug = models.SlugField(max_length=200, null=False)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = models.ImageField(blank=True, max_length=500)
-    content = models.TextField()
-    created_date = models.DateTimeField(auto_now_add=True)
-    modified_date = models.DateTimeField(auto_now=True)
-    tags = TaggableManager(blank=True)
-
-    class Meta:
-        ordering = ['-created_date']
-
-    def __str__(self):
-        return self.title
-
-    def get_absolute_url(self):
-        return reverse('review_detail', kwargs={'pk': self.id, 'slug': self.slug})
-
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-
-        img = Image.open(self.image)
-
-        if img.height > 300 or img.width > 300:
-            output_size = (300, 300)
-            img.thumbnail(output_size)
-            img.save(self.image)
-
-    @property
-    def imageURL(self):
-        try:
-            url = self.image.url
-        except:
-            url = ''
-        return url
-
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.title)
-        return super().save(*args, **kwargs)
 
 
 class Service(models.Model):

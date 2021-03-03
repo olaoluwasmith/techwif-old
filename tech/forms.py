@@ -67,9 +67,3 @@ class ServiceForm(forms.ModelForm):
     class Meta:
         model = Service
         fields = ['title', 'image', 'content']
-
-
-class ReviewForm(forms.ModelForm):
-    class Meta:
-        model = Review
-        fields = ['title', 'image', 'content', 'tags']

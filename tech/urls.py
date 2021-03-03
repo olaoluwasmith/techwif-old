@@ -38,12 +38,6 @@ urlpatterns = [
     path('services/<slug:slug>/<int:pk>/update/', ServiceUpdateView.as_view(), name='service_update'),
     path('services/<slug:slug>/<int:pk>/delete/', ServiceDeleteView.as_view(), name='service_delete'),
     path('service_form/', ServiceCreateView.as_view(), name='service_form'),
-
-#    path('jobs/', ReviewListView.as_view(), name='review_list'),
-#    path('jobs/<slug:slug>/<int:pk>/', views.ReviewDetailView, name='review_detail'),
-#    path('jobs/<slug:slug>/<int:pk>/update/', ReviewUpdateView.as_view(), name='review_update'),
-#    path('jobs/<slug:slug>/<int:pk>/delete/', ReviewDeleteView.as_view(), name='review_delete'),
-#    path('job_form/', ReviewCreateView.as_view(), name='review_form'),
     
     path('articles/', LatestUpdates.as_view(), name='latest_updates'),
     path('articles/<slug:slug>/<int:pk>/', views.BlogDetailView, name='article_detail'),

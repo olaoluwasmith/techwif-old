@@ -13,8 +13,7 @@
 		{% block title %} TechWif | Unraveling the world of technology {% endblock %}
 	</title>
 	<meta name="description" content="We give tech updates and render tech related services such as web development, SEO and so on.
-		A fast-growing tech community where you learn from and share with others.
-		Shop online on TechWif - Ebooks, phones and tablets, computing etc." />
+		A fast-growing tech community where you learn from and share with others." />
 	{% block meta_extend %}
 	<meta property="og:image" content="{% static 'techwif\techwif-favicon.png' %}" />
 	{% endblock %}
@@ -39,63 +38,13 @@
 
   		gtag('config', 'UA-179482776-1');
 	</script>
-
-	<script type="text/javascript">
-		var user = '{{ request.user }}'
-
-		function getToken(name) {
-			var cookieValue = null;
-			if (document.cookie && document.cookie !== '') {
-				var cookies = document.cookie.split(';');
-				for (var i = 0; i < cookies.length; i++) {
-					var cookie = cookies[i].trim();
-					// Does this cookie string begin with the name we want?
-					if (cookie.substring(0, name.length + 1) === (name + '=')) {
-						cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-						break;
-					}
-				}
-			}
-			return cookieValue;
-		}
-		var csrftoken = getToken('csrftoken')
-		
-
-		function getCookie(name) {
-			// Split cookie string and get all individual name=value pairs in an array
-			var cookieArr = document.cookie.split(";");
-			// Loop through the array elements
-			for (var i = 0; i < cookieArr.length; i++) {
-				var cookiePair = cookieArr[i].split("=");
-				/* Remove whitespace at the beginning of the cookie name and compare it
-				with the given string */
-				if(name == cookiePair[0].trim()) {
-					// Decode the cookie value and return
-					return decodeURIComponent(cookiePair[1]);
-				}
-			}
-			// Return null if not found
-			return null;
-		}
-
-		var cart = JSON.parse(getCookie('cart'))
-		if(cart == undefined){
-			cart = {}
-			console.log('Cart was created!');
-			document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
-		}
-		console.log('Cart:', cart);
-		
-	</script>
 </head>
 
 <body>
 	<div>
 		<nav class="light-blue darken-4">
 			<div class="header-nav-bar" id="top-nav">
-				<a href="{% url 'homepage' %}" class="left pr-4 pl-2" style="color: white;"><img height="40" width="40" src="{% static 'techwif\favicon-white.png' %}" alt="">
-					TechWif
-				</a>
+				<a href="{% url 'homepage' %}" class="left pr-4 pl-2" style="color: white;"><img height="40" width="40" src="{% static 'techwif\favicon-white.png' %}" alt=""></a>
 				<ul id="nav-mobile" class="right">
 					{% if user.is_authenticated %}
 						<li><a href="{% url 'profile_view' request.user %}" style="color: rgb(216, 207, 207);">@{{ request.user }}</a></li>
@@ -133,10 +82,10 @@
 	<div class="container">
 		<div class="row mt-4">
 			<div class="col-md-8 mt-2">
-				<div class="center">
-					<h4>Welcome to TechWif!</h4>
-					<hr>
-					<h5 class="mb-3">We render optimum services on Web Development, Cloud Computing and Database Management, Search Engine Optimization, Civil Engineering Works and Design.</h5>
+				<div class="center" style="background-color: black; border-radius: 5px; padding: 10px;">
+					<h4 style="color: cornsilk;">Welcome to TechWif</h4>
+					<hr style="background-color: rgb(73, 73, 73);">
+					<h5 class="mb-3" style="color: cornsilk;">We render optimum services on Web Development, Cloud Computing and Database Management, Search Engine Optimization, Civil Engineering Works and Design.</h5>
 					<a class="btn btn-dark btn-block btn-sm mt-2" href="{% url 'service_list' %}">Learn more...</a>
 				</div>
 			</div>

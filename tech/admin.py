@@ -19,13 +19,6 @@ class BlogAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title', )}
 
 
-class ReviewAdmin(admin.ModelAdmin):
-    list_display = ('title', 'created_date', 'modified_date')
-    list_filter = ('created_date',)
-    search_fields = ['title', 'content']
-    prepopulated_fields = {'slug': ('title', )}
-
-
 class ServiceAdmin(admin.ModelAdmin):
     list_display = ('title', 'created_date', 'modified_date')
     list_filter = ('created_date',)
@@ -44,7 +37,6 @@ admin.site.register(Profile)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Section, SectionAdmin)
 admin.site.register(Blog, BlogAdmin)
-admin.site.register(Review, ReviewAdmin)
 admin.site.register(Service, ServiceAdmin)
 admin.site.register(Forum, ForumAdmin)
 admin.site.register(ForumComment)

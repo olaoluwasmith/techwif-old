@@ -24,17 +24,10 @@ class ForumSitemap(Sitemap):
         return Forum.objects.all()
 
 
-class ReviewSitemap(Sitemap):
-    changefreq = "daily"
-    priority = 1.0
-    def items(self):
-        return Review.objects.all()
-
 
 SITEMAPS = {
     'static': StaticViewSitemap,
     'blog': BlogSitemap,
     'forum': ForumSitemap,
-    'review': ReviewSitemap
 }
 
