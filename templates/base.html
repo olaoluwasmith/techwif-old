@@ -12,8 +12,7 @@
 	<title>
 		{% block title %} TechWif | Unraveling the world of technology {% endblock %}
 	</title>
-	<meta name="description" content="We give tech updates and render tech related services such as web development, SEO and so on.
-		A fast-growing tech community where you learn from and share with others." />
+	<meta name="description" content="website and web app developments, structural designs, articles, forum..." />
 	{% block meta_extend %}
 	<meta property="og:image" content="{% static 'techwif\techwif-favicon.png' %}" />
 	{% endblock %}
@@ -43,9 +42,9 @@
 <body>
 	<div>
 		<nav class="light-blue darken-4">
-			<div class="header-nav-bar" id="top-nav">
+			<div class="" id="">
 				<a href="{% url 'homepage' %}" class="left pr-4 pl-2" style="color: white;"><img height="40" width="40" src="{% static 'techwif\favicon-white.png' %}" alt=""></a>
-				<ul id="nav-mobile" class="right">
+				<ul id="" class="right">
 					{% if user.is_authenticated %}
 						<li><a href="{% url 'profile_view' request.user %}" style="color: rgb(216, 207, 207);">@{{ request.user }}</a></li>
 						<li>
@@ -60,16 +59,7 @@
 						<li><a href="{% url 'login' %}?next={{ request.get_full_path }}" style="color: rgb(216, 207, 207);">Sign In</a></li>
 						<li><a href="{% url 'register' %}" style="color: rgb(216, 207, 207);">Sign Up</a></li>
 					{% endif %}
-				</ul>
-			</div>
-		</nav>
-
-		<nav class="light-blue darken-3">
-			<div class="header-nav-bar">
-				<ul class="bottom-nav-list">
-					<li><a href="{% url 'service_list' %}" style="color: rgb(242, 235, 235);">SERVICES</a></li>
-					<li><a href="{% url 'latest_updates' %}" style="color: rgb(242, 235, 235);">LATEST</a></li>
-					<li><a href="{% url 'forum_list' %}" style="color: rgb(242, 235, 235);">FORUM</a></li>
+					<li><a href="{% url 'forum_list' %}" style="color: rgb(242, 235, 235);">Forum</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -80,14 +70,22 @@
 	<script data-ad-client="ca-pub-4934423132077353" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	
 	<div class="container">
-		<div class="row mt-4">
+		<h2 class="mt-3 center" style="color: rgb(67, 66, 64); font-family: serif; font-style: italic;">TechWif</h2>
+
+		<div class="row mt-3">
 			<div class="col-md-8 mt-2">
-				<div class="center" style="background-color: black; border-radius: 5px; padding: 10px;">
-					<h4 style="color: cornsilk;">Welcome to TechWif</h4>
+				<div class="center" style="background-color: rgb(32, 32, 32); border-radius: 5px; padding: 10px;">
+					<h5 class="mb-3" style="color: rgb(165, 164, 160);">We build custom and responsive websites and web applications using modern technologies - ecommerce, schools, brands, landing pages, blogs..s.</h5>
 					<hr style="background-color: rgb(73, 73, 73);">
-					<h5 class="mb-3" style="color: cornsilk;">We render optimum services on Web Development, Cloud Computing and Database Management, Search Engine Optimization, Civil Engineering Works and Design.</h5>
-					<a class="btn btn-dark btn-block btn-sm mt-2" href="{% url 'service_list' %}">Learn more...</a>
+					<h5 class="mb-3" style="color: rgb(165, 164, 160);">Let's create structural designs for your building projects that satisfy safety and economic requirements.</h5>
+					<a class="btn btn-dark btn-block btn-sm mt-2" href="{% url 'contact_us' %}">Contact us now...</a>
 				</div>
+			</div>
+			<div class="col-md-4 mt-2 pl-3 pr-3 pt-2">
+				<form class="form-inline" action="{% url 'latest_updates' %}" method="GET">
+					<input class="" type="text" placeholder="Search articles" aria-label="Search" name="q" value="{{ request.GET.q }}">
+					<button class="btn btn-secondary tf" type="submit">Search</button>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -121,19 +119,6 @@
 			</div>
 		</div>
 	</div>
-	
-	<!--
-	<div class="container" style="text-align: center;">
-		{% if is_paginated %}
-			{% if page_obj.has_previous %}
-				<a class="btn btn-outline-dark mb-4 mr-2 tf" href="?page={{ page_obj.previous_page_number }}">Previous Page</a>
-			{% endif %}
-			{% if page_obj.has_next %}
-				<a class="btn btn-outline-dark mb-4 ml-2 tf" href="?page={{ page_obj.next_page_number }}">Next Page</a>
-			{% endif %}
-		{% endif %}
-	</div>
-	-->
 
 	<div class="container">
 		<a class="btn btn-dark btn-block" href="{% url 'latest_updates' %}">Go To Latest Updates</a>
@@ -186,13 +171,7 @@
 				</ul>		
 			</div>
 		</div>
-		<div class="center">
-			<a class="btn btn-outline-secondary mb-4 pr-4 pl-4"
-				style="color: rgb(151, 149, 149);" 
-				href="https://930c065c.sibforms.com/serve/MUIEAA0N92_u4fO90hsu-aBV88E-NsBxueCq70ko0DsDuvQsPygSOioXFIAR5VYrXvhnTSmTL_VlCVxekl4fPsHl16mealpuuB9YKANb1cyBhxxeyyqDfomd-y8TmpuwSvjqfdiD16__ycrQaqQclz7ICKdvSvClX0HfN35P8Zx_zdlef5U4q3yzCe22NJsBwj5frE0LazI2VxPJ">
-				SUBSCRIBE
-			</a>
-		</div>
+		
 		<div class="back-to-top">
 			<button type="button" class="btn btn-outline-dark btn-sm btn-block mb-" 
 				onclick="topFunction()" id="myBtn"

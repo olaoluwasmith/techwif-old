@@ -214,11 +214,31 @@ class LatestUpdates(generic.ListView):
     template_name = 'techsite/blog/latest.html'
     paginate_by = 12 
 
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        if query:
+            object_list = self.model.objects.filter(
+                Q(title__icontains=query)
+                )
+        else:
+            object_list =  self.model.objects.all()
+        return object_list
+
 
 class BlogListView(generic.ListView):
     model = Blog
     template_name = 'base.html'
     paginate_by = 4 
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        if query:
+            object_list = self.model.objects.filter(
+                Q(title__icontains=query)
+                )
+        else:
+            object_list =  self.model.objects.all()
+        return object_list
 
 def BlogDetailView(request, pk, slug):
     blog = get_object_or_404(Blog, pk=pk, slug=slug)

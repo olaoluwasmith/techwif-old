@@ -5,7 +5,7 @@
 <div class="container">
     <div class="mt-4">
         <form class="form-inline" action="{% url 'forum_list' %}" method="GET">
-            <input class="" type="text" placeholder="Search posts" aria-label="Search" name="q" value="{{ request.GET.q }}">
+            <input class="" type="text" placeholder="Search forum" aria-label="Search" name="q" value="{{ request.GET.q }}">
             <button class="btn btn-secondary tf" type="submit">Search</button>
         </form>
     </div>

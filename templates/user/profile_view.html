@@ -45,16 +45,6 @@
 			<span id="nav-mobile" class="right pr-4 pl-2" style="color: rgb(216, 207, 207);">@{{ view.kwargs.username }}'s profile</span>
 		</div>
 	</nav>
-
-	<nav class="light-blue darken-3">
-		<div class="header-nav-bar">
-			<ul class="bottom-nav-list">
-				<li><a href="{% url 'service_list' %}" style="color: rgb(242, 235, 235);">SERVICES</a></li>
-				<li><a href="{% url 'latest_updates' %}" style="color: rgb(242, 235, 235);">LATEST</a></li>
-				<li><a href="{% url 'forum_list' %}" style="color: rgb(242, 235, 235);">FORUM</a></li>
-			</ul>
-		</div>
-	</nav>
 	
 	{% include 'techsite/alerts.html' %}
 	{% block content %}
