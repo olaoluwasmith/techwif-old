@@ -3,20 +3,22 @@
 {% block content %}
 <script data-ad-client="ca-pub-4934423132077353" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
-<div class="container">
+<div class="container p-0">
     <div class="mt-2 pl-3 pr-3 pt-2">
         <form class="form-inline" action="{% url 'latest_updates' %}" method="GET">
             <input class="" type="text" placeholder="Search articles" aria-label="Search" name="q" value="{{ request.GET.q }}">
             <button class="btn btn-secondary tf" type="submit">Search</button>
         </form>
     </div>
+
+    <h4 class="sub-heading mt-4" id="main-articles">{{ category.category }}</h4>
+
 </div>
-<h4 class="sub-heading mt-4" id="main-articles">{{ category.category }}</h4>
 <div class="article">
     <div class="container">
         <div class="row mt-2">
             {% for blogs in blog %}
-            <div class="col-md-4 col-lg-3">
+            <div class="col-md-4 col-lg-3 mt-2">
                 <a href="{{ blogs.get_absolute_url }}"><img class="thumbnail" src="{{ blogs.imageURL }}" alt=""></a>
                 <div class="box-element product">
                     <h6><strong><a href="{{ blogs.get_absolute_url }}">{{ blogs.title }}</a></strong></h6>
