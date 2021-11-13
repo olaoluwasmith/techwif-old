@@ -46,7 +46,7 @@
 				<a href="{% url 'homepage' %}" class="left pr-4 pl-2" style="color: white;"><img height="40" width="40" src="{% static 'techwif\favicon-white.png' %}" alt=""></a>
 				<ul id="" class="right">
 					{% if user.is_authenticated %}
-						<li><a href="{% url 'profile_view' request.user %}" style="color: rgb(216, 207, 207);">@{{ request.user }}</a></li>
+						<li><a href="{% url 'profile_view' request.user %}" style="color: rgb(216, 207, 207);"><i class="fab fa-user fa-lg"></i></a></li>
 						<li>
 							{% if unread_count %}
 								<a class="badge badge-danger mt-2 ml-2 mr-2" href="{% url 'notification_list' %}" >{{ unread_count }}</a>	
