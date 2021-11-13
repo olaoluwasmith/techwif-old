@@ -181,7 +181,6 @@ DJANGO_NOTIFICATIONS_CONFIG = { 'USE_JSONFIELD': True }
 
 # S3 BUCKET SET UP
 
-"""
 DEFAULT_FILE_STORAGE = 'techsite.custom_storages.MediaStorage'
 AWS_ACCESS_KEY_ID = os.environ['aws_access_key_id']
 AWS_SECRET_ACCESS_KEY = os.environ['aws_secret_access_key']
@@ -192,4 +191,3 @@ AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 PUBLIC_MEDIA_LOCATION = 'media'
 MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
-"""
