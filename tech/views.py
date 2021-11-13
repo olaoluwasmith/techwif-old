@@ -128,6 +128,9 @@ def terms_and_conditions(request):
 def advertise(request):
     return render(request, 'techsite/advertise.html')
 
+def about(request):
+    return render(request, 'techsite/about.html')
+
 def contact_us(request):
     if request.method == 'GET':
         form = ContactForm()
@@ -145,7 +148,7 @@ def contact_us(request):
             return redirect('contact_us')
     return render(request, 'techsite/contact_us.html', {'form': form})
 
-
+"""
 class ServiceListView(generic.ListView):
     model = Service
     template_name = 'techsite/service/service_list.html'
@@ -207,7 +210,7 @@ class ServiceDeleteView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageM
     def get_success_url(self):
         messages.warning(self.request, 'Post deleted successfully.')
         return reverse('service_list')
-
+"""
 
 class LatestUpdates(generic.ListView):
     model = Blog
@@ -565,5 +568,3 @@ class ProfileView(generic.DetailView, MultipleObjectMixin):
         context = super(ProfileView, self).get_context_data(object_list=object_list, *args, **kwargs)
         return context  
 
-def about(request):
-    return HttpResponse('about page')

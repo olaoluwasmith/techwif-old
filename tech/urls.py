@@ -33,11 +33,11 @@ urlpatterns = [
     path('contact_us/', views.contact_us, name='contact_us'),
     path('about/', views.about, name='about'),
 
-    path('services/', ServiceListView.as_view(), name='service_list'),
-    path('services/<slug:slug>/<int:pk>/', ServiceDetailView.as_view(), name='service_detail'),
-    path('services/<slug:slug>/<int:pk>/update/', ServiceUpdateView.as_view(), name='service_update'),
-    path('services/<slug:slug>/<int:pk>/delete/', ServiceDeleteView.as_view(), name='service_delete'),
-    path('service_form/', ServiceCreateView.as_view(), name='service_form'),
+    #path('services/', ServiceListView.as_view(), name='service_list'),
+    #path('services/<slug:slug>/<int:pk>/', ServiceDetailView.as_view(), name='service_detail'),
+    #path('services/<slug:slug>/<int:pk>/update/', ServiceUpdateView.as_view(), name='service_update'),
+    #path('services/<slug:slug>/<int:pk>/delete/', ServiceDeleteView.as_view(), name='service_delete'),
+    #path('service_form/', ServiceCreateView.as_view(), name='service_form'),
     
     path('articles/', LatestUpdates.as_view(), name='latest_updates'),
     path('articles/<slug:slug>/<int:pk>/', views.BlogDetailView, name='article_detail'),
