@@ -141,7 +141,7 @@ def contact_us(request):
             from_email = form.cleaned_data['from_email']
             message = form.cleaned_data['message']
             try:
-                send_mail(subject, message, from_email, ['olaoluwasamsmith@gmail.com'])
+                send_mail(subject, message, from_email, ['techwifofficial@gmail.com'])
                 messages.success(request, 'Message sent successfully. You will receive a response as soon possible.')
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
@@ -231,7 +231,7 @@ class LatestUpdates(generic.ListView):
 class BlogListView(generic.ListView):
     model = Blog
     template_name = 'base.html'
-    paginate_by = 4 
+    paginate_by = 8 
 
     def get_queryset(self):
         query = self.request.GET.get('q')
