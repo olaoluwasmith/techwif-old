@@ -265,11 +265,6 @@ body {
 .service-card {
 	background-color: rgb(32, 32, 32);
 	min-height: 100px;
-	padding: 10px;
-	margin: 10px;
-	color: whitesmoke;
-}
-
-.service-card h6 {
 	color: white;
 }
+
