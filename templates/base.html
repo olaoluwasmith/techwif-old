@@ -135,8 +135,8 @@
 		<div class="container">
 			<div class="row mt-2">
 				{% for blog in object_list %}
-				<div class="col-md-6 col-lg-3 mt-2">
-					<a href="{{ blog.get_absolute_url }}"><img class="thumbnail w-100" src="{{ blog.imageURL }}" alt=""></a>
+				<div class="card col-md-6 col-lg-3 mt-2">
+					<a href="{{ blog.get_absolute_url }}"><img height="200" class="thumbnail w-100 mb-2" src="{{ blog.imageURL }}" alt=""></a>
 					<div class="box-element product">
 						<h6><strong><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></strong></h6>
 						<hr>
