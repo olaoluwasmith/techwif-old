@@ -20,15 +20,11 @@
 	{% endblock %}
 	<link rel="icon" href="{% static 'techwif\techwif-favicon.png' %}" sizes="16x16 32x32" type="image/png">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
 	<link rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.1/css/materialize.min.css" />
-	<link rel="stylesheet" href="{% static 'css\materialize.min.css' %}" />
+	<link rel="stylesheet" href="{% static 'css\materialize.css' %}" />
 	<link rel="stylesheet" href="{% static 'css\materialize-social.css' %}" />
-	<link rel="stylesheet" href="{% static 'css\bootstrap.min.css' %}" />
 	<link rel="stylesheet" href="{% static 'css\bootstrap.css' %}" />
-	<link rel="stylesheet" href="{% static 'css\ecommerce.css' %}" />
 	<link rel="stylesheet" href="{% static 'css\base.css' %}" />
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
@@ -50,8 +46,8 @@
 <body>
 	<div>
 		<nav class="light-blue darken-4">
-			<div class="" id="">
-				<a href="{% url 'homepage' %}" class="left pr-4 pl-2" style="color: white;"><img height="40" width="40"
+			<div class="container p-0" id="">
+				<a href="{% url 'homepage' %}" class="left ps-1" style="color: white;"><img height="40" width="40"
 						src="{% static 'techwif\favicon-white.png' %}" alt=""></a>
 				<ul id="" class="right">
 					{% if user.is_authenticated %}
@@ -59,10 +55,10 @@
 								class="fas fa-user fa-sm"></i></a></li>
 					<li>
 						{% if unread_count %}
-						<a class="badge badge-danger mt-2 ml-2 mr-2" href="{% url 'notification_list' %}">{{
+						<a class="badge badge-danger mt-2 mx-2" href="{% url 'notification_list' %}">{{
 							unread_count }}</a>
 						{% else %}
-						<a class="badge badge-danger mt-2 ml-2 mr-2" href="{% url 'notification_list' %}"> </a>
+						<a class="badge badge-danger mt-2 mx-2" href="{% url 'notification_list' %}"> </a>
 						{% endif %}
 					</li>
 					<li><a href="{% url 'logout' %}" style="color: rgb(216, 207, 207);">Sign Out</a></li>
@@ -85,8 +81,8 @@
 			<div class="center mt-4" id="brand-name">
 				<h1 class="mt-2 center" style="color: rgb(245, 242, 237); font-family: serif; font-style: italic;">
 					TechWif</h1>
-				<h5 class="mb-3" style="color: rgb(165, 164, 160);">~ Unraveling the world of technology ~</h5>
-				<a class="btn btn-outline-danger btn-sm mt-2 mb-2 about-us" href="{% url 'about' %}">ABOUT US</a>
+				<h4 class="mb-3" style="color: rgb(165, 164, 160);">Unraveling the world of technology</h4>
+				<a class="btn btn-outline-danger p-2 align-items-center btn-sm my-2 about-us" href="{% url 'about' %}">About Us</a>
 			</div>
 		</div>
 	</div>
@@ -95,32 +91,41 @@
 		<h2 class="sub-heading mt-4" id="main-articles">Our Services &eqslantgtr;</h2>
 	</div>
 
-	<div class="container pr-4 pl-4">
+	<div class="container">
 		<div class="row service-card">
 			<div class="col-md-6 col-lg-6">
-				<h6 style="color: rgb(165, 164, 160);"><strong>Web Solutions</strong></h6>
-				<p>We build custom and responsive web applications - personal, brand, ecommerce, landing pages,
+				<h5 style="color: rgb(165, 164, 160);"><strong>UI/UX Design</strong></h5>
+				<p>We create usable, equitable, enjoyable and useful designs that satisfy both the
+					needs of users, products and clients.</p>
+			</div>
+			<div class="col-md-6 col-lg-6">
+				<h5 style="color: rgb(165, 164, 160);"><strong>Web Development</strong></h5>
+				<p>We build scalable and responsive web applications - personal, brand, ecommerce, landing pages,
 					schools and other web solutions.</p>
 			</div>
 			<div class="col-md-6 col-lg-6">
-				<h6 style="color: rgb(165, 164, 160);"><strong>Architectural Design</strong></h6>
+				<h5 style="color: rgb(165, 164, 160);"><strong>Architectural Design</strong></h5>
 				<p>We create architectural drawings, builds and supervises your project to satisfaction.</p>
 			</div>
 			<div class="col-md-6 col-lg-6">
-				<h6 style="color: rgb(165, 164, 160);"><strong>Civil/Structural Design and Analysis</strong></h6>
-				<p>We create structural designs for your building projects, road designs etc, that meet safety, economic and aesthetic
+				<h5 style="color: rgb(165, 164, 160);"><strong>Civil/Structural Design</strong></h5>
+				<p>We create structural designs for your building projects that meet safety, economic and aesthetic
 					requirements.</p>
 			</div>
 			<div class="col-md-6 col-lg-6">
-				<h6 style="color: rgb(165, 164, 160);"><strong>Training</strong></h6>
-				<p>At TechWif Academy, we give trainings and bootcamps on programming, coding, designs... Check back
-					for updates.</p>
+				<h5 style="color: rgb(165, 164, 160);"><strong>Civil/Infrastructure Design</strong></h5>
+				<p>We create infrastructure designs like road design that meet safety, economic and aesthetic
+					requirements.</p>
+			</div>
+			<div class="col-md-6 col-lg-6">
+				<h5 style="color: rgb(165, 164, 160);"><strong>Training</strong></h5>
+				<p>At TechWif Academy, we give trainings and bootcamps on programming, coding, design and more.</p>
 			</div>
 		</div>
 	</div>
 
-	<div class="container center p-2 mt-4 mb-4">
-		<a href="https://opensea.io/collection/techwif/"><img width="100%" height="200px" src="{% static 'images\nft-image.jpg' %}" alt=""></a>
+	<div class="container center p-2 my-4">
+		<a href="https://opensea.io/collection/techwif/"><img width="300px" height="100px" class="rounded" src="{% static 'images\nft-image.jpg' %}" alt=""></a>
 	</div>
 
 	<div class="container p-0">
@@ -153,8 +158,8 @@
 		</div>
 	</div>
 
-	<div class="container">
-		<a class="btn btn-dark btn-block" href="{% url 'latest_updates' %}">Go To Latest Updates</a>
+	<div class="container d-grid">
+		<a class="btn btn-dark" href="{% url 'latest_updates' %}">Go To Latest Updates</a>
 	</div>
 
 	{% endblock content %}
@@ -167,13 +172,12 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.1/js/materialize.min.js" integrity=""
 		crossorigin="anonymous">
 		</script>
-	<script src="{% static 'js\jquery.min.js' %}"></script>
-	<script src="{% static 'js\jquery.waypoints.min.js' %}"></script>
-	<script src="{% static 'js\infinite.min.js' %}"></script>
-	<script src="{% static 'js\materialize.min.js' %}"></script>
-	<script src="{% static 'js\bootstrap.bundle.min.js' %}"></script>
+	<script src="{% static 'js\jquery.js' %}"></script>
+	<script src="{% static 'js\jquery.waypoints.js' %}"></script>
+	<script src="{% static 'js\infinite.js' %}"></script>
+	<script src="{% static 'js\materialize.js' %}"></script>
 	<script src="{% static 'js\bootstrap.bundle.js' %}"></script>
-	<script src="{% static 'js\bootstrap.min.js' %}"></script>
+	<script src="{% static 'js\bootstrap.js' %}"></script>
 	<script src="{% static 'js\base.js' %}"></script>
 
 	{% block javascript %}{% endblock %}
@@ -217,7 +221,7 @@
 		</div>
 
 		<div class="back-to-top">
-			<button type="button" class="btn btn-outline-dark btn-sm btn-block mb-" onclick="topFunction()" id="myBtn"
+			<button type="button" class="btn btn-outline-dark btn-sm align-items-center mb-2 text-white" onclick="topFunction()" id="myBtn"
 				title="Go to top">
 				Back to Top
 			</button>

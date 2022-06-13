@@ -53,13 +53,13 @@
             <div class="col-md-6 p-0">
                 <div class="mt-4">
                     <div class="d-flex justify-content-center h-100">
-                        <div class="box-element mt-2 mb-2">
+                        <div class="box-element my-2">
                             <div class="row">
                                 <div class="col-6">
                                     <img class="rounded-circle account-img mt-2" src="{{ user.profile.imageURL }}" width="150" height="150" alt="">
                                 </div>
                                 <div class="col-6">
-                                    <div class="ml-3">
+                                    <div class="ms-3">
                                         {% if request.user == user %}
                                         <div class="center mt-2">
                                             <a class="btn btn-outline-secondary tf btn-block" href="{% url 'profile_update' %}">Edit Profile</a>
@@ -103,7 +103,7 @@
                             </div>
                             <div class="media-body article-text">
                                 <div class="article-metadata">
-                                    <a class="mr-2" href="{% url 'profile_view' forum.author.username %}">{{ forum.author }}</a>
+                                    <a class="me-2" href="{% url 'profile_view' forum.author.username %}">{{ forum.author }}</a>
                                     <small class="text-muted">{{ forum.created_date }}</small>
                                     |
                                     <a href="{{ forum.section.get_absolute_url }}"><small>{{ forum.section }}</small></a>

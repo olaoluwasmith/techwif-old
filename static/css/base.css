@@ -3,6 +3,11 @@ body {
 	min-height: 100vh !important;
 }
 
+a,
+link {
+	text-decoration: none;
+}
+
 .bottom-nav-list {
 	display: flex;
 	list-style-type: none;
@@ -248,14 +253,14 @@ body {
 	background-position: center;
 	background-size: cover;
 	height: auto;
-	padding: 15px 0 35px 0;
+	padding: 20px 0 40px 0;
 }
 
 #brand-name {
 	background-color: rgb(32, 32, 32);
 	opacity: 0.9;
 	border-radius: 8px;
-	padding: 10px;
+	padding: 20px 20px 25px 20px;
 }
 
 .about-us {
@@ -266,4 +271,5 @@ body {
 	background-color: rgb(32, 32, 32);
 	min-height: 100px;
 	color: white;
+	padding-top: 10px;
 }

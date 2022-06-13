@@ -24,7 +24,7 @@
                     </div>
                     <div class="media-body article-text">
                         <div class="article-metadata">
-                            <a class="mr-2" href="{% url 'profile_view' forum.author.username %}">{{ forum.author }}</a>
+                            <a class="me-2" href="{% url 'profile_view' forum.author.username %}">{{ forum.author }}</a>
                             <small class="text-muted">{{ forum.created_date }}</small>
                             <small class="text-muted"> | </small>
                             <a href="{{ forum.section.get_absolute_url }}"><small>{{ forum.section }}</small></a>
