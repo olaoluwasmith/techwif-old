@@ -19,16 +19,29 @@
         <div class="row mt-2">
             {% for blogs in blog %}
             <div class="col-md-4 col-lg-3 mt-2">
+                <a href="{{ blogs.get_absolute_url }}"><img class="thumbnail" src="{{ blogs.imageURL }}" alt=""></a>
+                <div class="box-element product">
+                    <h6><strong><a href="{{ blogs.get_absolute_url }}">{{ blogs.title }}</a></strong></h6>
+                    <hr>
+                    <div class="card-content-text">
+                        <ul class="categoryTime">
+                            <li><a href="{{ blogs.category.get_absolute_url }}">{{ blogs.category }}</a></li>
+                            <li></li>
+                            <li>{{ blogs.created_date|date:"F d, Y" }}</li>
+                        </ul>
+                    </div>
+                </div>
+
                 <div class="card p-0">
-                    <a href="{{ blog.get_absolute_url }}"><img height="200" class="w-100 mb-2" src="{{ blog.imageURL }}" alt=""></a>
+                    <a href="{{ blogs.get_absolute_url }}"><img height="200" class="w-100 mb-2" src="{{ blogs.imageURL }}" alt=""></a>
                     <div class="box-element product">
-                        <h6 class="mx-2"><strong><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></strong></h6>
+                        <h6 class="mx-2"><strong><a href="{{ blogs.get_absolute_url }}">{{ blogs.title }}</a></strong></h6>
                         <hr>
                         <div class="card-content-text mb-2">
                             <ul class="categoryTime ps-1">
-                                <li><a href="{{ blog.category.get_absolute_url }}">{{ blog.category }}</a></li>
+                                <li><a href="{{ blogs.category.get_absolute_url }}">{{ blogs.category }}</a></li>
                                 <li></li>
-                                <li>{{ blog.created_date|date:"F d, Y" }}</li>
+                                <li>{{ blogs.created_date|date:"F d, Y" }}</li>
                             </ul>
                         </div>
                     </div>
