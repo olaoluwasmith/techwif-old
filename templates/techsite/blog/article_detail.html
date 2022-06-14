@@ -58,7 +58,8 @@
             </div>
         </div> 
         
-        <div class="card my-4">
+        <!--
+            <div class="card my-4">
             <h4 class="p-2">Related Articles</h4>
         </div>
 
@@ -66,7 +67,7 @@
             {% for blog in blog_related %}
             <div class="col-6 col-lg-4 p-0">
                 <div class="card">
-                    <!--<a href="{{ blog.get_absolute_url }}"><img class="thumbnail" src="{{ blog.imageURL }}" alt=""></a>-->
+                    <a href="{{ blog.get_absolute_url }}"><img class="thumbnail" src="{{ blog.imageURL }}" alt=""></a>
                     <div class="m-2 p-2 product">
                         <h6><strong><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></strong></h6>
                     </div>
@@ -77,6 +78,8 @@
             </div>
             {% endfor %}
         </div>
+        -->
+        
     </div>
 {% endblock %}
 
