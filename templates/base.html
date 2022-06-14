@@ -8,6 +8,22 @@
 <html class="" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#" lang="en-US">
 
 <head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-178751491-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-178751491-1');
+	</script>
+
+	<!-- Global site tag (gtag.js) - Google AdSense -->
+	<script async
+		src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4934423132077353"
+		crossorigin="anonymous">
+	</script>
+
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width" initial-scale="1" maximum-scale="1" user-scalable="1"
 		viewport-fit="cover" />
@@ -26,27 +42,12 @@
 	<link rel="stylesheet" href="{% static 'css\materialize-social.css' %}" />
 	<link rel="stylesheet" href="{% static 'css\bootstrap.css' %}" />
 	<link rel="stylesheet" href="{% static 'css\base.css' %}" />
-
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-179482776-1"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
-
-		gtag('config', 'UA-179482776-1');
-	</script>
-
-	<!-- Global site tag (gtag.js) - Google AdSense -->
-	<script async
-		src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4934423132077353"
-		crossorigin="anonymous"></script>
 </head>
 
 <body>
 	<div>
 		<nav class="light-blue darken-4">
-			<div class="container p-0" id="">
+			<div class="container p-0 align-items-center" id="">
 				<a href="{% url 'homepage' %}" class="left ps-1" style="color: white;"><img height="40" width="40"
 						src="{% static 'techwif\favicon-white.png' %}" alt=""></a>
 				<ul id="" class="right">
