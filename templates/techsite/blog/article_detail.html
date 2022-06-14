@@ -63,14 +63,15 @@
     <div class="container card my-4">
         <h4 class="p-2">Related Articles</h4>
     </div> -->
-    <div class="container p-0">
-		<h2 class="sub-heading mt-4" id="main-articles">Related Articles &eqslantgtr;</h2>
-	</div>
 
     <div class="article">
         <div class="container">
             <div class="row mt-2">
                 {% for blog in blog_related %}
+                <div class="container p-0">
+                    <h2 class="sub-heading mt-4" id="main-articles">Related Articles &eqslantgtr;</h2>
+                </div>
+                
                 <div class="col-md-6 col-lg-3">
                     <div class="card p-0">
                         <a href="{{ blog.get_absolute_url }}"><img height="200" class="w-100 mb-2" src="{{ blog.imageURL }}" alt=""></a>
@@ -86,10 +87,12 @@
                             </div>
                         </div>
                     </div>
-                {% empty %}
-                <div class="m-4 p-4">
-                    <h5>No result found</h5>
-                </div>
+                    <!--
+                        {% empty %}
+                    <div class="m-4 p-4">
+                        <h5>No result found</h5>
+                    </div>
+                    -->
                 {% endfor %}
             </div>
         </div>
