@@ -29,7 +29,7 @@
         <div class="row article-text">
             <div class="col-lg-6 p-0">
                 <div class="title-block">
-                    <h5>{{ forum.title|capfirst }}</h5>
+                    <h4>{{ forum.title|capfirst }}</h4>
                     by <a href="{% url 'profile_view' forum.author.username %}">{{ forum.author }}</a>,
                     updated on {{ forum.created_date }}
                     <hr>
