@@ -65,14 +65,15 @@
         <div class="row mt-2">
             {% for blog in blog_related %}
             <div class="col-6 col-lg-4 p-0">
-                <!--<a href="{{ blog.get_absolute_url }}"><img class="thumbnail" src="{{ blog.imageURL }}" alt=""></a>-->
-                <div class="box-element m-2 product">
-                    <h6><strong><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></strong></h6>
+                <div class="card">
+                    <!--<a href="{{ blog.get_absolute_url }}"><img class="thumbnail" src="{{ blog.imageURL }}" alt=""></a>-->
+                    <div class="m-2 p-2 product">
+                        <h6><strong><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></strong></h6>
+                    </div>
                 </div>
-            </div>
             {% empty %}
-            <div class="card center m-4 p-4">
-                <h5 class="center">No result found.</h5>
+            <div class="card m-2 p-2">
+                <h5>No result found.</h5>
             </div>
             {% endfor %}
         </div>

@@ -98,9 +98,12 @@
                     <div class="infinite-container">
                         {% for forum in object_list %}
                         <div class="media content-section article-text m-2 infinite-item">
+                            <!--
                             <div>
                                 <img class="rounded-circle  article-img" src="{{ forum.author.profile.profile_pic.url }}" width="70" height="70" alt="">
                             </div>
+                            -->
+
                             <div class="media-body article-text">
                                 <div class="article-metadata">
                                     <a class="me-2" href="{% url 'profile_view' forum.author.username %}">{{ forum.author }}</a>

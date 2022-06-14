@@ -39,13 +39,16 @@
         <div>
             <h4 class="sub-heading" id="main-articles">{{ section.section }}</h4>
             {% for forums in forum %}
-            <div class="media content-section article-text mt-2 mb-2">
+            <div class="media content-section article-text my-2">
+                <!--
                 <div>
                     <img class="rounded-circle  article-img" src="{{ forums.author.profile.profile_pic.url }}" width="70" height="70" alt="">
                 </div>
+                -->
+                
                 <div class="media-body article-text">
                     <div class="article-metadata">
-                        <a class="mr-2" href="{% url 'profile_view' forums.author.username %}">{{ forums.author }}</a>
+                        <a class="me-2" href="{% url 'profile_view' forums.author.username %}">{{ forums.author }}</a>
                         <small class="text-muted">{{ forums.created_date }}</small>
                     </div>
                     <div>
