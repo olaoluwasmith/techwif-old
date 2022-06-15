@@ -19,7 +19,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container my-4">
+    <div class="container row my-4">
         <div class="col-lg-6 p-0">
             <div class="">
                 <div class="title-block">
@@ -56,23 +56,25 @@
                 </div> 
             </div> 
             
-            {% for blog in blog_related %}                
-            <div class="col-md-4">
-                <div class="card p-0">
-                    <a href="{{ blog.get_absolute_url }}"><img height="200" class="w-100 mb-2" src="{{ blog.imageURL }}" alt=""></a>
-                    <div class="box-element product">
-                        <h6 class="mx-2"><strong><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></strong></h6>
-                        <hr>
-                        <div class="card-content-text mb-2">
-                            <ul class="categoryTime ps-1">
-                                <li><a href="{{ blog.category.get_absolute_url }}">{{ blog.category }}</a></li>
-                                <li></li>
-                                <li>{{ blog.created_date|date:"F d, Y" }}</li>
-                            </ul>
+            {% for blog in blog_related %} 
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card p-0">
+                        <a href="{{ blog.get_absolute_url }}"><img height="200" class="w-100 mb-2" src="{{ blog.imageURL }}" alt=""></a>
+                        <div class="box-element product">
+                            <h6 class="mx-2"><strong><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></strong></h6>
+                            <hr>
+                            <div class="card-content-text mb-2">
+                                <ul class="categoryTime ps-1">
+                                    <li><a href="{{ blog.category.get_absolute_url }}">{{ blog.category }}</a></li>
+                                    <li></li>
+                                    <li>{{ blog.created_date|date:"F d, Y" }}</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>               
             {% endfor %}
         </div>
     </div>
