@@ -20,8 +20,8 @@
 
 {% block content %}
     <div class="container my-4">
-        <div class="">
-            <div class="col-lg-6 p-0">
+        <div class="col-lg-6 p-0">
+            <div class="">
                 <div class="title-block">
                     <h4>{{ blog.title }}</h4>
                     <p>Updated on {{blog.modified_date }}</p>
@@ -43,51 +43,41 @@
                     <hr>            
                 </div>
             </div>
-
-            <div class="col-lg-6 p-0">
-                <div class="content-block">
-                    {{ blog.content|safe|linebreaks|urlizetrunc:40 }}
-                    <div class="m-2 center">
-                        {% if blog.author == user %}
+            
+            <div class="content-block">
+                {{ blog.content|safe|linebreaks|urlizetrunc:40 }}
+                <div class="m-2 center">
+                    {% if blog.author == user %}
+                    <hr>
+                    <a class="btn btn-secondary tf m-2" href="{% url 'article_update' blog.slug blog.id %}"><i class="fas fa-edit"></i></a>
+                    <a class="btn btn-danger tf m-2" href="{% url 'article_delete' blog.slug blog.id %}"><i class="fas fa-trash-alt"></i></a>
+                    <hr>
+                    {% endif %}
+                </div> 
+            </div> 
+            
+            {% for blog in blog_related %}                
+            <div class="col-md-4">
+                <div class="card p-0">
+                    <a href="{{ blog.get_absolute_url }}"><img height="200" class="w-100 mb-2" src="{{ blog.imageURL }}" alt=""></a>
+                    <div class="box-element product">
+                        <h6 class="mx-2"><strong><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></strong></h6>
                         <hr>
-                        <a class="btn btn-secondary tf m-2" href="{% url 'article_update' blog.slug blog.id %}"><i class="fas fa-edit"></i></a>
-                        <a class="btn btn-danger tf m-2" href="{% url 'article_delete' blog.slug blog.id %}"><i class="fas fa-trash-alt"></i></a>
-                        <hr>
-                        {% endif %}
-                    </div> 
-                </div>
-            </div>
-        </div>
-    </div>
-        <!--
-    <div class="container card my-4">
-        <h4 class="p-2">Related Articles</h4>
-    </div> -->
-
-    <div class="article">
-        <div class="container">
-            <div class="row mt-2">
-                {% for blog in blog_related %}                
-                <div class="col-md-6 col-lg-3">
-                    <div class="card p-0">
-                        <a href="{{ blog.get_absolute_url }}"><img height="200" class="w-100 mb-2" src="{{ blog.imageURL }}" alt=""></a>
-                        <div class="box-element product">
-                            <h6 class="mx-2"><strong><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></strong></h6>
-                            <hr>
-                            <div class="card-content-text mb-2">
-                                <ul class="categoryTime ps-1">
-                                    <li><a href="{{ blog.category.get_absolute_url }}">{{ blog.category }}</a></li>
-                                    <li></li>
-                                    <li>{{ blog.created_date|date:"F d, Y" }}</li>
-                                </ul>
-                            </div>
+                        <div class="card-content-text mb-2">
+                            <ul class="categoryTime ps-1">
+                                <li><a href="{{ blog.category.get_absolute_url }}">{{ blog.category }}</a></li>
+                                <li></li>
+                                <li>{{ blog.created_date|date:"F d, Y" }}</li>
+                            </ul>
                         </div>
                     </div>
-                {% endfor %}
+                </div>
             </div>
+            {% endfor %}
         </div>
     </div>
-{% endblock %}
+
+{% endblock content %}
 
 {% block javascript %}
 <script>
