@@ -19,45 +19,45 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container row my-4">
-        <div class="col-lg-6 p-0">
-            <div class="">
-                <div class="title-block">
-                    <h4>{{ blog.title }}</h4>
-                    <p>Updated on {{blog.modified_date }}</p>
-                    <hr>
-                    <div class="center">
-                        <img class="center mt-2" width="100%" height="100%" src="{{ blog.imageURL }}">
+    <div class="container my-4">
+        <div class="row">
+            <div class="col-lg-6 p-0">
+                <div class="">
+                    <div class="title-block">
+                        <h4>{{ blog.title }}</h4>
+                        <p>Updated on {{blog.modified_date }}</p>
+                        <hr>
+                        <div class="center">
+                            <img class="center mt-2" width="100%" height="100%" src="{{ blog.imageURL }}">
+                        </div>
+                        <hr>
+                        <div class="mt-2">
+                            <ul class="social-share-grid">
+                                <li>{% post_to_facebook object_or_url "<i class='fab fa-facebook fa-lg'></i>" %}</li>
+                                <li>{% post_to_twitter blog.title object_or_url "<i class='fab fa-twitter fa-lg'></i>" %}</li>
+                                <li>{% post_to_whatsapp object_or_url "<i class='fab fa-whatsapp fa-lg'></i>" %}</li>
+                                <li>{% post_to_telegram blog.title object_or_url "<i class='fab fa-telegram fa-lg'></i>" %}</li>
+                                <li>{% post_to_linkedin blog.title object_or_url "<i class='fab fa-linkedin fa-lg'></i>" %}</li>
+                                <li>{% post_to_reddit blog.title object_or_url "<i class='fab fa-reddit fa-lg'></i>" %}</li>
+                            </ul>   
+                        </div> 
+                        <hr>            
                     </div>
-                    <hr>
-                    <div class="mt-2">
-                        <ul class="social-share-grid">
-                            <li>{% post_to_facebook object_or_url "<i class='fab fa-facebook fa-lg'></i>" %}</li>
-                            <li>{% post_to_twitter blog.title object_or_url "<i class='fab fa-twitter fa-lg'></i>" %}</li>
-                            <li>{% post_to_whatsapp object_or_url "<i class='fab fa-whatsapp fa-lg'></i>" %}</li>
-                            <li>{% post_to_telegram blog.title object_or_url "<i class='fab fa-telegram fa-lg'></i>" %}</li>
-                            <li>{% post_to_linkedin blog.title object_or_url "<i class='fab fa-linkedin fa-lg'></i>" %}</li>
-                            <li>{% post_to_reddit blog.title object_or_url "<i class='fab fa-reddit fa-lg'></i>" %}</li>
-                        </ul>   
-                    </div> 
-                    <hr>            
                 </div>
-            </div>
-            
-            <div class="content-block">
-                {{ blog.content|safe|linebreaks|urlizetrunc:40 }}
-                <div class="m-2 center">
-                    {% if blog.author == user %}
-                    <hr>
-                    <a class="btn btn-secondary tf m-2" href="{% url 'article_update' blog.slug blog.id %}"><i class="fas fa-edit"></i></a>
-                    <a class="btn btn-danger tf m-2" href="{% url 'article_delete' blog.slug blog.id %}"><i class="fas fa-trash-alt"></i></a>
-                    <hr>
-                    {% endif %}
+                
+                <div class="content-block">
+                    {{ blog.content|safe|linebreaks|urlizetrunc:40 }}
+                    <div class="m-2 center">
+                        {% if blog.author == user %}
+                        <hr>
+                        <a class="btn btn-secondary tf m-2" href="{% url 'article_update' blog.slug blog.id %}"><i class="fas fa-edit"></i></a>
+                        <a class="btn btn-danger tf m-2" href="{% url 'article_delete' blog.slug blog.id %}"><i class="fas fa-trash-alt"></i></a>
+                        <hr>
+                        {% endif %}
+                    </div> 
                 </div> 
-            </div> 
-            
-            {% for blog in blog_related %} 
-            <div class="row">
+                
+                {% for blog in blog_related %}                
                 <div class="col-md-4">
                     <div class="card p-0">
                         <a href="{{ blog.get_absolute_url }}"><img height="200" class="w-100 mb-2" src="{{ blog.imageURL }}" alt=""></a>
@@ -74,9 +74,10 @@
                         </div>
                     </div>
                 </div>
-            </div>               
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
+        
     </div>
 
 {% endblock content %}
