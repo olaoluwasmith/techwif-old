@@ -27,7 +27,7 @@
 
     <div class="container my-4">
         <div class="row article-text">
-            <div class="col-lg-6 p-0">
+            <div class="col-lg-6 mx-auto p-0">
                 <div class="title-block">
                     <h4>{{ forum.title|capfirst }}</h4>
                     by <a href="{% url 'profile_view' forum.author.username %}">{{ forum.author }}</a>,
@@ -70,7 +70,7 @@
                 </div>
             </div>
             
-            <div class="col-lg-6">
+            <div class="col-lg-6 mx-auto">
                 <div class="form-inline">
                     <div id="like-section">
                         {% include 'techsite/forum/like_section.html' %}
