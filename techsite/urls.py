@@ -23,7 +23,7 @@ from tech.sitemaps import SITEMAPS
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('notice.urls')),
+   # path('', include('notice.urls')),
     path('', include('tech.urls')),
     path('sitemap.xml', sitemap, {'sitemaps': SITEMAPS}),
 ]

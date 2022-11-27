@@ -1,7 +1,6 @@
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
-import notifications.urls
-
+#import notifications.urls
 
 from . import views
 from .views import *
@@ -12,7 +11,7 @@ urlpatterns = [
     path('signin/', views.LoginPage, name='login'),
     path('update_profile/', views.ProfileUpdate, name='profile_update'),
     path('signout/', views.LogoutUser, name='logout'),
-    path('inbox/notifications/', include(notifications.urls, namespace='notifications')),
+    #path('inbox/notifications/', include(notifications.urls, namespace='notifications')),
 
     path('reset_password/', 
         auth_views.PasswordResetView.as_view(template_name='user/password_reset.html'), 
@@ -32,12 +31,6 @@ urlpatterns = [
     path('advertise/', views.advertise, name='advertise'),
     path('contact_us/', views.contact_us, name='contact_us'),
     path('about/', views.about, name='about'),
-
-    #path('services/', ServiceListView.as_view(), name='service_list'),
-    #path('services/<slug:slug>/<int:pk>/', ServiceDetailView.as_view(), name='service_detail'),
-    #path('services/<slug:slug>/<int:pk>/update/', ServiceUpdateView.as_view(), name='service_update'),
-    #path('services/<slug:slug>/<int:pk>/delete/', ServiceDeleteView.as_view(), name='service_delete'),
-    #path('service_form/', ServiceCreateView.as_view(), name='service_form'),
     
     path('articles/', LatestUpdates.as_view(), name='latest_updates'),
     path('articles/<slug:slug>/<int:pk>/', views.BlogDetailView, name='article_detail'),
@@ -46,6 +39,10 @@ urlpatterns = [
     path('article_form/', BlogCreateView.as_view(), name='article_form'),
     path('categories/<category_slug>/', views.BlogCategory, name='category'),
 
+    path('', BlogListView.as_view(), name='homepage'),
+]
+
+"""
     path('forum/', ForumListView.as_view(), name='forum_list'),
     path('forum/<slug:slug>/<int:pk>/', views.ForumDetailView, name='forum_detail'),
     path('like_forum/', views.like_forum, name='like_forum'),
@@ -59,6 +56,4 @@ urlpatterns = [
     path('sections/<section_slug>/', views.ForumSection, name='section'),
 
     path('<str:username>/', ProfileView.as_view(), name='profile_view'),
-
-    path('', BlogListView.as_view(), name='homepage'),
-]
+"""

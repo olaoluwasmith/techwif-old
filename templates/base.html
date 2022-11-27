@@ -51,6 +51,7 @@
 				<a href="{% url 'homepage' %}" class="left ps-1" style="color: white;"><img height="40" width="40"
 						src="{% static 'techwif\favicon-white.png' %}" alt=""></a>
 				<ul id="" class="right">
+					<!--
 					{% if user.is_authenticated %}
 					<li><a href="{% url 'profile_view' request.user %}" style="color: rgb(216, 207, 207);"><i
 								class="fas fa-user fa-sm"></i></a></li>
@@ -68,7 +69,8 @@
 							style="color: rgb(216, 207, 207);">Sign In</a></li>
 					<li><a href="{% url 'register' %}" style="color: rgb(216, 207, 207);">Sign Up</a></li>
 					{% endif %}
-					<li><a href="{% url 'forum_list' %}" style="color: rgb(242, 235, 235);">Forum</a></li>
+					-->
+					<li><a href="{% url 'contact_us' %}" class="btn btn-outline-primary mx-3 tf" style="color: rgb(242, 235, 235);">Start a Project</a></li>
 				</ul>
 			</div>
 		</nav>

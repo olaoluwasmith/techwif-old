@@ -108,7 +108,7 @@ def BlogCategory(request, category_slug):
     context = {'blog': blog, 'category': category, 'cat_menu_list': cat_menu_list} 
     return render(request, template, context)
     
-
+"""
 def ForumSection(request, section_slug):
     section = get_object_or_404(Section, slug=section_slug)
     forum = get_list_or_404(Forum.objects.order_by('-id'), section=section)
@@ -118,6 +118,7 @@ def ForumSection(request, section_slug):
     template = 'techsite/forum/forum_section.html'
     context = {'forum': forum, 'section': section, 'sec_menu_list': sec_menu_list}  
     return render(request, template, context)
+"""
 
 def privacy_policy(request):
     return render(request, 'techsite/privacy_policy.html')
@@ -148,69 +149,6 @@ def contact_us(request):
             return redirect('contact_us')
     return render(request, 'techsite/contact_us.html', {'form': form})
 
-"""
-class ServiceListView(generic.ListView):
-    model = Service
-    template_name = 'techsite/service/service_list.html'
-
-
-class ServiceDetailView(generic.DetailView):
-    model = Service
-    template_name = 'techsite/service/service_detail.html'
-    slug_field ='slug'
-    query_pk_and_slug = True
-
-
-@method_decorator(admin_only, name='dispatch')
-class ServiceCreateView(LoginRequiredMixin, SuccessMessageMixin, generic.CreateView):
-    model = Service
-    template_name = 'techsite/service/service_form.html'
-    form_class = ServiceForm
-    slug_field = 'slug'
-    query_pk_and_slug = True
-    success_message = 'Post created successfully.'
-
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
-
-
-class ServiceUpdateView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, generic.UpdateView):
-    model = Service
-    template_name = 'techsite/service/service_form.html'
-    fields = ['title', 'image', 'content']
-    slug_field = 'slug'
-    query_pk_and_slug = True
-    success_message = 'Post updated successfully.'
-
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
-
-    def test_func(self):
-        service = self.get_object()
-        if self.request.user == service.author:
-            return True
-        return False
-
-    
-class ServiceDeleteView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, generic.DeleteView):
-    model = Service
-    template_name = 'techsite/service/service_delete.html'
-    slug_field ='slug'
-    query_pk_and_slug = True
-    success_url = '/services/'
-
-    def test_func(self):
-        service = self.get_object()
-        if self.request.user == service.author:
-            return True
-        return False
-
-    def get_success_url(self):
-        messages.warning(self.request, 'Post deleted successfully.')
-        return reverse('service_list')
-"""
 
 class LatestUpdates(generic.ListView):
     model = Blog
@@ -308,6 +246,7 @@ class BlogDeleteView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixi
         return reverse('homepage')
 
 
+"""
 class ForumListView(generic.ListView):
     model = Forum
     template_name = 'techsite/forum/forum_list.html'
@@ -567,4 +506,4 @@ class ProfileView(generic.DetailView, MultipleObjectMixin):
         object_list = Forum.objects.filter(author=user).order_by('-created_date')
         context = super(ProfileView, self).get_context_data(object_list=object_list, *args, **kwargs)
         return context  
-
+"""

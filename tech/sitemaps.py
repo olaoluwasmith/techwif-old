@@ -16,18 +16,18 @@ class BlogSitemap(Sitemap):
     def items(self):
         return Blog.objects.all()
 
-
+"""
 class ForumSitemap(Sitemap):
     changefreq = "daily"
     priority = 1.0
     def items(self):
         return Forum.objects.all()
-
+"""
 
 
 SITEMAPS = {
     'static': StaticViewSitemap,
     'blog': BlogSitemap,
-    'forum': ForumSitemap,
+ #   'forum': ForumSitemap,
 }
 

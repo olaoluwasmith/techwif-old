@@ -41,6 +41,13 @@ class ContactForm(forms.Form):
     )
 
 
+class ArticleForm(forms.ModelForm):
+    class Meta:
+        model = Blog
+        fields = ['title', 'category', 'image', 'content', 'tags']
+
+
+"""
 class CommentForm(forms.ModelForm):
     content = forms.CharField(
         label="", 
@@ -57,13 +64,8 @@ class ForumForm(forms.ModelForm):
         fields = ['title', 'section', 'content']
 
 
-class ArticleForm(forms.ModelForm):
-    class Meta:
-        model = Blog
-        fields = ['title', 'category', 'image', 'content', 'tags']
-
-
 class ServiceForm(forms.ModelForm):
     class Meta:
         model = Service
         fields = ['title', 'image', 'content']
+"""
